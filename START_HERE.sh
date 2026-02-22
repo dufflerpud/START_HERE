@@ -31,10 +31,12 @@
 #doc#	START_HERE.sh - A script to download and install all of the dufflerpud projects
 ########################################################################
 
-URL=https://raw.githubusercontent.com/dufflerpud/START_HERE/refs/heads/main/START_HERE.sh
+#URL=https://raw.githubusercontent.com/dufflerpud/START_HERE/refs/heads/main/START_HERE.sh
+URL=https://github.com/dufflerpud/START_HERE.git
 
 EXECUTABLE=$0
 PROG=`basename $EXECUTABLE`
+TMP=/tmp/$PROG
 USER=`id -un`
 GROUP=`id -gn`
 WUSER=www-data
@@ -200,15 +202,13 @@ setup_communication()
 #########################################################################
 install_and_configure_email()
     {
-    TMP=/tmp/`basename $EXECUTABLE`
     echo "[ Setting up e-mail ]"
     ecsudo apt install -qqy ssmtp mailutils
-    echodo scp $REF_FILES $TMP
+    echodo scp $REF_FILES $TMP/ref.cpio
     echocd /
-    ecsudo cpio -iduv < $TMP
-    ecsudo chown root:root `cpio -it < $TMP`
-    ecsudo chmod 644 `cpio -it < $TMP`
-    echodo rm -f $TMP
+    ecsudo cpio -iduv < $TMP/ref.cpio
+    ecsudo chown root:root `cpio -it < $TMP/ref.cpio`
+    ecsudo chmod 644 `cpio -it < $TMP/ref.cpio`
     }
 
 #########################################################################
@@ -233,11 +233,12 @@ usage()
 #	Main								#
 #########################################################################
 
+mkdir -p $TMP
 if [ -z "$USE_LOCAL" ] ; then
-    curl --no-sessionid --silent $URL --output $EXECUTABLE
-    USE_LOCAL=1 exec sh -x $EXECUTABLE $*
-    echo exec $EXECUTABLE returned $?
-    exit 1
+    (cd $TMP; git clone $URL)
+    echodo mv $TMP/START_HERE/START_HERE.sh $EXECUTABLE
+    USE_LOCAL=1 sh -x $TMP/START_HERE/START_HERE.sh $*
+    exec rm -rf $TMP
 fi
 
 while [ "$#" -gt 0 ] ; do
@@ -288,3 +289,5 @@ install_and_configure pandemic		# Requires cpi, common and cci
 
 #setup_communication
 #install_and_configure_email
+
+exec rm -rf $TMP
