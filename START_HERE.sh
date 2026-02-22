@@ -245,6 +245,7 @@ while [ "$#" -gt 0 ] ; do
 	-clean)	BE_CLEAN=true					;;
 	*)	PROBLEMS="${PROBLEMS}Unknown argument [$1]~"	;;
     esac
+    shift
 done
 
 [ -z "$PROBLEMS" ] || &usage "$PROBLEMS"
