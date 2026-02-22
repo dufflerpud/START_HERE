@@ -39,6 +39,6 @@ TMP=/tmp/$PROG
 
 rm -rf $TMP
 mkdir -p $TMP
-(cd $TMP git clone $URL)
+(cd $TMP; git clone $URL)
 sh -x $TMP/START_HERE/START_HERE.sh $*
 exec rm -rf $TMP
