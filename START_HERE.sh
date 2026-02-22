@@ -235,12 +235,7 @@ usage()
 
 if [ -z "$USE_LOCAL" ] ; then
     curl $URL > $EXECUTABLE
-    chmod 755 $EXECUTABLE
-    export USE_LOCAL=1
-    case "$EXECUTABLE" in
-	/*)	exec $EXECUTABLE $*		;;
-	*)	./$EXECUTABLE $*		;;
-esac
+    USE_LOCAL=1 exec sh $EXECUTABLE $*
     echo exec $EXECUTABLE returned $?
     exit 1
 fi
