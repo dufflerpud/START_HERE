@@ -40,5 +40,5 @@ TMP=/tmp/$PROG
 rm -rf $TMP
 mkdir -p $TMP
 (cd $TMP; git clone $URL)
-sh -x $TMP/START_HERE/START_HERE.sh $*
+sh -x $TMP/START_HERE/Install_and_Build.sh $*
 exec rm -rf $TMP
