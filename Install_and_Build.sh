@@ -255,7 +255,6 @@ install_and_configure testd		# Requires cpi & common
 install_and_configure ww		# Requires cpi & common
 install_and_configure Antasgo		# Requires cpi & common
 install_and_configure Groceries		# Requires cpi & common
-install_and_configure websh		# Requires cpi & common
 install_and_configure routing		# Requires cpi & common
 
 install_and_configure simple_utils	# Requires cpi & common
@@ -275,5 +274,6 @@ install_and_configure multis		# Requires cpi
 install_and_configure cci		# Requires common
 install_and_configure pandemic		# Requires cpi, common and cci
 
+#install_and_configure websh		# Requires cpi & common
 #setup_communication
 #install_and_configure_email
