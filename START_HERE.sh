@@ -234,7 +234,7 @@ usage()
 #########################################################################
 
 if [ -z "$USE_LOCAL" ] ; then
-    curl --silent $URL --output $EXECUTABLE
+    curl --no-sessionid --silent $URL --output $EXECUTABLE
     USE_LOCAL=1 exec sh -x $EXECUTABLE $*
     echo exec $EXECUTABLE returned $?
     exit 1
@@ -249,9 +249,6 @@ while [ "$#" -gt 0 ] ; do
 done
 
 [ -z "$PROBLEMS" ] || usage "$PROBLEMS"
-
-echo "It all seemed to work."
-exit 0
 
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
 
