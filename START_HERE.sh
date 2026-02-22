@@ -237,7 +237,10 @@ if [ -z "$USE_LOCAL" ] ; then
     curl $URL > $EXECUTABLE
     chmod 755 $EXECUTABLE
     export USE_LOCAL=1
-    exec $EXECUTABLE $*
+    case "$EXECUTABLE" in
+	/*)	exec $EXECUTABLE $*		;;
+	*)	./$EXECUTABLE $*		;;
+esac
     echo exec $EXECUTABLE returned $?
     exit 1
 fi
@@ -247,7 +250,7 @@ while [ "$#" -gt 0 ] ; do
 	-clean)	BE_CLEAN=true					;;
 	*)	PROBLEMS="${PROBLEMS}Unknown argument [$1]~"	;;
     esac
-esac
+done
 
 [ -z "$PROBLEMS" ] || &usage "$PROBLEMS"
 
