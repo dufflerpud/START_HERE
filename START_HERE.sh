@@ -234,7 +234,7 @@ usage()
 #########################################################################
 
 if [ -z "$USE_LOCAL" ] ; then
-    curl $URL > $EXECUTABLE
+    curl --silent $URL --output $EXECUTABLE
     USE_LOCAL=1 exec sh -x $EXECUTABLE $*
     echo exec $EXECUTABLE returned $?
     exit 1
