@@ -37,6 +37,7 @@ EXECUTABLE=$0
 PROG=`basename $EXECUTABLE`
 TMP=/tmp/$PROG
 
+rm -rf $TMP
 mkdir -p $TMP
 (cd $TMP git clone $URL)
 sh -x $TMP/START_HERE/START_HERE.sh $*
