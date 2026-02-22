@@ -33,12 +33,10 @@
 
 URL=https://github.com/dufflerpud/START_HERE.git
 
-EXECUTABLE=$0
-PROG=`basename $EXECUTABLE`
-TMP=/tmp/$PROG
+TMP=/tmp/`basename $0`
 
 rm -rf $TMP
 mkdir -p $TMP
 (cd $TMP; git clone $URL)
 sh -x $TMP/START_HERE/Install_and_Build.sh $*
-exec rm -rf $TMP
+#exec rm -rf $TMP
