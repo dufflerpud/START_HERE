@@ -248,7 +248,7 @@ while [ "$#" -gt 0 ] ; do
     shift
 done
 
-[ -z "$PROBLEMS" ] || &usage "$PROBLEMS"
+[ -z "$PROBLEMS" ] || usage "$PROBLEMS"
 
 echo "It all seemed to work."
 exit 0
