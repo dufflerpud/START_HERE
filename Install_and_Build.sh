@@ -151,7 +151,7 @@ install_and_configure_a_web_server()
     {
     if $LIKE_REDHAT ; then
 	service=httpd.service
-	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.cfg
+	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
     	osinstall httpd
     else
         osinstall apache2
