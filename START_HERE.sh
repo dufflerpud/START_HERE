@@ -29,14 +29,71 @@
 #hist#	2026-02-22 - Christopher.M.Caldwell0@gmail.com - Created
 ########################################################################
 #doc#	START_HERE.sh - A script to grab the Install_and_Build script and run it
+#doc#	Don't over think this.  You WILL PROBABLY decide to just get the
+#doc#	Install_and_Build script by hand and run it yourself.  This is
+#doc#	as complex as it is only to help debug the installer.  By the time
+#doc#	you are working with it, we hope the installer already works.
+#doc#	So just run it and ignore this.
+#doc#
+#doc#	Installs script only for debugging purposes.
+#doc#
+#doc#	Installs git because the majority of time, we get the installer
+#doc#	right off github.com.  Installer will also make sure git gets installed
+#doc#	because sometimes it gets here otherwise.  Assume as little as possible.
 ########################################################################
 
-URL=https://github.com/dufflerpud/START_HERE.git
+DEFAULT_URL=https://github.com/dufflerpud/START_HERE.git
+#DEFAULT_URL=https://raw.githubusercontent.com/dufflerpud/START_HERE/refs/heads/main/$INSTALL_SCRIPT
+#DEFAULT_URL=chris@10.1.0.20:/usr/local/projects/START_HERE/$INSTALL_SCRIPT
 
 TMP=/tmp/`basename $0`
+INSTALL_SCRIPT=Install_and_Build.sh
 
-rm -rf $TMP
-mkdir -p $TMP
-(cd $TMP; git clone $URL)
-sh -x $TMP/START_HERE/Install_and_Build.sh $*
-#exec rm -rf $TMP
+#########################################################################
+#	Show what you're going to do and then do it.			#
+#########################################################################
+echodo()
+    {
+    echo "+ $*"
+    $*
+    }
+
+#########################################################################
+#	Figure out how to install something then install it.		#
+#########################################################################
+osinstall()
+    {
+    if [ -x /usr/bin/dnf ] ; then
+        echodo dnf -y install $*
+    elif [ -x /usr/bin/apt ] ; then
+	echodo apt -qqy install $*
+    else
+        echo "I don't know how to install a package on this system."
+	exit 1
+    fi
+    }
+
+#########################################################################
+#	Main								#
+#########################################################################
+
+[ -x /usr/bin/script ] || osinstall script
+
+#Overridable with the environment
+URL=${START_HERE_URL:-"$DEFAULT_URL"}
+
+rm -rf $TMP.*
+case "$URL" in
+    *.git)	[ -x /usr/bin/git ] || osinstall git
+		mkdir -p $TMP.sandbox
+		echodo git -C $TMP.sandbox clone "$URL"
+		echodo cp $TMP.sandbox/START_HERE/$INSTALL_SCRIPT $INSTALL_SCRIPT
+		;;
+    http*)	echodo curl -o $INSTALL_SCRIPT "$URL"
+    		;;
+    *)		echodo scp "$URL" $INSTALL_SCRIPT
+    		;;
+esac
+
+script -c "sh -x $INSTALL_SCRIPT $*" $TMP.raw
+/usr/local/bin/descape < $TMP.raw > $TMP.log
