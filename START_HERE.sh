@@ -46,7 +46,7 @@ DEFAULT_URL=https://github.com/dufflerpud/START_HERE.git
 #DEFAULT_URL=https://raw.githubusercontent.com/dufflerpud/START_HERE/refs/heads/main/$INSTALL_SCRIPT
 #DEFAULT_URL=chris@10.1.0.20:/usr/local/projects/START_HERE/$INSTALL_SCRIPT
 
-TMP=/tmp/`basename $0`
+TMP=/tmp/`basename $0 .sh`
 INSTALL_SCRIPT=Install_and_Build.sh
 
 #########################################################################
