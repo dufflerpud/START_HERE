@@ -33,7 +33,6 @@
 
 PROG=`basename $0 .sh`
 USER=`id -un`
-USERNAME=`id -un`
 GROUP=`id -gn`
 WUSER=`awk -F: '/^(apache|www-data)/ {print $3}' /etc/passwd`
 WGROUP=`awk -F: '/^(apache|www-data)/ {print $4}' /etc/passwd`
@@ -69,7 +68,7 @@ echodo()
 #########################################################################
 make_sudo_friendly()
     {
-    echo '%wheel ALL=(ALL) NOPASSWD: ALL' | \
+    echo "$USER ALL=(ALL) NOPASSWD: ALL" | \
 	ecsudo install -o root -g root -m 0444 /dev/stdin $SUDO_HACK
     }
 
