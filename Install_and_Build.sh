@@ -33,6 +33,7 @@
 
 PROG=`basename $0 .sh`
 USER=`id -un`
+USERNAME=`id -un`
 GROUP=`id -gn`
 WUSER=`awk -F: '/^(apache|www-data)/ {print $3}' /etc/passwd`
 WGROUP=`awk -F: '/^(apache|www-data)/ {print $4}' /etc/passwd`
@@ -50,6 +51,9 @@ SUDO_HACK=/etc/sudoers.d/$PROG
 LIKE_DEBIAN=false;	[ -x /bin/apt ] && LIKE_DEBIAN=true
 LIKE_REDHAT=false;	[ -x /bin/dnf ] && LIKE_REDHAT=true
 
+DISABLE_SELINUX=true
+REBOOT_REASON=
+
 #########################################################################
 #	Echo command and then do it.					#
 #########################################################################
@@ -66,7 +70,7 @@ echodo()
 make_sudo_friendly()
     {
     echo '%wheel ALL=(ALL) NOPASSWD: ALL' | \
-	sudo install -o root -g root -m 0444 /dev/stdin $SUDO_HACK
+	ecsudo install -o root -g root -m 0444 /dev/stdin $SUDO_HACK
     }
 
 #########################################################################
@@ -78,6 +82,7 @@ ecsudo()
     {
     echo "! $@" >&2
     sudo "$@"
+    return $?
     }
 
 #########################################################################
@@ -127,9 +132,10 @@ osinstall()
 setup_projects()
     {
     echo "[ Setting up projects ]"
-    osinstall script make gcc translate-shell
+    osinstall make gcc translate-shell
     osinstall sox ghostscript netpbm poppler-utils cpan
     $LIKE_DEBIAN && osinstall libjpeg-dev
+    $LIKE_REDHAT && osinstall script
     if [ ! -e /usr/lib/sendmail ] ; then
 	osinstall ssmtp
 	$LIKE_DEBIAN && osinstall mailutils
@@ -140,76 +146,22 @@ setup_projects()
     }
 
 #########################################################################
-#	Install and configure the Apache2 web server			#
-#	Pretty ubuntu dependent.					#
-#########################################################################
-install_and_configure_apache2_web_server()
-    {
-    echo "[ Installing and configuring Apache web server ]"
-    osinstall apache2
-    #tmog l - - - /etc/apache2/mods-enabled/cgi.load ../mods-available/cgi.load
-    [ -h /etc/apache2/mods-enabled/cgi.load ] || \
-	ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
-    #tmog l - - - /etc/apache2/conf-enabled/serve-cgi-bin.conf ../conf-available/serve-cgi-bin.conf
-    [ -h /etc/apache2/conf-enabled/serve-cgi-bin.conf ] || \
-	ecsudo ln -s ../conf-available/serve-cgi-bin.conf /etc/apache2/conf-enabled/serve-cgi-bin.conf
-    grep 'AddHandler cgi-script' /etc/apache2/apache2.conf > /dev/null || ecsudo ed -s /etc/apache2/apache2.conf <<EDEOF
-	/<Directory \/var\/www\/
-	a
-	AddHandler cgi-script .cgi .pl
-.
-	w
-	q
-EDEOF
-    grep 'Options ExecCGI' /etc/apache2/apache2.conf > /dev/null || ecsudo ed -s /etc/apache2/apache2.conf <<EDEOF
-	/<Directory \/var\/www\/
-	/Options
-	s/Options/Options ExecCGI/
-	w
-	q
-EDEOF
-    ecsudo systemctl enable apache2
-    ecsudo systemctl start apache2
-    ecsudo systemctl reload apache2	# This should really not be needed
-    }
-
-#########################################################################
-#	Install and configure the httpd web server			#
-#	Pretty Redhat dependent.					#
-#########################################################################
-install_and_configure_httpd_web_server()
-    {
-    echo "[ Installing and configuring httpd web server ]"
-    osinstall httpd
-    if grep 'AddHandler cgi-script' /etc/httpd/conf.d/cgi.conf > /dev/null 2>&1 ; then
-	:
-    else
-        echo "AddHandler cgi-script .cgi .pl" | \
-	    ecsudo dd of=/etc/httpd/conf.d/cgi.conf oflag=append
-    fi
-    grep 'Options .*ExecCGI' /etc/httpd/conf/httpd.conf > /dev/null 2>&1 || \
-	ecsudo ed -s /etc/httpd/conf/httpd.conf <<EDEOF
-	/<Directory "\/var\/www\/
-	/Options
-	s/Options/Options +ExecCGI/
-	w
-	q
-EDEOF
-    ecsudo systemctl enable httpd.service
-    ecsudo systemctl start httpd.service
-    ecsudo systemctl reload httpd.service	# This should really not be needed
-    }
-
-#########################################################################
 #	Decide what web server is appropriate and get it going.		#
 #########################################################################
 install_and_configure_a_web_server()
     {
     if $LIKE_REDHAT ; then
-	install_and_configure_httpd_web_server
+	service=httpd.service
+	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.cfg
+    	osinstall httpd
     else
-	install_and_configure_apache2_web_server
+        osinstall apache2
+	service=apache2
+	HTTP_CPI_CFG=/etc/apache2/conf-enabled/cpi.conf
+	[ -h /etc/apache2/mods-enabled/cgi.load ] || \
+	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
     fi
+
     for DOCUMENTROOT in /var/www/www /var/www/html ; do
 	if [ -d $DOCUMENTROOT ] ; then
 	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
@@ -222,23 +174,60 @@ install_and_configure_a_web_server()
 	exit 1
     fi
 
-    if [ ! -f /etc/cpi_cfg.pl ] ; then
-	tmpfile=/tmp/$PROG.$$
-        sed -e 's/^	*//' > $tmpfile <<EOF
-		#\$cpi_vars::WEBOFFSET="YourDomain.com";
-		#\$cpi_vars::FAX_SERVER="Your fax printer name";
-		#\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
-		#\$cpi_vars::KEY_CAPTCHA_PRIVATE="Captcha private key";
-		\$cpi_vars::WEBOFFSET="$WEBOFFSET";
+    ecsudo install -o root -g root -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+AddHandler cgi-script .cgi .pl
+<Directory $WEBTOP>
+    DirectoryIndex index.cgi index.html
+    Options +ExecCGI +FollowSymlinks
+</Directory>
 EOF
-	ecsudo install -o root -g root -m 0644 $tmpfile /etc/cpi_cfg.pl
-	rm $tmpfile
-    fi
+
+    ecsudo systemctl enable $service
+    ecsudo systemctl start $service
+    ecsudo systemctl reload $service	# This should really not be needed
 
     ecsudo install -d -m 0755 -o ${WUSER} -g ${WGROUP} ${WEBTOP}
-    ecsudo firewall-cmd --zone=public --add-service=http --permanent
-    ecsudo systemctl reload firewalld.service
+
+    if [ -x /usr/bin/firewall-cmd ] ; then
+	ecsudo firewall-cmd --zone=public --add-service=http --permanent
+	ecsudo systemctl reload firewalld.service
+    fi
+
+    if [ -f /etc/selinux/config ] ; then
+	if $DISABLE_SELINUX ; then
+            ecsudo grubby --update-kernel ALL --args selinux=0
+	    REBOOT_REASON="$REBOOT_REASON~Kernel flag selinux set to 0."
+	else
+	    ecsudo semanage fcontext -a -t httpd_sys_script_exec_t "$WEBTOP(/.*)?"   
+	    ecsudo install -d -m 0777 -o ${WUSER} -g ${WGROUP} /var/log/stderr
+	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/stderr(/.*)?"
+	    ecsudo install -o ${WUSER} -g ${WGROUP} -m 0666 /var/log/common.log
+	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/common.log"
+	    ecsudo restorecon -Rv $WEBTOP
+    	fi
+    fi
+
+    OVERRIDECONF=/etc/systemd/system/httpd.service.d/override.conf
+    if [ -d `dirname $OVERRIDECONF` -a ! -s $OVERRIDECONF ] ; then
+        ecsudo install -o root -g root -m 0644 /dev/stdin $OVERRIDECONF <<EOF
+[Service]
+ProtectSystem=no
+ProtectHome=no
+EOF
+        REBOOT_REASON="$REBOOT_REASON~ProtectSystem disabled in systemd config."
+    fi
+
     echo "[Web software will be installed into ${WEBTOP}]"
+
+    if [ ! -f /etc/cpi_cfg.pl ] ; then
+	ecsudo install -o root -g root -m 0644 /dev/stdin /etc/cpi_cfg.pl <<EOF
+#\$cpi_vars::WEBOFFSET="YourDomain.com";
+#\$cpi_vars::FAX_SERVER="Your fax printer name";
+#\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
+#\$cpi_vars::KEY_CAPTCHA_PRIVATE="Captcha private key";
+\$cpi_vars::WEBOFFSET="$WEBOFFSET";
+EOF
+    fi
     }
 
 #########################################################################
@@ -324,6 +313,7 @@ while [ "$#" -gt 0 ] ; do
     case "$1" in
 	-c*)	BE_CLEAN=true					;;
 	-d*)	DEVELOPER=true					;;
+	-s*)	DISABLE_SELINUX=false				;;
 	-w*)	WEBOFFSET="$2"; shift				;;
 	*)	PROBLEMS="${PROBLEMS}Unknown argument [$1]~"	;;
     esac
@@ -376,4 +366,8 @@ install_and_configure pandemic		# Requires cpi, common and cci
 if $DEVELOPER ; then
     setup_communication
     install_and_configure websh		# Requires cpi & common
+fi
+
+if [ -n "$REBOOT_REASON" ] ; then
+    echo "REASON TO REBOOT:$REBOOT_REASON" | sed -e 's/~/\n    /g'
 fi
