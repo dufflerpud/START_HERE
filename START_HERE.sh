@@ -64,9 +64,9 @@ echodo()
 osinstall()
     {
     if [ -x /usr/bin/dnf ] ; then
-        echodo dnf -y install $*
+        echodo sudo dnf -y install $*
     elif [ -x /usr/bin/apt ] ; then
-	echodo apt -qqy install $*
+	echodo sudo apt -qqy install $*
     else
         echo "I don't know how to install a package on this system."
 	exit 1
