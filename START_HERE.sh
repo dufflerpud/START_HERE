@@ -28,7 +28,7 @@
 #
 #hist#	2026-02-22 - Christopher.M.Caldwell0@gmail.com - Created
 ########################################################################
-#doc#	START_HERE.sh - A script to grab the Install_and_Build script and run it
+#doc#	START_HERE.sh - A script to grab the Install_and_Build script and run it.
 #doc#	Don't over think this.  You WILL PROBABLY decide to just get the
 #doc#	Install_and_Build script by hand and run it yourself.  This is
 #doc#	as complex as it is only to help debug the installer.  By the time

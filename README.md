@@ -9,14 +9,28 @@ and type:
 
 <hr>
 
-<table src="*.sh"><tr><th align=left><a href='#dt_87LNNiOTl'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr>
-<tr><th align=left><a href='#dt_87LNNiOTm'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr></table>
+<table src="START_HERE.sh Install_and_Build.sh"><tr><th align=left><a href='#dt_87LNqLGBH'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr>
+<tr><th align=left><a href='#dt_87LNqLGBI'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr></table>
 
 <hr>
 
 <div id=docs>
 
-## <a id='dt_87LNNiOTl'>Install_and_Build.sh</a>
+## <a id='dt_87LNqLGBH'>START_HERE.sh</a>
+A script to grab the Install_and_Build script and run it.
+Don't over think this.  You WILL PROBABLY decide to just get the
+Install_and_Build script by hand and run it yourself.  This is
+as complex as it is only to help debug the installer.  By the time
+you are working with it, we hope the installer already works.
+So just run it and ignore this.
+
+Installs script only for debugging purposes.
+
+Installs git because the majority of time, we get the installer
+right off github.com.  Installer will also make sure git gets installed
+because sometimes it gets here otherwise.  Assume as little as possible.
+
+## <a id='dt_87LNqLGBI'>Install_and_Build.sh</a>
 A script to download and install all of the dufflerpud projects
 ### echodo()
 Print a command and execute it
@@ -48,21 +62,7 @@ Print an error message and exit.
 ### usage()
 Print a useful error message and die.
 ### cleanup()
-Remove any temporary files and sudo hack to allow normal sudo behavior
-
-## <a id='dt_87LNNiOTm'>START_HERE.sh</a>
-A script to grab the Install_and_Build script and run it
-Don't over think this.  You WILL PROBABLY decide to just get the
-Install_and_Build script by hand and run it yourself.  This is
-as complex as it is only to help debug the installer.  By the time
-you are working with it, we hope the installer already works.
-So just run it and ignore this.
-
-Installs script only for debugging purposes.
-
-Installs git because the majority of time, we get the installer
-right off github.com.  Installer will also make sure git gets installed
-because sometimes it gets here otherwise.  Assume as little as possible.</div>
+Remove any temporary files and sudo hack to allow normal sudo behavior</div>
 
 <hr>
 
@@ -70,7 +70,5 @@ If you add a file with #doc#/#indx# lines, you should make sure it will be
 found in the 'table src=' line above and then rerun doc_sep in this directory.
 
 Similarly, if you remove files, re-run doc_sep.
-
-
 
 
