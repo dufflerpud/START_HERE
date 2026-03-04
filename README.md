@@ -9,14 +9,14 @@ and type:
 
 <hr>
 
-<table src="*.sh"><tr><th align=left><a href='#dt_87LMlc6J2'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr>
-<tr><th align=left><a href='#dt_87LMlc6J3'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr></table>
+<table src="*.sh"><tr><th align=left><a href='#dt_87LNNiOTl'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr>
+<tr><th align=left><a href='#dt_87LNNiOTm'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr></table>
 
 <hr>
 
 <div id=docs>
 
-## <a id='dt_87LMlc6J2'>Install_and_Build.sh</a>
+## <a id='dt_87LNNiOTl'>Install_and_Build.sh</a>
 A script to download and install all of the dufflerpud projects
 ### echodo()
 Print a command and execute it
@@ -49,7 +49,8 @@ Print an error message and exit.
 Print a useful error message and die.
 ### cleanup()
 Remove any temporary files and sudo hack to allow normal sudo behavior
-## <a id='dt_87LMlc6J3'>START_HERE.sh</a>
+
+## <a id='dt_87LNNiOTm'>START_HERE.sh</a>
 A script to grab the Install_and_Build script and run it
 Don't over think this.  You WILL PROBABLY decide to just get the
 Install_and_Build script by hand and run it yourself.  This is
@@ -69,6 +70,7 @@ If you add a file with #doc#/#indx# lines, you should make sure it will be
 found in the 'table src=' line above and then rerun doc_sep in this directory.
 
 Similarly, if you remove files, re-run doc_sep.
+
 
 
 
