@@ -68,10 +68,10 @@ echodo()
 #	Turn off sudo asking passwords for the duration of the script.	#
 #	There is a special place in hell for me.  I know it.		#
 #########################################################################
-#doc# ### make_sudo_friendly()
+#doc# ### temporarily_disable_sudo_password()
 #doc# Since this script can take a while (due to update, installing CPAN modules),
 #doc# temporarily update sudo configuration to not require passwords every 5 minutes.
-make_sudo_friendly()
+temporarily_disable_sudo_password()
     {
     echo "$USER ALL=(ALL) NOPASSWD: ALL" | \
 	ecsudo install -o root -g root -m 0444 /dev/stdin $SUDO_HACK
@@ -338,6 +338,10 @@ cleanup()
 #########################################################################
 #	Main								#
 #########################################################################
+#doc# ### Main
+#doc# Parse arguments and then install packages in a reasonable order.
+#doc# Note that you need to setup_projects and install cpi and common
+#doc# before anything else.
 
 while [ "$#" -gt 0 ] ; do
     case "$1" in
@@ -352,7 +356,7 @@ done
 
 [ -z "$PROBLEMS" ] || usage "$PROBLEMS"
 
-make_sudo_friendly
+temporarily_disable_sudo_password
 trap cleanup EXIT
 
 performa_updates

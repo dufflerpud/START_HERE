@@ -9,14 +9,14 @@ and type:
 
 <hr>
 
-<table src="START_HERE.sh Install_and_Build.sh"><tr><th align=left><a href='#dt_87LNqLGBH'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr>
-<tr><th align=left><a href='#dt_87LNqLGBI'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr></table>
+<table src="START_HERE.sh Install_and_Build.sh"><tr><th align=left><a href='#dt_87LOVHmQ0'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr>
+<tr><th align=left><a href='#dt_87LOVHmQ1'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr></table>
 
 <hr>
 
 <div id=docs>
 
-## <a id='dt_87LNqLGBH'>START_HERE.sh</a>
+## <a id='dt_87LOVHmQ0'>START_HERE.sh</a>
 A script to grab the Install_and_Build script and run it.
 Don't over think this.  You WILL PROBABLY decide to just get the
 Install_and_Build script by hand and run it yourself.  This is
@@ -30,11 +30,11 @@ Installs git because the majority of time, we get the installer
 right off github.com.  Installer will also make sure git gets installed
 because sometimes it gets here otherwise.  Assume as little as possible.
 
-## <a id='dt_87LNqLGBI'>Install_and_Build.sh</a>
+## <a id='dt_87LOVHmQ1'>Install_and_Build.sh</a>
 A script to download and install all of the dufflerpud projects
 ### echodo()
 Print a command and execute it
-### make_sudo_friendly()
+### temporarily_disable_sudo_password()
 Since this script can take a while (due to update, installing CPAN modules),
 temporarily update sudo configuration to not require passwords every 5 minutes.
 ### ecsudo()
@@ -62,7 +62,11 @@ Print an error message and exit.
 ### usage()
 Print a useful error message and die.
 ### cleanup()
-Remove any temporary files and sudo hack to allow normal sudo behavior</div>
+Remove any temporary files and sudo hack to allow normal sudo behavior
+### Main
+Parse arguments and then install packages in a reasonable order.
+Note that you need to setup_projects and install cpi and common
+before anything else.</div>
 
 <hr>
 
@@ -70,5 +74,6 @@ If you add a file with #doc#/#indx# lines, you should make sure it will be
 found in the 'table src=' line above and then rerun doc_sep in this directory.
 
 Similarly, if you remove files, re-run doc_sep.
+
 
 
