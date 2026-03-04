@@ -18,36 +18,50 @@ and type:
 
 ## <a id='dt_87LMlc6J2'>Install_and_Build.sh</a>
 A script to download and install all of the dufflerpud projects
-##echodo()
+
+###echodo()
 Print a command and execute it
-##make_sudo_friendly()
+
+###make_sudo_friendly()
 Since this script can take a while (due to update, installing CPAN modules),
 temporarily update sudo configuration to not require passwords every 5 minutes.
-##ecsudo()
+
+###ecsudo()
 Print a command and execute it via sudo
-##echocd()
+
+###echocd()
 Note that we're changing directory and do it.
-##performa_updates()
+
+###performa_updates()
 Do whatever os requires to be reasonably up to date
-##osinstall()
+
+###osinstall()
 Figure out what tool is used to install and install specified packages
-##setup_projects()
+
+###setup_projects()
 Setup directory structure for all the different cpi projects.
 This will include installing make, gcc etc.
-##install_and_configure_a_web_server()
+
+###install_and_configure_a_web_server()
 Figure out correct web server to install, configure that server and make sure it
 it can be accessed if there is a local firewall.
-##git_clone_to()
+
+###git_clone_to()
 Get project from github and put it in /usr/local/projects.
-##install_and_configure()
+
+###install_and_configure()
 Populate /usr/local/projects/PROJECT and "make install" in that directory.
-##setup_communication()
+
+###setup_communication()
 grab a script from a local host and run it.
-##fatal()
+
+###fatal()
 Print an error message and exit.
-##usage()
+
+###usage()
 Print a useful error message and die.
-##cleanup()
+
+###cleanup()
 Remove any temporary files and sudo hack to allow normal sudo behavior
 
 ## <a id='dt_87LMlc6J3'>START_HERE.sh</a>
