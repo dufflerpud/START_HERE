@@ -56,6 +56,8 @@ REBOOT_REASON=
 #########################################################################
 #	Echo command and then do it.					#
 #########################################################################
+#doc# ##echodo()
+#doc# Print a command and execute it
 echodo()
     {
     echo "+ $@" >&2
@@ -66,6 +68,9 @@ echodo()
 #	Turn off sudo asking passwords for the duration of the script.	#
 #	There is a special place in hell for me.  I know it.		#
 #########################################################################
+#doc# ##make_sudo_friendly()
+#doc# Since this script can take a while (due to update, installing CPAN modules),
+#doc# temporarily update sudo configuration to not require passwords every 5 minutes.
 make_sudo_friendly()
     {
     echo "$USER ALL=(ALL) NOPASSWD: ALL" | \
@@ -77,6 +82,8 @@ make_sudo_friendly()
 #	Note that "ecsudo cd ..." will not do anything useful since the	#
 #	shell with that updated CWD will immediately exit.		#
 #########################################################################
+#doc# ##ecsudo()
+#doc# Print a command and execute it via sudo
 ecsudo()
     {
     echo "! $@" >&2
@@ -87,6 +94,8 @@ ecsudo()
 #########################################################################
 #	Change directory (whether root or not)				#
 #########################################################################
+#doc# ##echocd()
+#doc# Note that we're changing directory and do it.
 echocd()
     {
     echo "[ Changing directory to $1 ]"
@@ -97,6 +106,8 @@ echocd()
 #########################################################################
 #	Make sure we're working on an uptodate system.			#
 #########################################################################
+#doc# ##performa_updates()
+#doc# Do whatever os requires to be reasonably up to date
 performa_updates()
     {
     echo "[ Performa updates ]"
@@ -113,6 +124,8 @@ performa_updates()
 #########################################################################
 #	Use the right installation tool					#
 #########################################################################
+#doc# ##osinstall()
+#doc# Figure out what tool is used to install and install specified packages
 osinstall()
     {
     if [ -x /bin/dnf ] ; then
@@ -128,6 +141,9 @@ osinstall()
 #########################################################################
 #	Setup to start working in PROJECTS_DIR				#
 #########################################################################
+#doc# ##setup_projects()
+#doc# Setup directory structure for all the different cpi projects.
+#doc# This will include installing make, gcc etc.
 setup_projects()
     {
     echo "[ Setting up projects ]"
@@ -147,6 +163,9 @@ setup_projects()
 #########################################################################
 #	Decide what web server is appropriate and get it going.		#
 #########################################################################
+#doc# ##install_and_configure_a_web_server()
+#doc# Figure out correct web server to install, configure that server and make sure it
+#doc# it can be accessed if there is a local firewall.
 install_and_configure_a_web_server()
     {
     if $LIKE_REDHAT ; then
@@ -232,6 +251,8 @@ EOF
 #########################################################################
 #	Git clone into a specified directory (managing rootness)	#
 #########################################################################
+#doc# ##git_clone_to()
+#doc# Get project from github and put it in /usr/local/projects.
 git_clone_to()
     {
     tmp=/tmp/git_clone_to
@@ -251,6 +272,8 @@ git_clone_to()
 #	Note that if no url is provided, we'll see if we can ssh it.	#
 #	Otherwise, we'll use the public address.			#
 #########################################################################
+#doc# ##install_and_configure()
+#doc# Populate /usr/local/projects/PROJECT and "make install" in that directory.
 install_and_configure()
     {
     project="$1"
@@ -273,6 +296,8 @@ install_and_configure()
 #	Bring over the files we need to access github and the rest of	#
 #	the world							#
 #########################################################################
+#doc# ##setup_communication()
+#doc# For developer only - grab a script from a local host and run it.
 setup_communication()
     {
     ssh 10.1.0.20 sh /usr/local/projects/START_HERE/developer.sh | sh
@@ -281,6 +306,8 @@ setup_communication()
 #########################################################################
 #	Print an error message and die.					#
 #########################################################################
+#doc# ##fatal()
+#doc# Print an error message and exit.
 fatal()
     {
     echo "$*" >&2
@@ -290,6 +317,8 @@ fatal()
 #########################################################################
 #	Print a USEFUL error message ... and die.			#
 #########################################################################
+#doc# ##usage()
+#doc# Print a useful error message and die.
 usage()
     {
     echo "$*" | tr ~ '\n' >&2
@@ -299,6 +328,8 @@ usage()
 #########################################################################
 #	Get rid of the travesty we created for doing things as root.	#
 #########################################################################
+#doc# ##cleanup()
+#doc# Remove any temporary files and sudo hack to allow normal sudo behavior
 cleanup()
     {
     ecsudo rm -f $SUDO_HACK
