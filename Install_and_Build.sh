@@ -34,8 +34,8 @@
 PROG=`basename $0 .sh`
 USER=`id -un`
 GROUP=`id -gn`
-WUSER=`awk -F: '/^(apache|www-data)/ {print $3}' /etc/passwd`
-WGROUP=`awk -F: '/^(apache|www-data)/ {print $4}' /etc/passwd`
+WUSER=`awk -F: '/^(apache|www-data|http)/ {print $3}' /etc/passwd`
+WGROUP=`awk -F: '/^(apache|www-data|http)/ {print $4}' /etc/passwd`
 
 PROJECTS_DIR=/usr/local/projects
 BE_CLEAN=false
@@ -49,9 +49,11 @@ SUDO_HACK=/etc/sudoers.d/$PROG
 
 LIKE_DEBIAN=false;	[ -x /bin/apt ] && LIKE_DEBIAN=true
 LIKE_REDHAT=false;	[ -x /bin/dnf ] && LIKE_REDHAT=true
+LIKE_ARCH=false;	[ -x /bin/pacman ] && LIKE_ARCH=true
 
 DISABLE_SELINUX=true
 REBOOT_REASON=
+TMP=/tmp/$PROG
 
 #########################################################################
 #	Echo command and then do it.					#
@@ -116,6 +118,8 @@ performa_updates()
     elif [ -x /bin/apt ] ; then
 	ecsudo apt update -yq
 	ecsudo apt upgrade -yq
+    elif [ -x /usr/bin/pacman ] ; then
+        ecsudo pacman -Syu --noconfirm --noprogressbar
     else
         echo "Unable to update this OS, continuing."
     fi
@@ -132,6 +136,8 @@ osinstall()
         ecsudo dnf -y install $*
     elif [ -x /bin/apt ] ; then
         ecsudo apt install -qqy $*
+    elif [ -x /usr/bin/pacman ] ; then
+        ecsudo pacman -S --noconfirm --noprogressbar $*
     else
         echo "Unable to install:  " $*
 	exit 1
@@ -144,19 +150,31 @@ osinstall()
 #doc# ### setup_projects()
 #doc# Setup directory structure for all the different cpi projects.
 #doc# This will include installing make, gcc etc.
+#doc# Made more complex due to Arch linux's lack of support for cpan.
+#doc# We pretend cpanm acts just like cpan.  Hoping that doesn't cause
+#doc# problems down the line.
 setup_projects()
     {
     echo "[ Setting up projects ]"
-    osinstall make gcc translate-shell
-    osinstall sox ghostscript netpbm poppler-utils cpan
-    $LIKE_DEBIAN && osinstall libjpeg-dev
-    $LIKE_REDHAT && osinstall script
+    osinstall make gcc translate-shell sox ghostscript netpbm
+
+    CPAN=cpan
+    if $LIKE_ARCH ; then
+    	osinstall poppler cpanminus
+        CPAN=/usr/bin/vendor_perl/cpanm
+    elif $LIKE_DEBIAN ; then
+    	osinstall poppler-utils libjpeg-dev cpan
+    elif $LIKE_REDHAT ; then
+    	osinstall poppler-utils script cpan
+    fi
+
+    ecsudo PERL_MM_USE_DEFAULT=1 $CPAN -i CPAN
+    ecsudo $CPAN -i Imager/File/JPEG.pm
+
     if [ ! -e /usr/lib/sendmail ] ; then
 	osinstall ssmtp
 	$LIKE_DEBIAN && osinstall mailutils
     fi
-    ecsudo PERL_MM_USE_DEFAULT=1 cpan -i CPAN
-    ecsudo cpan install -i Imager/File/JPEG.pm
     ecsudo install -d -m 0755 -o root -g root ${PROJECTS_DIR}
     }
 
@@ -172,15 +190,19 @@ install_and_configure_a_web_server()
 	service=httpd.service
 	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
     	osinstall httpd
-    else
+    elif $LIKE_DEBIAN ; then
         osinstall apache2
 	service=apache2
 	HTTP_CPI_CFG=/etc/apache2/conf-enabled/cpi.conf
 	[ -h /etc/apache2/mods-enabled/cgi.load ] || \
 	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
+    elif $LIKE_ARCH ; then
+	service=httpd
+	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
+    	osinstall apache
     fi
 
-    for DOCUMENTROOT in /var/www/www /var/www/html ; do
+    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http; do
 	if [ -d $DOCUMENTROOT ] ; then
 	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
 	    break
@@ -255,16 +277,15 @@ EOF
 #doc# Get project from github and put it in /usr/local/projects.
 git_clone_to()
     {
-    tmp=/tmp/git_clone_to
     git_url="$1"
     dest_dir="$2"
-    echodo mkdir -p $tmp
+    echodo rm -rf $TMP.gct
+    echodo mkdir -p $TMP.gct
     ecsudo install -m 0755 -d -o ${USER} -g ${GROUP} $dest_dir
-    echocd $tmp
+    echocd $TMP.gct
     echodo git clone -q "$git_url"
     echocd *
     echodo cp -r .git * $dest_dir	# Leave the dot files
-    echodo rm -rf $tmp
     }
 
 #########################################################################
@@ -361,6 +382,7 @@ trap cleanup EXIT
 
 performa_updates
 osinstall git
+[ -x /usr/bin/hostname ] || osinstall inetutils
 install_and_configure_a_web_server
 
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
@@ -389,9 +411,19 @@ install_and_configure Visas		# Requires cpi & common
 install_and_configure activist		# Requires cpi & common
 install_and_configure sign		# Requires cpi & common
 
-osinstall f2c
-$LIKE_DEBIAN && osinstall libncurses-dev
-$LIKE_REDHAT && osinstall ncurses-devel
+if $LIKE_DEBIAN ; then
+    osinstall f2c libncurses-dev
+elif $LIKE_REDHAT ; then
+    osinstall f2c ncurses-devel
+elif $LIKE_ARCH ; then
+    mkdir -p $TMP.f2c
+    echocd $TMP.f2c
+    echodo git clone https://aur.archlinux.org/f2c.git
+    echocd $TMP.f2c/f2c
+    yes | echodo makepkg -srif --noprogressbar
+    echocd $HOME
+fi
+
 install_and_configure multis		# Requires cpi
 
 install_and_configure cci		# Requires common
@@ -405,3 +437,5 @@ fi
 if [ -n "$REBOOT_REASON" ] ; then
     echo "REASON TO REBOOT:$REBOOT_REASON" | sed -e 's/~/\n    /g'
 fi
+
+exec rm -rf $TMP.*

@@ -42,12 +42,12 @@
 #doc#	because sometimes it gets here otherwise.  Assume as little as possible.
 ########################################################################
 
+INSTALL_SCRIPT=Install_and_Build.sh
 DEFAULT_URL=https://github.com/dufflerpud/START_HERE.git
 #DEFAULT_URL=https://raw.githubusercontent.com/dufflerpud/START_HERE/refs/heads/main/$INSTALL_SCRIPT
 #DEFAULT_URL=chris@10.1.0.20:/usr/local/projects/START_HERE/$INSTALL_SCRIPT
 
 TMP=/tmp/`basename $0 .sh`
-INSTALL_SCRIPT=Install_and_Build.sh
 
 #########################################################################
 #	Show what you're going to do and then do it.			#
@@ -67,6 +67,8 @@ osinstall()
         echodo sudo dnf -y install $*
     elif [ -x /usr/bin/apt ] ; then
 	echodo sudo apt -qqy install $*
+    elif [ -x /usr/bin/pacman ] ; then
+	echodo sudo pacman -S --noconfirm --noprogressbar $*
     else
         echo "I don't know how to install a package on this system."
 	exit 1
@@ -89,9 +91,11 @@ case "$URL" in
 		echodo git -C $TMP.sandbox clone "$URL"
 		echodo cp $TMP.sandbox/START_HERE/$INSTALL_SCRIPT $INSTALL_SCRIPT
 		;;
-    http*)	echodo curl -o $INSTALL_SCRIPT "$URL"
+    http*)	[ -x /usr/bin/curl ] || osinstall curl
+		echodo curl -o $INSTALL_SCRIPT "$URL"
     		;;
-    *)		echodo scp "$URL" $INSTALL_SCRIPT
+    *)		[ -x /usr/sbin/scp ] || osinstall openssh
+		echodo scp "$URL" $INSTALL_SCRIPT
     		;;
 esac
 
