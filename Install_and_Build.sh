@@ -156,14 +156,22 @@ osinstall()
 setup_projects()
     {
     echo "[ Setting up projects ]"
-    osinstall make gcc translate-shell sox ghostscript netpbm
+    osinstall make gcc sox ghostscript netpbm
+
+    if grep -s 'NAME="Debian GNU/Linux"' /usr/lib/os-release >/dev/null 2>&1 ; then
+        echodo curl -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
+        osinstall $TMP.deb
+    else
+        osinstall translate-shell
+    fi
 
     CPAN=cpan
     if $LIKE_ARCH ; then
     	osinstall poppler cpanminus
         CPAN=/usr/bin/vendor_perl/cpanm
     elif $LIKE_DEBIAN ; then
-    	osinstall poppler-utils libjpeg-dev cpan
+    	osinstall poppler-utils libjpeg-dev
+	[ -x /usr/local/bin/cpan ] || osinstall cpan
     elif $LIKE_REDHAT ; then
     	osinstall poppler-utils script cpan
     fi
@@ -198,7 +206,7 @@ install_and_configure_a_web_server()
 	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
     elif $LIKE_ARCH ; then
 	service=httpd
-	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
+	HTTP_CPI_CFG=/etc/httpd/conf/conf.d/cpi.conf
     	osinstall apache
     fi
 
@@ -215,6 +223,7 @@ install_and_configure_a_web_server()
     fi
 
     ecsudo install -o root -g root -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+LoadModule cgi_module modules/mod_cgi.so
 AddHandler cgi-script .cgi .pl
 <Directory $WEBTOP>
     DirectoryIndex index.cgi index.html
