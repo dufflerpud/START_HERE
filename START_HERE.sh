@@ -64,7 +64,7 @@ echodo()
 osinstall()
     {
     if [ -x /usr/bin/dnf ] ; then
-        echodo sudo dnf -y install $*
+        echodo sudo dnf -qy install $*
     elif [ -x /usr/bin/apt ] ; then
 	echodo sudo apt -qqy install $*
     elif [ -x /usr/bin/pacman ] ; then

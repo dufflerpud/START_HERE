@@ -114,10 +114,10 @@ performa_updates()
     {
     echo "[ Performa updates ]"
     if [ -x /bin/dnf ] ; then
-        ecsudo dnf -y update
+        ecsudo dnf -yq update
     elif [ -x /bin/apt ] ; then
-	ecsudo apt update -yq
-	ecsudo apt upgrade -yq
+	ecsudo apt update -yqq
+	ecsudo apt upgrade -yqq
     elif [ -x /usr/bin/pacman ] ; then
         ecsudo pacman -Syu --noconfirm --noprogressbar
     else
@@ -133,7 +133,7 @@ performa_updates()
 osinstall()
     {
     if [ -x /bin/dnf ] ; then
-        ecsudo dnf -y install $*
+        ecsudo dnf -yq install $*
     elif [ -x /bin/apt ] ; then
         ecsudo apt install -qqy $*
     elif [ -x /usr/bin/pacman ] ; then
@@ -177,7 +177,7 @@ setup_projects()
     fi
 
     ecsudo PERL_MM_USE_DEFAULT=1 $CPAN -i CPAN
-    ecsudo $CPAN -i Imager/File/JPEG.pm
+    ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
 
     if [ ! -e /usr/lib/sendmail ] ; then
 	osinstall ssmtp
