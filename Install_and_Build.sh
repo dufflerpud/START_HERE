@@ -386,6 +386,8 @@ done
 
 [ -z "$PROBLEMS" ] || usage "$PROBLEMS"
 
+umask 002
+
 temporarily_disable_sudo_password
 trap cleanup EXIT
 

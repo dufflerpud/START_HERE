@@ -79,6 +79,8 @@ osinstall()
 #	Main								#
 #########################################################################
 
+umask 002
+
 [ -x /usr/bin/script ] || osinstall script
 
 #Overridable with the environment
