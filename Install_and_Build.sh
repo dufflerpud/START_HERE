@@ -177,6 +177,7 @@ setup_projects()
     fi
 
     ecsudo PERL_MM_USE_DEFAULT=1 $CPAN -i CPAN
+    ecsudo $CPAN -i HTTP::Date	# Required for Fedora due to timezone issues
     ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
 
     if [ ! -e /usr/lib/sendmail ] ; then
@@ -428,6 +429,7 @@ elif $LIKE_REDHAT ; then
     osinstall f2c ncurses-devel
 elif $LIKE_ARCH ; then
     mkdir -p $TMP.f2c
+    osinstall base-devel
     echocd $TMP.f2c
     echodo git clone https://aur.archlinux.org/f2c.git
     echocd $TMP.f2c/f2c
