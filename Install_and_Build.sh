@@ -34,8 +34,6 @@
 PROG=`basename $0 .sh`
 USER=`id -un`
 GROUP=`id -gn`
-WUSER=`awk -F: '/^(apache|www-data|http)/ {print $3}' /etc/passwd`
-WGROUP=`awk -F: '/^(apache|www-data|http)/ {print $4}' /etc/passwd`
 
 PROJECTS_DIR=/usr/local/projects
 BE_CLEAN=false
@@ -234,6 +232,10 @@ EOF
     ecsudo systemctl enable $service
     ecsudo systemctl start $service
     ecsudo systemctl reload $service	# This should really not be needed
+
+    # Can't do this before we've installed the http server
+    WUSER=`awk -F: '/^(apache|www-data|http)/ {print $3}' /etc/passwd`
+    WGROUP=`awk -F: '/^(apache|www-data|http)/ {print $4}' /etc/passwd`
 
     ecsudo install -d -m 0755 -o ${WUSER} -g ${WGROUP} ${WEBTOP}
 
