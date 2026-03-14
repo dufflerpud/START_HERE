@@ -177,7 +177,6 @@ setup_projects()
     fi
 
     ecsudo PERL_MM_USE_DEFAULT=1 $CPAN -i CPAN
-    ecsudo $CPAN -i HTTP::Date	# Required for Fedora due to timezone issues
     ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
 
     if [ ! -e /usr/lib/sendmail ] ; then
@@ -388,6 +387,7 @@ done
 [ -z "$PROBLEMS" ] || usage "$PROBLEMS"
 
 umask 002
+export TZ=`date +%Z`	# Required for Fedora
 
 temporarily_disable_sudo_password
 trap cleanup EXIT
