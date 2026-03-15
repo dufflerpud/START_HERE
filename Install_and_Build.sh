@@ -453,4 +453,5 @@ if [ -n "$REBOOT_REASON" ] ; then
     echo "REASON TO REBOOT:$REBOOT_REASON" | sed -e 's/~/\n    /g'
 fi
 
-exec rm -rf $TMP.*
+rm -rf $TMP.*
+exec /usr/local/projects/START_HERE/check_install.sh
