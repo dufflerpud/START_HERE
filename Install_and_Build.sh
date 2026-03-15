@@ -402,6 +402,7 @@ install_and_configure_a_web_server
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
 
 setup_projects
+install_and_configure START_HERE	# Requires setup projects
 install_and_configure cpi		# Requires setup_projects
 install_and_configure common		# Requires cpi already be setup
 install_and_configure busybox		# Requires common
