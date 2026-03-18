@@ -69,6 +69,12 @@ osinstall()
 	echodo sudo apt -qqy install $*
     elif [ -x /usr/bin/pacman ] ; then
 	echodo sudo pacman -S --noconfirm --noprogressbar $*
+    elif [ -x /usr/bin/zypper ] ; then
+        echodo sudo zypper install -y $*
+    elif [ -x /usr/bin/pkg ] ; then
+        echodo sudo pkg install -y $*
+    elif [ -x /bin/pkgman ] ; then
+        echodo pkgman install -y $*
     else
         echo "I don't know how to install a package on this system."
 	exit 1

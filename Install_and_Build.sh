@@ -34,24 +34,47 @@
 PROG=`basename $0 .sh`
 USER=`id -un`
 GROUP=`id -gn`
-
 PROJECTS_DIR=/usr/local/projects
 BE_CLEAN=false
 DEVELOPER=false
-if [ -f /etc/cpi_cfg.pl ] ; then
-    WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
-else
-    WEBOFFSET=/`date +%s | cksum -a sha1 --base64 --untagged | tr -d +/= | cut -c1-4`
-fi
-SUDO_HACK=/etc/sudoers.d/$PROG
-
-LIKE_DEBIAN=false;	[ -x /bin/apt ] && LIKE_DEBIAN=true
-LIKE_REDHAT=false;	[ -x /bin/dnf ] && LIKE_REDHAT=true
-LIKE_ARCH=false;	[ -x /bin/pacman ] && LIKE_ARCH=true
-
 DISABLE_SELINUX=true
 REBOOT_REASON=
 TMP=/tmp/$PROG
+
+#########################################################################
+#	Look through OS to find out how it does things and leave
+#	results in global variables.
+#		LIKE_(os)
+#		INSTALLER
+#########################################################################
+os_variables()
+    {
+    if [ -f /etc/cpi_cfg.pl ] ; then
+	WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
+    else
+	WEBOFFSET=/`date +%s | cksum -a sha1 --base64 --untagged | tr -d +/= | cut -c1-4`
+    fi
+    SUDO_HACK=/etc/sudoers.d/$PROG
+
+    LIKE_DEBIAN=false;	[ -x /bin/apt			] && LIKE_DEBIAN=true
+    LIKE_REDHAT=false;	[ -x /bin/yum -o -x /bin/dnf	] && LIKE_REDHAT=true
+    LIKE_ARCH=false;	[ -x /bin/pacman		] && LIKE_ARCH=true
+    LIKE_SUSE=false;	[ -x /bin/zypper		] && LIKE_SUSE=true
+    LIKE_SVR4=false;	[ -x /usr/bin/pkg		] && LIKE_SVR4=true
+    LIKE_HAIKU=false;	[ -x /bin/pkgman		] && LIKE_HAIKU=true
+
+    PATHDIRS=`echo $PATH | sed -e 's/:/ /g'`
+    for try_installer in dnf yum apt pacman pkg zypper pkgman; do
+	for dir in $PATHDIRS ; do
+	    if [ -x $dir/$try_installer ] ; then
+		INSTALLER=$try_installer
+		break
+	    fi
+	done
+	[ -n "$INSTALLER" ] && break
+    done
+    [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
+    }
 
 #########################################################################
 #	Echo command and then do it.					#
@@ -83,12 +106,22 @@ temporarily_disable_sudo_password()
 #	shell with that updated CWD will immediately exit.		#
 #########################################################################
 #doc# ### ecsudo()
-#doc# Print a command and execute it via sudo
+#doc# Print a command and execute it as a privileged user.
+#doc# For most systems, this is using "sudo", but sudo does not exist on
+#doc# Haiku and the user is operating essentially as administrator anyways.
 ecsudo()
     {
     echo "! $@" >&2
-    sudo "$@"
-    return $?
+    if [ -x /bin/sudo ] ; then	# For most systems
+        sudo "$@"
+	return $?
+    elif [ -x /bin/su ] ; then	# Let's hope this does not happen
+        su -c "$*"		# Quoting not tested well at all
+	return $?
+    else
+        "$@"			# For systems that require no privs
+        return $?
+    fi
     }
 
 #########################################################################
@@ -111,16 +144,17 @@ echocd()
 performa_updates()
     {
     echo "[ Performa updates ]"
-    if [ -x /bin/dnf ] ; then
-        ecsudo dnf -yq update
-    elif [ -x /bin/apt ] ; then
-	ecsudo apt update -yqq
-	ecsudo apt upgrade -yqq
-    elif [ -x /usr/bin/pacman ] ; then
-        ecsudo pacman -Syu --noconfirm --noprogressbar
-    else
-        echo "Unable to update this OS, continuing."
-    fi
+    case "$INSTALLER" in
+        dnf)	ecsudo dnf -yq update				;;
+	yum)	ecsudo yum -yq update				;;
+	apt)	ecsudo apt update -qqy; ecsudo apt upgrade -yqq	;;
+	pacman)	ecsudo pacman -Syu --noconfirm --noprogressbar	;;
+	pkg)	ecsudo pkg update; ecsudo pkg upgrade		;;
+	zypper)	ecsudo ecsudo zypper update			;;
+	pkgman)	ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
+		ecsudo pkgman full-sync
+		;;
+    esac
     }
 
 #########################################################################
@@ -130,16 +164,15 @@ performa_updates()
 #doc# Figure out what tool is used to install and install specified packages
 osinstall()
     {
-    if [ -x /bin/dnf ] ; then
-        ecsudo dnf -yq install $*
-    elif [ -x /bin/apt ] ; then
-        ecsudo apt install -qqy $*
-    elif [ -x /usr/bin/pacman ] ; then
-        ecsudo pacman -S --noconfirm --noprogressbar $*
-    else
-        echo "Unable to install:  " $*
-	exit 1
-    fi
+    case "$INSTALLER" in
+        dnf)	ecsudo dnf -yq install $*			;;
+	yum)	ecsudo yum -yq install $*			;;
+	apt)	ecsudo apt install -qqy $*			;;
+	pacman)	ecsudo pacman -S --noconfirm --noprogressbar $*	;;
+	pkg)	ecsudo pkg install $*				;;
+	zypper)	ecsudo zypper install -y $*			;;
+	pkgman)	ecsudo pkgman install -y $*			;;
+    esac
     }
 
 #########################################################################
@@ -154,7 +187,8 @@ osinstall()
 setup_projects()
     {
     echo "[ Setting up projects ]"
-    osinstall make gcc sox ghostscript netpbm
+    osinstall make gcc sox netpbm
+    $LIKE_HAIKU || osinstall ghostscript
 
     if grep -s 'NAME="Debian GNU/Linux"' /usr/lib/os-release >/dev/null 2>&1 ; then
         echodo curl -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
@@ -202,23 +236,27 @@ install_and_configure_a_web_server()
 	HTTP_CPI_CFG=/etc/apache2/conf-enabled/cpi.conf
 	[ -h /etc/apache2/mods-enabled/cgi.load ] || \
 	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
+    elif $LIKE_SUSE ; then
+	osinstall apache2
+	service=apache2
+	HTTP_CPI_CFG=/etc/apache2/conf.d/cpi.conf
     elif $LIKE_ARCH ; then
 	service=httpd
 	HTTP_CPI_CFG=/etc/httpd/conf/conf.d/cpi.conf
     	osinstall apache
+    elif $LIKE_HAIKU; then
+	HTTP_CPI_CFG=/boot/system/settings/apache/httpd.conf
+        osinstall apache
     fi
 
-    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http; do
+    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs ; do
 	if [ -d $DOCUMENTROOT ] ; then
 	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
 	    break
 	fi
     done
 
-    if [ -z "$WEBTOP" ] ; then
-	echo "No documentroot found."
-	exit 1
-    fi
+    [ -n "$WEBTOP" ] || fatal "No documentroot found."
 
     ecsudo install -o root -g root -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
 LoadModule cgi_module modules/mod_cgi.so
@@ -229,13 +267,18 @@ AddHandler cgi-script .cgi .pl
 </Directory>
 EOF
 
-    ecsudo systemctl enable $service
-    ecsudo systemctl start $service
-    ecsudo systemctl reload $service	# This should really not be needed
+    if [ -n "$service" ] ; then
+	ecsudo systemctl enable $service
+	ecsudo systemctl start $service
+	ecsudo systemctl reload $service	# This should really not be needed
+    fi
 
     # Can't do this before we've installed the http server
-    WUSER=`awk -F: '/^(apache|www-data|http)/ {print $3}' /etc/passwd`
-    WGROUP=`awk -F: '/^(apache|www-data|http)/ {print $4}' /etc/passwd`
+    WUSER=`awk -F: '/^(apache|www-data|http|wwwrun)/ {print $3}' /etc/passwd`
+    WGROUP=`awk -F: '/^(apache|www-data|http|wwwrun)/ {print $4}' /etc/passwd`
+
+    WUSER=${WUSER:-user}
+    WGROUP=${WUSER:-group}
 
     ecsudo install -d -m 0755 -o ${WUSER} -g ${WGROUP} ${WEBTOP}
 
@@ -388,8 +431,10 @@ done
 
 [ -z "$PROBLEMS" ] || usage "$PROBLEMS"
 
+os_variables
+
 umask 002
-export TZ=`date +%Z`	# Required for Fedora
+export TZ=`date +%Z`	# Required for Fedora install of TimeDate.pm etc
 
 temporarily_disable_sudo_password
 trap cleanup EXIT
@@ -428,7 +473,7 @@ install_and_configure sign		# Requires cpi & common
 
 if $LIKE_DEBIAN ; then
     osinstall f2c libncurses-dev
-elif $LIKE_REDHAT ; then
+elif $LIKE_REDHAT || $LIKE_SUSE ; then
     osinstall f2c ncurses-devel
 elif $LIKE_ARCH ; then
     mkdir -p $TMP.f2c

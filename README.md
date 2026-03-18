@@ -9,14 +9,14 @@ and type:
 
 <hr>
 
-<table src="START_HERE.sh Install_and_Build.sh"><tr><th align=left><a href='#dt_87LOVHmQ0'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr>
-<tr><th align=left><a href='#dt_87LOVHmQ1'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr></table>
+<table src="START_HERE.sh Install_and_Build.sh"><tr><th align=left><a href='#dt_87ggYWKMU'>START_HERE.sh</a></th><td>A script to grab the Install_and_Build script and run it</td></tr>
+<tr><th align=left><a href='#dt_87ggYWKMV'>Install_and_Build.sh</a></th><td>A script to download and install all of the dufflerpud projects</td></tr></table>
 
 <hr>
 
 <div id=docs>
 
-## <a id='dt_87LOVHmQ0'>START_HERE.sh</a>
+## <a id='dt_87ggYWKMU'>START_HERE.sh</a>
 A script to grab the Install_and_Build script and run it.
 Don't over think this.  You WILL PROBABLY decide to just get the
 Install_and_Build script by hand and run it yourself.  This is
@@ -30,7 +30,7 @@ Installs git because the majority of time, we get the installer
 right off github.com.  Installer will also make sure git gets installed
 because sometimes it gets here otherwise.  Assume as little as possible.
 
-## <a id='dt_87LOVHmQ1'>Install_and_Build.sh</a>
+## <a id='dt_87ggYWKMV'>Install_and_Build.sh</a>
 A script to download and install all of the dufflerpud projects
 ### echodo()
 Print a command and execute it
@@ -38,7 +38,9 @@ Print a command and execute it
 Since this script can take a while (due to update, installing CPAN modules),
 temporarily update sudo configuration to not require passwords every 5 minutes.
 ### ecsudo()
-Print a command and execute it via sudo
+Print a command and execute it as a privileged user.
+For most systems, this is using "sudo", but sudo does not exist on
+Haiku and the user is operating essentially as administrator anyways.
 ### echocd()
 Note that we're changing directory and do it.
 ### performa_updates()
@@ -48,6 +50,9 @@ Figure out what tool is used to install and install specified packages
 ### setup_projects()
 Setup directory structure for all the different cpi projects.
 This will include installing make, gcc etc.
+Made more complex due to Arch linux's lack of support for cpan.
+We pretend cpanm acts just like cpan.  Hoping that doesn't cause
+problems down the line.
 ### install_and_configure_a_web_server()
 Figure out correct web server to install, configure that server and make sure it
 it can be accessed if there is a local firewall.
@@ -74,6 +79,8 @@ If you add a file with #doc#/#indx# lines, you should make sure it will be
 found in the 'table src=' line above and then rerun doc_sep in this directory.
 
 Similarly, if you remove files, re-run doc_sep.
+
+
 
 
 
