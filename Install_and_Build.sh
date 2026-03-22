@@ -1,4 +1,6 @@
+make ghostscript
 #!/bin/sh
+set -x
 #
 #indx#	Install_and_Build.sh - A script to download and install all of the dufflerpud projects
 #@HDR@	$Id$
@@ -39,42 +41,9 @@ BE_CLEAN=false
 DEVELOPER=false
 DISABLE_SELINUX=true
 REBOOT_REASON=
+SYSTEM_USER=0
+SYSTEM_GROUP=0
 TMP=/tmp/$PROG
-
-#########################################################################
-#	Look through OS to find out how it does things and leave
-#	results in global variables.
-#		LIKE_(os)
-#		INSTALLER
-#########################################################################
-os_variables()
-    {
-    if [ -f /etc/cpi_cfg.pl ] ; then
-	WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
-    else
-	WEBOFFSET=/`date +%s | cksum -a sha1 --base64 --untagged | tr -d +/= | cut -c1-4`
-    fi
-    SUDO_HACK=/etc/sudoers.d/$PROG
-
-    LIKE_DEBIAN=false;	[ -x /bin/apt			] && LIKE_DEBIAN=true
-    LIKE_REDHAT=false;	[ -x /bin/yum -o -x /bin/dnf	] && LIKE_REDHAT=true
-    LIKE_ARCH=false;	[ -x /bin/pacman		] && LIKE_ARCH=true
-    LIKE_SUSE=false;	[ -x /bin/zypper		] && LIKE_SUSE=true
-    LIKE_SVR4=false;	[ -x /usr/bin/pkg		] && LIKE_SVR4=true
-    LIKE_HAIKU=false;	[ -x /bin/pkgman		] && LIKE_HAIKU=true
-
-    PATHDIRS=`echo $PATH | sed -e 's/:/ /g'`
-    for try_installer in dnf yum apt pacman pkg zypper pkgman; do
-	for dir in $PATHDIRS ; do
-	    if [ -x $dir/$try_installer ] ; then
-		INSTALLER=$try_installer
-		break
-	    fi
-	done
-	[ -n "$INSTALLER" ] && break
-    done
-    [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
-    }
 
 #########################################################################
 #	Echo command and then do it.					#
@@ -85,19 +54,6 @@ echodo()
     {
     echo "+ $@" >&2
     "$@"
-    }
-
-#########################################################################
-#	Turn off sudo asking passwords for the duration of the script.	#
-#	There is a special place in hell for me.  I know it.		#
-#########################################################################
-#doc# ### temporarily_disable_sudo_password()
-#doc# Since this script can take a while (due to update, installing CPAN modules),
-#doc# temporarily update sudo configuration to not require passwords every 5 minutes.
-temporarily_disable_sudo_password()
-    {
-    echo "$USER ALL=(ALL) NOPASSWD: ALL" | \
-	ecsudo install -o root -g root -m 0444 /dev/stdin $SUDO_HACK
     }
 
 #########################################################################
@@ -112,11 +68,14 @@ temporarily_disable_sudo_password()
 ecsudo()
     {
     echo "! $@" >&2
-    if [ -x /bin/sudo ] ; then	# For most systems
+    if command -v sudo >/dev/null ; then	# For most systems
         sudo "$@"
 	return $?
-    elif [ -x /bin/su ] ; then	# Let's hope this does not happen
-        su -c "$*"		# Quoting not tested well at all
+    elif $LIKE_HAIKU ; then
+        "$@"
+	return $?
+    elif command -v /bin/su >/dev/null ; then
+        su -c "$*"
 	return $?
     else
         "$@"			# For systems that require no privs
@@ -137,6 +96,102 @@ echocd()
     }
 
 #########################################################################
+#	Look through OS to find out how it does things and leave	#
+#	results in global variables.					#
+#		LIKE_(os)						#
+#		INSTALLER						#
+#########################################################################
+os_variables()
+    {
+    if [ -f /etc/cpi_cfg.pl ] ; then
+	WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
+    elif command -v sha1 >/dev/null ; then
+	WEBOFFSET=/`date +%s | sha1 | cut -c1-4`
+    elif command -v cksum >/dev/null ; then
+	WEBOFFSET=/`date +%s | cksum -a sha1 --base64 --untagged | tr -d +/= | cut -c1-4`
+    else
+	WEBOFFSET=/sto
+    fi
+
+    for sudodir in /etc/sudoers.d /usr/local/etc/sudoers.d ; do
+	if [ -d $sudodir ] ; then
+	    SUDO_HACK="$sudodir/$PROG"
+	    break
+	fi
+    done
+    if [ -z "$SUDO_HACK" ] ; then
+	echo "Cannot stop sudo from continually asking for your password."
+    fi
+
+    LIKE_DEBIAN=false;	command -v apt-get		>/dev/null && LIKE_DEBIAN=true
+    LIKE_ARCH=false;	command -v pacman		>/dev/null && LIKE_ARCH=true
+    LIKE_SUSE=false;	command -v zypper		>/dev/null && LIKE_SUSE=true
+    LIKE_SVR4=false;	command -v pkg			>/dev/null && LIKE_SVR4=true
+    LIKE_FREEBSD=false;	command -v freebsd-version	>/dev/null && LIKE_FREEBSD=true
+    LIKE_HAIKU=false;	command -v pkgman		>/dev/null && LIKE_HAIKU=true
+    LIKE_REDHAT=false;	command -v yum			>/dev/null && LIKE_REDHAT=true
+    			command -v dnf			>/dev/null && LIKE_REDHAT=true
+
+    for try_installer in dnf yum apt-get pacman freebsd-version pkg zypper pkgman; do
+        if command -v $try_installer >/dev/null ; then
+	    INSTALLER=$try_installer
+	    break
+	fi
+    done
+    [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
+
+    if $LIKE_FREEBSD ; then
+        GMAKE=gmake
+    else
+        GMAKE=make
+    fi
+    }
+
+#########################################################################
+#	Protect linux (BSD?) install utility from the nasty fact	#
+#	that Haiku (and maybe others) has no /dev/stdin.		#
+#########################################################################
+#doc# ### suinstall()
+#doc# Protect linux (BSD?) install utility from the nasty fact
+#doc# that Haiku (and maybe others) has no /dev/stdin.  Just copy data
+#doc# to a /tmp file and use that.
+suinstall()
+    {
+    if $LIKE_FREEBSD || [ ! -e /dev/stdin ] ; then
+        install_args=
+	while [ "$#" -gt 0 ] ; do
+	    case "$1" in
+	        /dev/stdin)	install_args="$install_args $TMP.stdin"
+				cat > $TMP.stdin
+				;;
+		*)		install_args="$install_args $1"
+				;;
+	    esac
+	    shift
+	done
+	ecsudo install $install_args
+	return $?
+    else
+	ecsudo install "$@"
+	return $?
+    fi
+    }
+
+#########################################################################
+#	Turn off sudo asking passwords for the duration of the script.	#
+#	There is a special place in hell for me.  I know it.		#
+#########################################################################
+#doc# ### temporarily_disable_sudo_password()
+#doc# Since this script can take a while (due to update, installing CPAN modules),
+#doc# temporarily update sudo configuration to not require passwords every 5 minutes.
+temporarily_disable_sudo_password()
+    {
+    [ -z "$SUDO_HACK" ] ||
+	echo "$USER ALL=(ALL) NOPASSWD: ALL" | \
+	    suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0444 /dev/stdin $SUDO_HACK
+    }
+
+#########################################################################
 #	Make sure we're working on an uptodate system.			#
 #########################################################################
 #doc# ### performa_updates()
@@ -145,15 +200,16 @@ performa_updates()
     {
     echo "[ Performa updates ]"
     case "$INSTALLER" in
-        dnf)	ecsudo dnf -yq update				;;
-	yum)	ecsudo yum -yq update				;;
-	apt)	ecsudo apt update -qqy; ecsudo apt upgrade -yqq	;;
-	pacman)	ecsudo pacman -Syu --noconfirm --noprogressbar	;;
-	pkg)	ecsudo pkg update; ecsudo pkg upgrade		;;
-	zypper)	ecsudo ecsudo zypper update			;;
-	pkgman)	ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
-		ecsudo pkgman full-sync
-		;;
+        dnf)			ecsudo dnf -yq update					;;
+	yum)			ecsudo yum -yq update					;;
+	apt-get)		ecsudo apt-get update -qqy; ecsudo apt-get upgrade -yqq	;;
+	pacman)			ecsudo pacman -Syu --noconfirm --noprogressbar		;;
+	pkg)			ecsudo pkg update; ecsudo pkg upgrade			;;
+	freebsd-version)	ecsudo pkg update; ecsudo pkg upgrade			;;
+	zypper)			ecsudo ecsudo zypper update				;;
+	pkgman)			ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
+				ecsudo pkgman full-sync -y
+				;;
     esac
     }
 
@@ -164,15 +220,18 @@ performa_updates()
 #doc# Figure out what tool is used to install and install specified packages
 osinstall()
     {
-    case "$INSTALLER" in
-        dnf)	ecsudo dnf -yq install $*			;;
-	yum)	ecsudo yum -yq install $*			;;
-	apt)	ecsudo apt install -qqy $*			;;
-	pacman)	ecsudo pacman -S --noconfirm --noprogressbar $*	;;
-	pkg)	ecsudo pkg install $*				;;
-	zypper)	ecsudo zypper install -y $*			;;
-	pkgman)	ecsudo pkgman install -y $*			;;
-    esac
+    for p in $*; do
+	case "$INSTALLER" in
+	    dnf)		ecsudo dnf -yq install $p			;;
+	    yum)		ecsudo yum -yq install $p			;;
+	    apt-get)		ecsudo apt-get install -qqy $p			;;
+	    pacman)		ecsudo pacman -S --noconfirm --noprogressbar $p	;;
+	    pkg)		ecsudo pkg install $p				;;
+	    freebsd-version)	ecsudo pkg install -y $p			;;
+	    zypper)		ecsudo zypper install -y $p			;;
+	    pkgman)		ecsudo pkgman install -y $p			;;
+	esac
+    done
     }
 
 #########################################################################
@@ -187,14 +246,29 @@ osinstall()
 setup_projects()
     {
     echo "[ Setting up projects ]"
-    osinstall make gcc sox netpbm
-    $LIKE_HAIKU || osinstall ghostscript
+    osinstall gcc sox netpbm
+    command -v $GMAKE >/dev/null || osinstall $GMAKE
+    if $LIKE_HAIKU ; then
+        : Do nothing
+    elif $LIKE_FREEBSD ; then
+        osinstall ghostscript10
+    else
+	osinstall ghostscript
+    fi
 
     if grep -s 'NAME="Debian GNU/Linux"' /usr/lib/os-release >/dev/null 2>&1 ; then
-        echodo curl -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
+        echodo curl -s -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
         osinstall $TMP.deb
     else
         osinstall translate-shell
+    fi
+
+    command -v perl >/dev/null || osinstall perl
+
+    if [ ! -x /usr/bin/perl ] ; then
+        where_is_perl=`command -v perl`
+	[ -n "$where_is_perl" ] || fatal "No perl found.  Nothing will work.  Giving up."
+	ecsudo ln -s "$where_is_perl" "/usr/bin/perl"
     fi
 
     CPAN=cpan
@@ -208,14 +282,15 @@ setup_projects()
     	osinstall poppler-utils script cpan
     fi
 
-    ecsudo PERL_MM_USE_DEFAULT=1 $CPAN -i CPAN
+    #PERL_MM_USE_DEFAULT=1 ecsudo $CPAN -i CPAN
+    yes "" | ecsudo $CPAN -i CPAN
     ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
 
     if [ ! -e /usr/lib/sendmail ] ; then
 	osinstall ssmtp
 	$LIKE_DEBIAN && osinstall mailutils
     fi
-    ecsudo install -d -m 0755 -o root -g root ${PROJECTS_DIR}
+    suinstall -d -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP ${PROJECTS_DIR}
     }
 
 #########################################################################
@@ -244,12 +319,17 @@ install_and_configure_a_web_server()
 	service=httpd
 	HTTP_CPI_CFG=/etc/httpd/conf/conf.d/cpi.conf
     	osinstall apache
-    elif $LIKE_HAIKU; then
+    elif $LIKE_HAIKU ; then
 	HTTP_CPI_CFG=/boot/system/settings/apache/httpd.conf
         osinstall apache
+    elif $LIKE_FREEBSD ; then
+	osinstall apache24
+	grep -s apache24_enable /etc/rc.conf >/dev/null ||
+	    ecsudo sysrc 'apache24_enable=YES'
+	HTTP_CPI_CFG=/usr/local/etc/apache24/Includes/cpi.conf
     fi
 
-    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs ; do
+    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs /usr/local/www/apache24/data ; do
 	if [ -d $DOCUMENTROOT ] ; then
 	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
 	    break
@@ -258,7 +338,16 @@ install_and_configure_a_web_server()
 
     [ -n "$WEBTOP" ] || fatal "No documentroot found."
 
-    ecsudo install -o root -g root -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+    if $LIKE_FREEBSD ; then
+	suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+AddHandler cgi-script .cgi .pl
+<Directory $WEBTOP>
+    DirectoryIndex index.cgi index.html
+    Options +ExecCGI +FollowSymlinks
+</Directory>
+EOF
+    else
+	suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
 LoadModule cgi_module modules/mod_cgi.so
 AddHandler cgi-script .cgi .pl
 <Directory $WEBTOP>
@@ -266,11 +355,14 @@ AddHandler cgi-script .cgi .pl
     Options +ExecCGI +FollowSymlinks
 </Directory>
 EOF
+    fi
 
     if [ -n "$service" ] ; then
 	ecsudo systemctl enable $service
 	ecsudo systemctl start $service
 	ecsudo systemctl reload $service	# This should really not be needed
+    elif $LIKE_FREEBSD ; then
+	ecsudo service apache24 start
     fi
 
     # Can't do this before we've installed the http server
@@ -280,7 +372,7 @@ EOF
     WUSER=${WUSER:-user}
     WGROUP=${WUSER:-group}
 
-    ecsudo install -d -m 0755 -o ${WUSER} -g ${WGROUP} ${WEBTOP}
+    suinstall -d -m 0755 -o ${WUSER} -g ${WGROUP} ${WEBTOP}
 
     if [ -x /usr/bin/firewall-cmd ] ; then
 	ecsudo firewall-cmd --zone=public --add-service=http --permanent
@@ -293,9 +385,9 @@ EOF
 	    REBOOT_REASON="$REBOOT_REASON~Kernel flag selinux set to 0."
 	else
 	    ecsudo semanage fcontext -a -t httpd_sys_script_exec_t "$WEBTOP(/.*)?"   
-	    ecsudo install -d -m 0777 -o ${WUSER} -g ${WGROUP} /var/log/stderr
+	    suinstall -d -m 0777 -o ${WUSER} -g ${WGROUP} /var/log/stderr
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/stderr(/.*)?"
-	    ecsudo install -o ${WUSER} -g ${WGROUP} -m 0666 /var/log/common.log
+	    suinstall -o ${WUSER} -g ${WGROUP} -m 0666 /var/log/common.log
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/common.log"
 	    ecsudo restorecon -Rv $WEBTOP
     	fi
@@ -303,7 +395,7 @@ EOF
 
     OVERRIDECONF=/etc/systemd/system/httpd.service.d/override.conf
     if [ -d `dirname $OVERRIDECONF` -a ! -s $OVERRIDECONF ] ; then
-        ecsudo install -o root -g root -m 0644 /dev/stdin $OVERRIDECONF <<EOF
+        suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $OVERRIDECONF <<EOF
 [Service]
 ProtectSystem=no
 ProtectHome=no
@@ -314,7 +406,7 @@ EOF
     echo "[Web software will be installed into ${WEBTOP}]"
 
     if [ ! -f /etc/cpi_cfg.pl ] ; then
-	ecsudo install -o root -g root -m 0644 /dev/stdin /etc/cpi_cfg.pl <<EOF
+	suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin /etc/cpi_cfg.pl <<EOF
 #\$cpi_vars::WEBOFFSET="YourDomain.com";
 #\$cpi_vars::FAX_SERVER="Your fax printer name";
 #\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
@@ -333,13 +425,15 @@ git_clone_to()
     {
     git_url="$1"
     dest_dir="$2"
-    echodo rm -rf $TMP.gct
-    echodo mkdir -p $TMP.gct
-    ecsudo install -m 0755 -d -o ${USER} -g ${GROUP} $dest_dir
-    echocd $TMP.gct
-    echodo git clone -q "$git_url"
-    echocd *
-    echodo cp -r .git * $dest_dir	# Leave the dot files
+    if [ -d "$dest_dir/.git" ] ; then
+	echocd $dest_dir
+	echodo git pull
+    else
+	suinstall -m 0755 -d -o ${USER} -g ${GROUP} $dest_dir
+	echocd `dirname $dest_dir`
+	echodo git clone -q "$git_url"
+	echocd $dest_dir
+    fi
     }
 
 #########################################################################
@@ -364,7 +458,7 @@ install_and_configure()
     top_proj_dir=$PROJECTS_DIR/$project
     git_clone_to "$url" "$top_proj_dir"
     echocd $top_proj_dir
-    ecsudo make install
+    ecsudo $GMAKE install
     }
 
 #########################################################################
@@ -407,7 +501,7 @@ usage()
 #doc# Remove any temporary files and sudo hack to allow normal sudo behavior
 cleanup()
     {
-    ecsudo rm -f $SUDO_HACK
+    [ -z "$SUDO_HACK" ] || ecsudo rm -f $SUDO_HACK
     }
 
 #########################################################################
@@ -441,7 +535,7 @@ trap cleanup EXIT
 
 performa_updates
 osinstall git
-[ -x /usr/bin/hostname ] || osinstall inetutils
+compute -v hostname >/dev/null || osinstall inetutils
 install_and_configure_a_web_server
 
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
