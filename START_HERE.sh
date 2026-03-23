@@ -43,9 +43,9 @@
 ########################################################################
 
 INSTALL_SCRIPT=Install_and_Build.sh
-DEFAULT_URL=https://github.com/dufflerpud/START_HERE.git
+#DEFAULT_URL=https://github.com/dufflerpud/START_HERE.git
 #DEFAULT_URL=https://raw.githubusercontent.com/dufflerpud/START_HERE/refs/heads/main/$INSTALL_SCRIPT
-#DEFAULT_URL=chris@10.1.0.20:/usr/local/projects/START_HERE/$INSTALL_SCRIPT
+DEFAULT_URL=chris@10.1.0.20:/usr/local/projects/START_HERE/$INSTALL_SCRIPT
 
 TMP=/tmp/`basename $0 .sh`
 
@@ -55,7 +55,34 @@ TMP=/tmp/`basename $0 .sh`
 echodo()
     {
     echo "+ $*"
-    $*
+    "$@"
+    }
+
+#########################################################################
+#	Show what you're going to do and then do it.			#
+#########################################################################
+ecsudo()
+    {
+    echo "! $*"
+    if command -v sudo >/dev/null ; then
+        sudo "$@"
+    else
+       "$@" 
+    fi
+    }
+
+#########################################################################
+#	Figure out what the installer is.				#
+#########################################################################
+determine_os()
+    {
+    for try_installer in dnf yum apt-get pacman freebsd-version pkg zypper pkgman; do
+        if command -v $try_installer >/dev/null ; then
+	    INSTALLER=$try_installer
+	    break
+	fi
+    done
+    [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
     }
 
 #########################################################################
@@ -63,22 +90,16 @@ echodo()
 #########################################################################
 osinstall()
     {
-    if [ -x /usr/bin/dnf ] ; then
-        echodo sudo dnf -qy install $*
-    elif [ -x /usr/bin/apt ] ; then
-	echodo sudo apt -qqy install $*
-    elif [ -x /usr/bin/pacman ] ; then
-	echodo sudo pacman -S --noconfirm --noprogressbar $*
-    elif [ -x /usr/bin/zypper ] ; then
-        echodo sudo zypper install -y $*
-    elif [ -x /usr/bin/pkg ] ; then
-        echodo sudo pkg install -y $*
-    elif [ -x /bin/pkgman ] ; then
-        echodo pkgman install -y $*
-    else
-        echo "I don't know how to install a package on this system."
-	exit 1
-    fi
+    case "$INSTALLER" in
+        dnf)			ecsudo dnf -yq install $*			;;
+	yum)			ecsudo yum -yq install $*			;;
+	apt-get)		ecsudo apt-get install -qqy $*			;;
+	pacman)			ecsudo pacman -S --noconfirm --noprogressbar $*	;;
+	zypper)			ecsudo zypper install -y $*			;;
+	pkgman)			ecsudo pkgman install -y $*			;;
+	freebsd-version)	ecsudo pkg install -y $*			;;
+	pkg)			ecsudo pkg install $*				;;
+    esac
     }
 
 #########################################################################
@@ -86,26 +107,37 @@ osinstall()
 #########################################################################
 
 umask 002
+determine_os
 
-[ -x /usr/bin/script ] || osinstall script
+command -v script >/dev/null || osinstall script
 
 #Overridable with the environment
 URL=${START_HERE_URL:-"$DEFAULT_URL"}
 
 rm -rf $TMP.*
 case "$URL" in
-    *.git)	[ -x /usr/bin/git ] || osinstall git
+    *.git)	command -v git >/dev/null || osinstall git
 		mkdir -p $TMP.sandbox
 		echodo git -C $TMP.sandbox clone "$URL"
 		echodo cp $TMP.sandbox/START_HERE/$INSTALL_SCRIPT $INSTALL_SCRIPT
 		;;
-    http*)	[ -x /usr/bin/curl ] || osinstall curl
+    http*)	command -v curl >/dev/null || osinstall curl
 		echodo curl -o $INSTALL_SCRIPT "$URL"
     		;;
-    *)		[ -x /usr/sbin/scp ] || osinstall openssh
+    *)		command -v scp >/dev/null || osinstall openssh
 		echodo scp "$URL" $INSTALL_SCRIPT
     		;;
 esac
 
-script -c "sh -x $INSTALL_SCRIPT $*" $TMP.raw
-/usr/local/bin/descape < $TMP.raw > $TMP.log
+echodo chmod 755 $INSTALL_SCRIPT
+
+if command -v script >/dev/null ; then
+    if command -v freebsd-version >/dev/null ; then
+	script $TMP.raw ./$INSTALL_SCRIPT
+    else
+	script -c "sh -x $INSTALL_SCRIPT $*" $TMP.raw
+    fi
+    /usr/local/bin/descape < $TMP.raw > $TMP.log
+else
+    sh -x $INSTALL_SCRIPT
+fi

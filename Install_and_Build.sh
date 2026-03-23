@@ -157,24 +157,16 @@ os_variables()
 #doc# to a /tmp file and use that.
 suinstall()
     {
-    if $LIKE_FREEBSD || [ ! -e /dev/stdin ] ; then
-        install_args=
-	while [ "$#" -gt 0 ] ; do
-	    case "$1" in
-	        /dev/stdin)	install_args="$install_args $TMP.stdin"
-				cat > $TMP.stdin
-				;;
-		*)		install_args="$install_args $1"
-				;;
-	    esac
-	    shift
-	done
-	ecsudo install $install_args
-	return $?
-    else
-	ecsudo install "$@"
-	return $?
-    fi
+    case "$*" in
+        *" /dev/stdin "*)
+	    if $LIKE_FREEBSD || [ ! -e /dev/stdin ] ; then
+		cat > $TMP.stdin
+		ecsudo install `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
+		return $?
+	    fi
+    esac
+    ecsudo install "$@"
+    return $?
     }
 
 #########################################################################
@@ -301,6 +293,7 @@ setup_projects()
 #doc# it can be accessed if there is a local firewall.
 install_and_configure_a_web_server()
     {
+    cgi_module=modules/mod_cgi.so
     if $LIKE_REDHAT ; then
 	service=httpd.service
 	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
@@ -327,6 +320,7 @@ install_and_configure_a_web_server()
 	grep -s apache24_enable /etc/rc.conf >/dev/null ||
 	    ecsudo sysrc 'apache24_enable=YES'
 	HTTP_CPI_CFG=/usr/local/etc/apache24/Includes/cpi.conf
+        cgi_module=libexec/apache24/mod_cgi.so
     fi
 
     for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs /usr/local/www/apache24/data ; do
@@ -338,24 +332,14 @@ install_and_configure_a_web_server()
 
     [ -n "$WEBTOP" ] || fatal "No documentroot found."
 
-    if $LIKE_FREEBSD ; then
-	suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+    suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+LoadModule cgi_module $cgi_module
 AddHandler cgi-script .cgi .pl
 <Directory $WEBTOP>
     DirectoryIndex index.cgi index.html
     Options +ExecCGI +FollowSymlinks
 </Directory>
 EOF
-    else
-	suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
-LoadModule cgi_module modules/mod_cgi.so
-AddHandler cgi-script .cgi .pl
-<Directory $WEBTOP>
-    DirectoryIndex index.cgi index.html
-    Options +ExecCGI +FollowSymlinks
-</Directory>
-EOF
-    fi
 
     if [ -n "$service" ] ; then
 	ecsudo systemctl enable $service
@@ -366,8 +350,8 @@ EOF
     fi
 
     # Can't do this before we've installed the http server
-    WUSER=`awk -F: '/^(apache|www-data|http|wwwrun)/ {print $3}' /etc/passwd`
-    WGROUP=`awk -F: '/^(apache|www-data|http|wwwrun)/ {print $4}' /etc/passwd`
+    WUSER=`awk -F: '/^(apache|www|www-data|http|wwwrun)/ {print $3}' /etc/passwd`
+    WGROUP=`awk -F: '/^(apache|www|www-data|http|wwwrun)/ {print $4}' /etc/passwd`
 
     WUSER=${WUSER:-user}
     WGROUP=${WUSER:-group}
