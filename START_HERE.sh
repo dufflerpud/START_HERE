@@ -134,6 +134,8 @@ echodo chmod 755 $INSTALL_SCRIPT
 if command -v script >/dev/null ; then
     if command -v freebsd-version >/dev/null ; then
 	script $TMP.raw ./$INSTALL_SCRIPT
+    elif grep OpenIndiana /etc/release >/dev/null 2>&1 ; then
+	sh -x $INSTALL_SCRIPT
     else
 	script -c "sh -x $INSTALL_SCRIPT $*" $TMP.raw
     fi
