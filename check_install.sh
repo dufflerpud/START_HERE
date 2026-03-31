@@ -34,1614 +34,1615 @@
 #doc#	version string if I ever go back to older version control.
 ########################################################################
 export PATH=/usr/local/bin:$PATH
-verifile -m0040755 -p0 'WWWTOP'
-verifile -m0040755 -p0 'WWWTOP/table_fun'
-verifile -m0040755 -p0 'WWWTOP/activist'
-verifile -m0100755 -p1 'WWWTOP/activist/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/set_screen'
-verifile -m0040777 -p0 'WWWTOP/set_screen/messages'
-verifile -m0100755 -p1 'WWWTOP/set_screen/index.cgi'
-verifile -m0040777 -p0 'WWWTOP/set_screen/media'
-verifile -m0040777 -p0 'WWWTOP/set_screen/URLs'
-verifile -m0040755 -p0 'WWWTOP/pictures'
-verifile -m0100755 -p1 'WWWTOP/pictures/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/sudoku'
-verifile -m0100755 -p1 'WWWTOP/sudoku/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/ww'
-verifile -m0100755 -p1 'WWWTOP/ww/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/todo'
-verifile -m0100755 -p1 'WWWTOP/todo/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/pandemic'
-verifile -m0100755 -p1 'WWWTOP/pandemic/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/Slide_Show'
-verifile -m0040755 -p0 'WWWTOP/Slide_Show/video'
-verifile -m0040755 -p0 'WWWTOP/Slide_Show/audio'
-verifile -m0040755 -p0 'WWWTOP/Slide_Show/text'
-verifile -m0100755 -p1 'WWWTOP/Slide_Show/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/Slide_Show/avideo'
-verifile -m0040755 -p0 'WWWTOP/Slide_Show/slide'
-verifile -m0040755 -p0 'WWWTOP/rank_vote'
-verifile -m0100755 -p1 'WWWTOP/rank_vote/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/diagnosis'
-verifile -m0100755 -p1 'WWWTOP/diagnosis/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/sign'
-verifile -m0100755 -p1 'WWWTOP/sign/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/Antasgo'
-verifile -m0100755 -p0 'WWWTOP/Antasgo/Antasgo_icon.png'
-verifile -m0100755 -p1 'WWWTOP/Antasgo/index.cgi'
-verifile -m0100755 -p0 'WWWTOP/Antasgo/Antasgo.css'
-verifile -m0040755 -p0 'WWWTOP/simple_utils'
-verifile -m0040755 -p0 'WWWTOP/Visas'
-verifile -m0100755 -p1 'WWWTOP/Visas/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/routing'
-verifile -m0040755 -p0 'WWWTOP/routing/forms'
-verifile -m0120777 -p0 'WWWTOP/routing/common'
-verifile -m0120777 -p0 'WWWTOP/routing/help'
-verifile -m0040755 -p0 'WWWTOP/routing/routing_common'
-verifile -m0100644 -p0 'WWWTOP/routing/routing_common/mobile.css'
-verifile -m0100644 -p0 'WWWTOP/routing/routing_common/phone.jpg'
-verifile -m0100644 -p0 'WWWTOP/routing/routing_common/map.jpg'
-verifile -m0100644 -p0 'WWWTOP/routing/routing_common/desktop.css'
-verifile -m0100644 -p0 'WWWTOP/routing/routing_common/IRS_logo.jpg'
-verifile -m0100644 -p0 'WWWTOP/routing/routing_common/all.css'
-verifile -m0040755 -p0 'WWWTOP/routing/ref'
-verifile -m0100755 -p1 'WWWTOP/routing/index.cgi'
-verifile -m0120777 -p0 'WWWTOP/routing/progress'
-verifile -m0040755 -p0 'WWWTOP/routing/vcf'
-verifile -m0040755 -p0 'WWWTOP/routing/routing'
-verifile -m0120777 -p0 'WWWTOP/routing/routing/routing'
-verifile -m0040777 -p0 'WWWTOP/routing/routes'
-verifile -m0120777 -p0 'WWWTOP/routing/routes/common'
-verifile -m0040755 -p0 'WWWTOP/routing/icons'
-verifile -m0040755 -p0 'WWWTOP/routing/icons/kml'
-verifile -m0040755 -p0 'WWWTOP/Groceries'
-verifile -m0100755 -p1 'WWWTOP/Groceries/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/testd'
-verifile -m0040755 -p0 'WWWTOP/User'
-verifile -m0100755 -p1 'WWWTOP/User/index.cgi'
-verifile -m0040755 -p0 'WWWTOP/busybox'
-verifile -m0100755 -p0 'WWWTOP/busybox/Jeffries.html'
-verifile -m0100755 -p0 'WWWTOP/busybox/Clock.html'
-verifile -m0100755 -p0 'WWWTOP/busybox/Maze.html'
-verifile -m0040755 -p0 '/usr/local/projects'
-verifile -m0040755 -p0 '/usr/local/projects/table_fun'
-verifile -m0040775 -p0 '/usr/local/projects/table_fun/src'
-verifile -m0100775 -p1 '/usr/local/projects/table_fun/src/table_fun.pl'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/table_fun/inputs'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/html.html'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/contacts.vcf'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/mwt.mwt'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/json.json'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/lpf.lpf'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/csv.csv'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/vcf.vcf'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/README.md'
-verifile -m0120777 -p0 '/usr/local/projects/table_fun/bin'
-verifile -m0040775 -p0 '/usr/local/projects/table_fun/tests'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/html.html'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/contacts.vcf'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/mwt.mwt'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/json.json'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/lpf.lpf'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/csv.csv'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/perl.po'
-verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/vcf.vcf'
-verifile -m0040775 -p0 '/usr/local/projects/table_fun/handlers'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/html.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/psf.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/vcf.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/mwt.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/text.pl.00'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/csv.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/fields.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/lpf.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/text.pl'
-verifile -m0120777 -p0 '/usr/local/projects/table_fun/handlers/po.pl'
-verifile -m0120777 -p0 '/usr/local/projects/table_fun/handlers/txt.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/json.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/perl.pl'
-verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/text.pl.01'
-verifile -m0040755 -p0 '/usr/local/projects/activist'
-verifile -m0040775 -p0 '/usr/local/projects/activist/src'
-verifile -m0100775 -p1 '/usr/local/projects/activist/src/app.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/activist/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/activist/help'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/Helpless.png'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_phone.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_language.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/activist/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/activist/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_text.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/activist/README.md'
-verifile -m0040777 -p0 '/usr/local/projects/activist/db'
-verifile -m0100666 -p0 '/usr/local/projects/activist/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/set_screen'
-verifile -m0040775 -p0 '/usr/local/projects/set_screen/src'
-verifile -m0100664 -p1 '/usr/local/projects/set_screen/src/generate_pics.pl'
-verifile -m0100775 -p1 '/usr/local/projects/set_screen/src/app.cgi'
-verifile -m0100775 -p1 '/usr/local/projects/set_screen/src/set_screen.pl'
-verifile -m0100775 -p1 '/usr/local/projects/set_screen/src/generate_screens.pl'
-verifile -m0100664 -p1 '/usr/local/projects/set_screen/src/status_example_data.pl'
-verifile -m0100664 -p0 '/usr/local/projects/set_screen/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/set_screen/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/set_screen/lib'
-verifile -m0100664 -p0 '/usr/local/projects/set_screen/lib/messages.html'
-verifile -m0100644 -p0 '/usr/local/projects/set_screen/lib/URLs.map'
-verifile -m0100644 -p0 '/usr/local/projects/set_screen/lib/screens.map'
-verifile -m0100664 -p0 '/usr/local/projects/set_screen/lib/URLs.html'
-verifile -m0040777 -p0 '/usr/local/projects/set_screen/db'
-verifile -m0040775 -p0 '/usr/local/projects/set_screen/doc'
-verifile -m0100664 -p0 '/usr/local/projects/set_screen/doc/flow.odg'
-verifile -m0120777 -p0 '/usr/local/projects/set_screen/bin'
-verifile -m0040755 -p0 '/usr/local/projects/common'
-verifile -m0100664 -p0 '/usr/local/projects/common/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/common/help'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_address.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_password.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/help.css'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_fax.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_fullname.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_session.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_text.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_shipping.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_email.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_name.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/common/README.md'
-verifile -m0040777 -p0 '/usr/local/projects/common/SIDS'
-verifile -m0040775 -p0 '/usr/local/projects/common/lib'
-verifile -m0100664 -p0 '/usr/local/projects/common/lib/common.js'
-verifile -m0040777 -p0 '/usr/local/projects/common/db'
-verifile -m0100666 -p0 '/usr/local/projects/common/db/xl.db'
-verifile -m0100666 -p0 '/usr/local/projects/common/db/xl.todo'
-verifile -m0100666 -p0 '/usr/local/projects/common/db/accounts.db'
-verifile -m0100664 -p0 '/usr/local/projects/common/Makefile.simple'
-verifile -m0100664 -p0 '/usr/local/projects/common/Makefile.std'
-verifile -m0040755 -p0 '/usr/local/projects/cpi'
-verifile -m0040775 -p0 '/usr/local/projects/cpi/src'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/src/cpi_arguments.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_cache.pm'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/src/common_to_cpi.pl'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_hash_to_string.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_file.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_template.pm'
-verifile -m0100664 -p0 '/usr/local/projects/cpi/src/Makefile'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_send_file.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_drivers.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_trace.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_config.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_time.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_user.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_hash.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_trans_shell.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_perl.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_db.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_magic_http.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_translate.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_reorder.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_english.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_mime.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_cgi.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_copy_db.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_qrcode_of.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_make_from.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_inlist.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_help.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_setup.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_unique_nbit_color.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_filename.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_log.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_escape.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_vars.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_compress_integer.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_media.pm'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/src/cpi_to_common.pl'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_sortable.pm'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_lock.pm'
-verifile -m0100664 -p0 '/usr/local/projects/cpi/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/cpi/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/cpi/tests'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_media.pl'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/tests/cpi_file.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_lock.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_english.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_hash.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_send_file.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_mime.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_user.pl'
-verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_db.pl'
-verifile -m0100664 -p1 '/usr/local/projects/cpi/tests/cpi_arguments.pl'
-verifile -m0040755 -p0 '/usr/local/projects/pictures'
-verifile -m0040775 -p0 '/usr/local/projects/pictures/src'
-verifile -m0100664 -p1 '/usr/local/projects/pictures/src/app.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/pictures/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/pictures/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/pictures/lib'
-verifile -m0100664 -p0 '/usr/local/projects/pictures/lib/pictures.js'
-verifile -m0040777 -p0 '/usr/local/projects/pictures/db'
-verifile -m0100666 -p0 '/usr/local/projects/pictures/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/sudoku'
-verifile -m0040775 -p0 '/usr/local/projects/sudoku/src'
-verifile -m0100775 -p1 '/usr/local/projects/sudoku/src/app.cgi'
-verifile -m0100664 -p1 '/usr/local/projects/sudoku/src/grid.pl'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib'
-verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib/puzzles'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-f.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-b.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-a.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/4D.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-2.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-d.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-e.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/2Dx.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-12.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/2D.puz'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-c.puz'
-verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib/solutions'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-12.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-f.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-a.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-b.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-e.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/2D.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-c.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/2Dx.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-2.sol'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-d.sol'
-verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib/pre_generated'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/pre_generated/3D'
-verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/pre_generated/2D'
-verifile -m0040777 -p0 '/usr/local/projects/sudoku/db'
-verifile -m0100666 -p0 '/usr/local/projects/sudoku/db/app.db'
-verifile -m0120777 -p0 '/usr/local/projects/sudoku/bin'
-verifile -m0040755 -p0 '/usr/local/projects/ww'
-verifile -m0040775 -p0 '/usr/local/projects/ww/src'
-verifile -m0100775 -p1 '/usr/local/projects/ww/src/app.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/ww/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/ww/help'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-modify-day.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-admin.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/select_program.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-graph.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-today.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_fax.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-dir.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_text.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_name.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-add-section.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-show.html'
-verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-fullreport.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/help/show_help.html'
-verifile -m0100664 -p0 '/usr/local/projects/ww/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/ww/lib'
-verifile -m0100664 -p0 '/usr/local/projects/ww/lib/ww.js'
-verifile -m0040777 -p0 '/usr/local/projects/ww/db'
-verifile -m0100666 -p0 '/usr/local/projects/ww/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/todo'
-verifile -m0040775 -p0 '/usr/local/projects/todo/src'
-verifile -m0100775 -p1 '/usr/local/projects/todo/src/app.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/todo/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/todo/help'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Priority.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_input_list_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_clear_list.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/help'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Task.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Rest.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_dirmode.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_text.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Status.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_admin.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_shipping.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_save_list.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_add_task.html'
-verifile -m0100664 -p0 '/usr/local/projects/todo/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/todo/lib'
-verifile -m0100664 -p0 '/usr/local/projects/todo/lib/todo.js'
-verifile -m0040777 -p0 '/usr/local/projects/todo/db'
-verifile -m0100666 -p0 '/usr/local/projects/todo/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/pandemic'
-verifile -m0040775 -p0 '/usr/local/projects/pandemic/src'
-verifile -m0100775 -p1 '/usr/local/projects/pandemic/src/pandaplot.pl'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/text.c'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/src/pandemic.c'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/text.h'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/debug.h'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/gen.c'
-verifile -m0100775 -p1 '/usr/local/projects/pandemic/src/app.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/debug.c'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/gen.h'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/pandemic/help'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_password.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/BContagious.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/help.css'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Max_Dist.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Infected.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/output_format.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Iterations.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/ESymptomatic.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/RQuarantine.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/menu_admin.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/EContagious.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/search_Main.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/COMMON_select_program.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Select_disease.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_fullname.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Population.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Tests.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_text.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/TDeath.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/EResistant.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_email.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Seed.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/TQuarantine.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_name.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/RDeath.html'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/BSymptomatic.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Start_simulation.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Area.html'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/pandemic/lib'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/lib/variables.js'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/lib/pandemic.js'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/lib/diseases.js'
-verifile -m0040777 -p0 '/usr/local/projects/pandemic/db'
-verifile -m0100666 -p0 '/usr/local/projects/pandemic/db/app.db'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/bin'
-verifile -m0120777 -p0 '/usr/local/projects/pandemic/obj'
-verifile -m0040775 -p0 '/usr/local/projects/pandemic/tests'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/long.args'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/test.args'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/3d.args'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/simple.args'
-verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/t.args'
-verifile -m0040755 -p0 '/usr/local/projects/Slide_Show'
-verifile -m0040775 -p0 '/usr/local/projects/Slide_Show/src'
-verifile -m0100775 -p1 '/usr/local/projects/Slide_Show/src/app.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/Slide_Show/help'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_next.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_admin.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_program.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/check_continuous.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_previous.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/check_continuous.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_media.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_next.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_disposition.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_create.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_text.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_media.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_admin.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_disposition.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_previous.stub'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/Slide_Show/lib'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/lib/Slide_Show.html'
-verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/lib/footer.html'
-verifile -m0100775 -p0 '/usr/local/projects/Slide_Show/lib/Slide_Show.js'
-verifile -m0040777 -p0 '/usr/local/projects/Slide_Show/db'
-verifile -m0100666 -p0 '/usr/local/projects/Slide_Show/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/rank_vote'
-verifile -m0040775 -p0 '/usr/local/projects/rank_vote/src'
-verifile -m0100775 -p1 '/usr/local/projects/rank_vote/src/app.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/rank_vote/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/rank_vote/help'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/Helpless.png'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/rank_vote/help/select_program.stub'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_language.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_create.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/rank_vote/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_text.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/rank_vote/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/rank_vote/lib'
-verifile -m0100664 -p0 '/usr/local/projects/rank_vote/lib/rank_vote.js'
-verifile -m0100664 -p0 '/usr/local/projects/rank_vote/lib/question.js'
-verifile -m0040777 -p0 '/usr/local/projects/rank_vote/db'
-verifile -m0100666 -p0 '/usr/local/projects/rank_vote/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/cci'
-verifile -m0040775 -p0 '/usr/local/projects/cci/src'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/Makefile.inc'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/text.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/hash.h'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/deb_malloc.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/text.h'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/netio.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/hash.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/text.0.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/debug.h'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/gen.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/netio.h'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/debug.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/gen.h'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/list.h'
-verifile -m0100664 -p0 '/usr/local/projects/cci/src/list_test.c'
-verifile -m0100664 -p0 '/usr/local/projects/cci/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/cci/README.md'
-verifile -m0100664 -p0 '/usr/local/projects/cci/Makefile.odd'
-verifile -m0040755 -p0 '/usr/local/projects/diagnosis'
-verifile -m0040775 -p0 '/usr/local/projects/diagnosis/src'
-verifile -m0100664 -p1 '/usr/local/projects/diagnosis/src/app.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/diagnosis/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/diagnosis/help'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/Helpless.png'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/diagnosis/help/select_program.stub'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_language.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_create.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/diagnosis/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_text.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/diagnosis/README.md'
-verifile -m0040777 -p0 '/usr/local/projects/diagnosis/db'
-verifile -m0100666 -p0 '/usr/local/projects/diagnosis/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/sign'
-verifile -m0040775 -p0 '/usr/local/projects/sign/src'
-verifile -m0100775 -p1 '/usr/local/projects/sign/src/app.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/sign/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/sign/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/sign/lib'
-verifile -m0100664 -p0 '/usr/local/projects/sign/lib/signature.js'
-verifile -m0100664 -p0 '/usr/local/projects/sign/lib/signature.html'
-verifile -m0040777 -p0 '/usr/local/projects/sign/documents'
-verifile -m0040777 -p0 '/usr/local/projects/sign/db'
-verifile -m0100666 -p0 '/usr/local/projects/sign/db/app.db'
-verifile -m0040777 -p0 '/usr/local/projects/sign/keys'
-verifile -m0040755 -p0 '/usr/local/projects/Antasgo'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/src'
-verifile -m0100775 -p0 '/usr/local/projects/Antasgo/src/make_task_icon.sh'
-verifile -m0100775 -p1 '/usr/local/projects/Antasgo/src/app.cgi'
-verifile -m0100775 -p1 '/usr/local/projects/Antasgo/src/pattern_to_html_table.pl'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/help'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/Help.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_add_game.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_phone.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/select_program.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/admin.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/List_games.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_view_task.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/Show_user.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/Dump_user_log.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/List_tasks.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_fullname.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_session.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_text.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_edit_game.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_shipping.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_play_game.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_add_task.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/patterns'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Diamond'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Triangle'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/O'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Cross'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Heart'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/8'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/TicTacToe'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/X'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Smile'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/js'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/footer.js'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/all.js'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/app.db.trace.current'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/app.db'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/instance.js'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/user.js'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/game.js'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/icon.raw'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/icon_raw.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/x.jpeg'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/interim.pnm'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/icon.raw'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/icon.raw'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/icon.png.hide'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes/icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes/index.html'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes/lib.pl'
-verifile -m0040777 -p0 '/usr/local/projects/Antasgo/db'
-verifile -m0100666 -p0 '/usr/local/projects/Antasgo/db/app.db'
-verifile -m0040775 -p0 '/usr/local/projects/Antasgo/public'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/public/Antasgo_icon.png'
-verifile -m0100664 -p0 '/usr/local/projects/Antasgo/public/Antasgo.css'
-verifile -m0120777 -p0 '/usr/local/projects/Antasgo/bin'
-verifile -m0040755 -p0 '/usr/local/projects/simple_utils'
-verifile -m0040775 -p0 '/usr/local/projects/simple_utils/src'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_images.sh'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/copydb.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/make_src_rpm.sh'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/indent_json.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/mixtape.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/send_text.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/square_icon.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/setup_access_point.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/epr.sh'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/dnf_upgrade.sh'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/words_with.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/scan.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/radix.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/seconds_to_daytime.pl'
-verifile -m0100664 -p0 '/usr/local/projects/simple_utils/src/fork_bomb.sh'
-verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/age_json.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/sudoinstall.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/anagram.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/killsound.sh'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/descape.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/rnh.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/sumdir.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/in_path.sh'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/merge_movies.sh'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/rezip.sh'
-verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/old_javascript.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/merge_scan_batch.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/embed_images.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/tmog.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/make_pdf_book.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/sanifile.pl'
-verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/github_readme.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/add_header.pl'
-verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/screens.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/nene.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/mode.sh'
-verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/cat_media.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/unique_name.pl'
-verifile -m0100755 -p1 '/usr/local/projects/simple_utils/src/verifile.pl'
-verifile -m0100755 -p1 '/usr/local/projects/simple_utils/src/cp_verify.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_movies.sh'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/youtube.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/count_domains.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_sounds.sh'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/killproc.sh'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/rebup.sh'
-verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/doc_sep.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/upend.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/remind.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/host_of_ssh.pl'
-verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/show.pl'
-verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/toodg.sh'
-verifile -m0120777 -p0 '/usr/local/projects/simple_utils/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/simple_utils/README.md'
-verifile -m0120777 -p0 '/usr/local/projects/simple_utils/bin'
-verifile -m0040755 -p0 '/usr/local/projects/Visas'
-verifile -m0040775 -p0 '/usr/local/projects/Visas/src'
-verifile -m0100664 -p1 '/usr/local/projects/Visas/src/app.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/Visas/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/Visas/README.md'
-verifile -m0040777 -p0 '/usr/local/projects/Visas/cache'
-verifile -m0040775 -p0 '/usr/local/projects/Visas/lib'
-verifile -m0100664 -p0 '/usr/local/projects/Visas/lib/vars.pl'
-verifile -m0100664 -p0 '/usr/local/projects/Visas/lib/languages'
-verifile -m0040755 -p0 '/usr/local/projects/Visas/lib/templates'
-verifile -m0040777 -p0 '/usr/local/projects/Visas/db'
-verifile -m0100666 -p0 '/usr/local/projects/Visas/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/routing'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/completed_route_update.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/split_trips.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/read_vcf.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/addr_to_latlong.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/upgrade_log_format.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/distuser_to_pdf.pl'
-verifile -m0120777 -p0 '/usr/local/projects/routing/src/lib'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/app.cgi'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/check_history.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/read_trips.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/embed_images.pl'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/pdf_to_route.pl'
-verifile -m0040755 -p0 '/usr/local/projects/routing/src/porting'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/update_carriers.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/routes.js'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/kml'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/README'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/kml/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/kml/bup'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/bup/lib.pl.0001.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/bup/lib.pl.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/template'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/HITE_ICON'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/GeoJSON'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/GeoJSON/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Apple'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Apple/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Apple/lib.js'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Apple/bup'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Apple/bup/lib.js.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/README'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Google'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Google/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/lib.js'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Google/bup'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/route.js.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0004.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0001.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0003.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0002.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.pl.0000.bz2'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/gpx'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/gpx/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/gpx/README'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/gpx/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/gpx/template'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/po'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/po/Makefile'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/po/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/po/bup'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/po/bup/lib.pl.0000.bz2'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Bing'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Bing/lib.pl'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/mqstatic'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/mqstatic/compress.pl'
-verifile -m0100775 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/try'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/lib.pl.disabled'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/template.html'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/README'
-verifile -m0100775 -p1 '/usr/local/projects/routing/src/mappers/mqstatic/template.wget'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/ref.html'
-verifile -m0120777 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/template'
-verifile -m0100775 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/try2'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Mapquest'
-verifile -m0100775 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/try'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/Makefile'
-verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Mapquest/lib.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/lib.js'
-verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0001.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0001.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0002.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0008.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0006.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0007.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0002.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0004.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0006.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0004.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0005.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0003.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0007.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0005.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0003.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/ref.html'
-verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/template.js'
-verifile -m0120777 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/template'
-verifile -m0100775 -p0 '/usr/local/projects/routing/src/comapper.sh'
-verifile -m0100775 -p0 '/usr/local/projects/routing/src/last_month.sh'
-verifile -m0100664 -p0 '/usr/local/projects/routing/setup_git'
-verifile -m0100664 -p0 '/usr/local/projects/routing/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/routing/help'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_check.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Stickers.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_seen_by.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Assessment.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/routing/help/help.css'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Email.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/routing/help/Helpless.png'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_anonymous_add_record.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Times_available.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_text.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Rollout_everything.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/sample_stickers.pdf'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_route_map_format.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Download_contact.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Driver_note.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/routing/help/common'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Driver.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_include.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Update_record.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_routes_to_map.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Order.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Distributor.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Donation_percentage.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_plus.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Assessor_note.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_relationship_0.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_fullname.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Weight_limit.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Maximum_patrons.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Distributor.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Update_order.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Distributor.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Download_invoices.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Preferred_hospital.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/tail'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_name.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Rebalance.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Patron.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Notify.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Route.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_print_data.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_route_run_map_format.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_seen.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Staff.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Route.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_phone.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Emergency_relationship_0.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Route.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_email.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_language.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Bags.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_session.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Pickups.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/sample_route_sheet.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_program.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_password.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Status.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/html_filter.js'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Import.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_route_runs_to_map.cgi'
-verifile -m0100775 -p1 '/usr/local/projects/routing/help/html_filter.pl'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_up.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/head'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_relationship_1.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_phone_1.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Patron.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/Helpless.pnm'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Mobile_Internet_devices.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Distributor.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Name.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/index.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Address.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/help.css.orig'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Delete.cgi'
-verifile -m0040775 -p0 '/usr/local/projects/routing/help/images.old'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/02_top_level.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/05_pickup_odometer.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/09_stop_on_the_way.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/06_pickup_status.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/11_stop_problems.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/12_route_done.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/01_first_run.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/13_route_done_log_miles.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/07_pickup_done.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/04_pickup_vehicle.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/08_stop_visit.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/03_pickup.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/10_stop_contribution.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/flow.list'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Driver_note.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Coordinator_note.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_fax.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Address.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Coordinator_note.cgi'
-verifile -m0040775 -p0 '/usr/local/projects/routing/help/images'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/08_note_odometer.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/09_set_stop_status.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/18_done_button.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/02_stop_list.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/01_access_your_location.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/03_unvisited_distributor.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/08_take_a_note.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/12_unvisited_first_stop.jpg'
-verifile -m0040775 -p0 '/usr/local/projects/routing/help/images/trimmed'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/18_done_button.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/12_unvisited_first_stop.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/16_route_in_progress.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/17_stop_with_flags.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/15_completed_first_stop.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/11_visit_next_stop.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/14_set_donation.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/13_set_parking_location.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/19_recording_complete.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/10_stop_complete.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/16_route_in_progress.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/more_stops.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/17_stop_with_flags.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/05_make_a_call.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/15_completed_first_stop.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/06_send_a_text.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/07_program_GPS.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/11_visit_next_stop.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/14_set_donation.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/13_set_parking_location.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/19_recording_complete.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/04_select_route_type.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/pickups.jpg'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_start_with.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_optimize.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Contact.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_password_retyped.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Coords.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Dogs.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_larr.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_down.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Email.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_shipping.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Phone.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Name.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/order_Route.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Route_ends_with.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Emergency_contact_0.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/file_Import.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_darr.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/menu_admin.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/input_size.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/help_template.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Distributor.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Source.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/header_footer'
-verifile -m0040775 -p0 '/usr/local/projects/routing/help/bup'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/html_filter.pl.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/showblocks.pl.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Driver.cgi.0002.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Driver.cgi.0001.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Driver.cgi.0000.bz2'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Mobile_Internet_devices.cgi.0000.bz2'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_end_with.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_anonymous_print.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_FoodPrefs.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Address.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Times_receiving.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Phone.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/file_export.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_assessment.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Contacts.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_address.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_route.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/help/sample_route_sheet.pdf'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_uarr.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_note.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Route.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Name.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Rollout.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Coords.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Route_sheet.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_contact_1.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Donation_maximum.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_phone_0.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_create.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_User.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Reimbursement.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_select_program.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_contact_0.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Route_runs.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Expires.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Phone.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Status.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Driver.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Mapquest_key.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Staff.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Android_problems.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/file_import.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Name.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Notify.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Emergency_phone_0.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/Problems.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Route_starts_with.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Cats.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Edit.cgi'
-verifile -m0100775 -p0 '/usr/local/projects/routing/help/strain'
-verifile -m0100664 -p0 '/usr/local/projects/routing/README.md'
-verifile -m0040777 -p0 '/usr/local/projects/routing/cache'
-verifile -m0040775 -p0 '/usr/local/projects/routing/lib'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/maps.html'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/compress.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/mobile.css'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/routes_form.html'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/debug_buttons'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/assessment.html'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/notes.js'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/template.html'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/phone.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/map.jpg'
-verifile -m0100775 -p1 '/usr/local/projects/routing/lib/index.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/routing_header.js'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/desktop.css'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/IRS_logo.jpg'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/colors'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/IRS.pl'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/all.css'
-verifile -m0100664 -p0 '/usr/local/projects/routing/lib/compress.js'
-verifile -m0040777 -p0 '/usr/local/projects/routing/db'
-verifile -m0100666 -p0 '/usr/local/projects/routing/db/app.db'
-verifile -m0100664 -p0 '/usr/local/projects/routing/db/app.po'
-verifile -m0040755 -p0 '/usr/local/projects/routing/mail'
-verifile -m0040775 -p0 '/usr/local/projects/routing/doc'
-verifile -m0100664 -p0 '/usr/local/projects/routing/doc/driver_facts.pdf'
-verifile -m0100664 -p0 '/usr/local/projects/routing/doc/sample_route_sheet.pdf'
-verifile -m0120777 -p0 '/usr/local/projects/routing/bin'
-verifile -m0100664 -p0 '/usr/local/projects/routing/monthly_reports'
-verifile -m0040755 -p0 '/usr/local/projects/Groceries'
-verifile -m0040775 -p0 '/usr/local/projects/Groceries/src'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/src/database.sh'
-verifile -m0100775 -p1 '/usr/local/projects/Groceries/src/app.cgi'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/Makefile'
-verifile -m0040775 -p0 '/usr/local/projects/Groceries/help'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_address.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_password.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/help.css'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/Helpless.png'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/select_store.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_phone.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_where.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/option_menu_edit.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_clear_list.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_language.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/select_program.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_store_name.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_quantity.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/menu_item_name.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_found.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_add_list.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_create.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_dirmode.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/help_template.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/COMMON_select_program.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_fax.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_fullname.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_item_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_session.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_select_list.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/menu_item_seen.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_text.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_delete_menu_item.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_admin.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_shipping.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_save_list.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_email.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_name.html'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_password_retyped.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_remove.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_redraw.html'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/Groceries/lib'
-verifile -m0100664 -p0 '/usr/local/projects/Groceries/lib/Groceries.js'
-verifile -m0040777 -p0 '/usr/local/projects/Groceries/db'
-verifile -m0100666 -p0 '/usr/local/projects/Groceries/db/app.db'
-verifile -m0120777 -p0 '/usr/local/projects/Groceries/bin'
-verifile -m0040755 -p0 '/usr/local/projects/testd'
-verifile -m0040775 -p0 '/usr/local/projects/testd/src'
-verifile -m0100775 -p1 '/usr/local/projects/testd/src/log2cfg.pl'
-verifile -m0040775 -p0 '/usr/local/projects/testd/src/tests'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/ping.pl'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/nmap.pl'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/http.pl'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/file_info.pl'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/command.pl'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/traceroute.pl'
-verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/watch_file.pl'
-verifile -m0100775 -p1 '/usr/local/projects/testd/src/testd.pl'
-verifile -m0100664 -p0 '/usr/local/projects/testd/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/testd/README.md'
-verifile -m0120777 -p0 '/usr/local/projects/testd/bin'
-verifile -m0040755 -p0 '/usr/local/projects/User'
-verifile -m0040775 -p0 '/usr/local/projects/User/src'
-verifile -m0100775 -p1 '/usr/local/projects/User/src/app.cgi'
-verifile -m0100664 -p0 '/usr/local/projects/User/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/User/README.md'
-verifile -m0040777 -p0 '/usr/local/projects/User/db'
-verifile -m0100666 -p0 '/usr/local/projects/User/db/app.db'
-verifile -m0040755 -p0 '/usr/local/projects/busybox'
-verifile -m0120777 -p0 '/usr/local/projects/busybox/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/busybox/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/busybox/public'
-verifile -m0100664 -p0 '/usr/local/projects/busybox/public/Jeffries.html'
-verifile -m0100664 -p0 '/usr/local/projects/busybox/public/Clock.html'
-verifile -m0100664 -p0 '/usr/local/projects/busybox/public/Maze.html'
-verifile -m0040755 -p0 '/usr/local/projects/multis'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/greebl'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/greebl/greebl.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/greebl/greebl.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/system'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/system/system.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/system/system.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/system/system.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/shared'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.c.setdis_and_grafon'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/lcs.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.mac'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/debug.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/ref.pl'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/multis.html'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/f2c.h'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/shared/bup'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/bup/hipak.c.00'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/bup/hipak.c.01'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/settty.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/regres.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.c.splitjs'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/regres.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/multis.js'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/cave'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.locations'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.for'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/scan'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/scan/scan.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/scan/scan.for'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/risk'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/risk/risk.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/risk/risk.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/risk/risk.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/life'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/life/life.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/life/life.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/f2c'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/f2c/src'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/niceprintf.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/parse.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/p1output.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/names.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/tokdefs.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/lex.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/machdefs.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/vax.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/p1defs.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/pccdefs.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/names.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/sysdep.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/mkfile.plan9'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/intr.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/mem.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/format.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/data.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/cds.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/misc.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/pread.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/iob.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/xsum.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/memset.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/xsum0.out'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/formatdata.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/output.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/proc.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/parse_args.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.io'
-verifile -m0100775 -p0 '/usr/local/projects/multis/src/f2c/src/sysdeptest.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/expr.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.dcl'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/niceprintf.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/sysdep.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/usignal.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/ftypes.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/makefile.u'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/exec.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/putpcc.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/put.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/output.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/f2c.1'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/unused_getopt.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/f2c.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.exec'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/io.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.expr'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/format.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/version.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/tokens'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/defs.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/init.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.head'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/error.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/f2c.1t'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/defines.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/equiv.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/main.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/malloc.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/makefile.vc'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/Makefile'
-verifile -m0100775 -p0 '/usr/local/projects/multis/src/f2c/a.out'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/f2c/dep_sys'
-verifile -m0040775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin
-verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/f2c
-verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/xsum
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/README'
-verifile -m0120777 -p0 '/usr/local/projects/multis/src/f2c/doc'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/Notice'
-verifile -m0120777 -p0 '/usr/local/projects/multis/src/f2c/bin'
-verifile -m0120777 -p0 '/usr/local/projects/multis/src/f2c/obj'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/changes'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/cubic'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/cubic/cubic.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/cubic/cubic.for'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/snake'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/snake/snake.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/snake/snake.for'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/ocean'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/ocean/ocean.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/ocean/ocean.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/war'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/war/war.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/war/war.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/war/war.html'
-verifile -m0040775 -p0 '/usr/local/projects/multis/src/star'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/star/star.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/star/star.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/src/star/star.axis.quotes'
-verifile -m0100664 -p0 '/usr/local/projects/multis/Makefile'
-verifile -m0100664 -p0 '/usr/local/projects/multis/README.md'
-verifile -m0040775 -p0 '/usr/local/projects/multis/doc'
-verifile -m0100664 -p0 '/usr/local/projects/multis/doc/Email_to_Bill_Costa'
-verifile -m0100664 -p0 '/usr/local/projects/multis/doc/games.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/doc/usrpak.rnh'
-verifile -m0100664 -p0 '/usr/local/projects/multis/doc/usrpak.man'
-verifile -m0100664 -p0 '/usr/local/projects/multis/doc/project_notes'
-verifile -m0100664 -p0 '/usr/local/projects/multis/doc/multis.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/tools'
-verifile -m0100664 -p0 '/usr/local/projects/multis/tools/webserver'
-verifile -m0100775 -p0 '/usr/local/projects/multis/tools/killshmems'
-verifile -m0100664 -p0 '/usr/local/projects/multis/tools/client'
-verifile -m0100664 -p0 '/usr/local/projects/multis/tools/daemon'
-verifile -m0100775 -p1 '/usr/local/projects/multis/tools/fix_keywords'
-verifile -m0100664 -p0 '/usr/local/projects/multis/tools/standalone'
-verifile -m0100775 -p0 '/usr/local/projects/multis/tools/make_mic'
-verifile -m0040775 -p0 '/usr/local/projects/multis/exports'
-verifile -m0040775 -p0 '/usr/local/projects/multis/exports/f2ccs'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/war.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/life.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cave.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cave.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cubic.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cubic.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/war.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/scan.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/risk.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/snake.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cave.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/snake.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/star.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/system.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/regres.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/life.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/scan.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/greebl.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/war.html'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/multis.html'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/hipak.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/system.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/ocean.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/f2c.h'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/greebl.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/system.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/ocean.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/multis.js'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/risk.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/star.c'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/risk.c'
-verifile -m0040775 -p0 '/usr/local/projects/multis/exports/dec10'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/greebl.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cave.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cubic.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/war.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/scan.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/life.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/risk.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/make.mic'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/snake.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/scan.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/war.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cave.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cave.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/star.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/system.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/hipak.mac'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cubic.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/life.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/ocean.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/usrpak.mac'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/greebl.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/risk.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/system.dat'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/settty.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/system.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/ocean.hlp'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/regres.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/snake.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/star.for'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/risk.hlp'
-verifile -m0040775 -p0 '/usr/local/projects/multis/exports/fixed_fs'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/snake.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/risk.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/cubic.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/regres.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/cave.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/war.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/ocean.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/life.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/system.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/scan.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/star.f'
-verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/greebl.f'
-verifile -m0040755 -p0 '/usr/local/bin'
-verifile -m0100755 -p1 '/usr/local/bin/host_of_ssh'
-verifile -m0100755 -p1 '/usr/local/bin/mixtape'
-verifile -m0100755 -p1 '/usr/local/bin/cat_media'
-verifile -m0100755 -p0 '/usr/local/bin/epr'
-verifile -m0100755 -p0 '/usr/local/bin/rezip'
-verifile -m0100755 -p1 '/usr/local/bin/table_fun'
-verifile -m0100755 -p1 '/usr/local/bin/indent_json'
-verifile -m0120777 -p0 '/usr/local/bin/set_screen'
-verifile -m0100755 -p0 '/usr/local/bin/cat_images'
-verifile -m0100755 -p1 '/usr/local/bin/upend'
-verifile -m0100755 -p1 '/usr/local/bin/seconds_to_daytime'
-verifile -m0100755 -p1 '/usr/local/bin/sanifile'
-verifile -m0100755 -p1 '/usr/local/bin/anagram'
-verifile -m0100755 -p1 '/usr/local/bin/rnh'
-verifile -m0100755 -p1 '/usr/local/bin/generate_pics'
-verifile -m0100755 -p1 '/usr/local/bin/sumdir'
-verifile -m0100755 -p1 '/usr/local/bin/scan'
-verifile -m0100755 -p1 '/usr/local/bin/copydb'
-verifile -m0100755 -p1 '/usr/local/bin/send_text'
-verifile -m0100755 -p1 '/usr/local/bin/completed_route_update'
-verifile -m0100755 -p0 '/usr/local/bin/pandemic'
-verifile -m0100755 -p1 '/usr/local/bin/distuser_to_pdf'
-verifile -m0100755 -p0 '/usr/local/bin/make_task_icon'
-verifile -m0100755 -p1 '/usr/local/bin/check_history'
-verifile -m0100755 -p1 '/usr/local/bin/read_trips'
-verifile -m0100755 -p1 '/usr/local/bin/screens'
-verifile -m0100755 -p1 '/usr/local/bin/github_readme'
-verifile -m0100755 -p1 '/usr/local/bin/read_vcf'
-verifile -m0100755 -p1 '/usr/local/bin/pattern_to_html_table'
-verifile -m0100755 -p1 '/usr/local/bin/split_trips'
-verifile -m0100755 -p1 '/usr/local/bin/radix'
-verifile -m0100755 -p0 '/usr/local/bin/make_src_rpm'
-verifile -m0100755 -p1 '/usr/local/bin/embed_images'
-verifile -m0100755 -p0 '/usr/local/bin/fork_bomb'
-verifile -m0100755 -p1 '/usr/local/bin/square_icon'
-verifile -m0100755 -p1 '/usr/local/bin/cpi_db'
-verifile -m0100755 -p0 '/usr/local/bin/dnf_upgrade'
-verifile -m0100755 -p1 '/usr/local/bin/tmog'
-verifile -m0100755 -p1 '/usr/local/bin/pandaplot'
-verifile -m0100755 -p0 '/usr/local/bin/toodg'
-verifile -m0100755 -p1 '/usr/local/bin/generate_screens'
-verifile -m0100755 -p1 '/usr/local/bin/grid'
-verifile -m0100755 -p0 '/usr/local/bin/database'
-verifile -m0100755 -p1 '/usr/local/bin/words_with'
-verifile -m0100755 -p1 '/usr/local/bin/doc_sep'
-verifile -m0100755 -p0 '/usr/local/bin/mode'
-verifile -m0100755 -p1 '/usr/local/bin/verifile'
-verifile -m0100755 -p1 '/usr/local/bin/cp_verify'
-verifile -m0100755 -p0 '/usr/local/bin/rebup'
-verifile -m0100755 -p1 '/usr/local/bin/remind'
-verifile -m0100755 -p1 '/usr/local/bin/unique_name'
-verifile -m0100755 -p1 '/usr/local/bin/sudoinstall'
-verifile -m0100755 -p1 '/usr/local/bin/descape'
-verifile -m0100755 -p1 '/usr/local/bin/nene'
-verifile -m0100755 -p1 '/usr/local/bin/count_domains'
-verifile -m0100755 -p1 '/usr/local/bin/cpi_user'
-verifile -m0100755 -p0 '/usr/local/bin/last_month'
-verifile -m0100755 -p0 '/usr/local/bin/cat_movies'
-verifile -m0100755 -p1 '/usr/local/bin/age_json'
-verifile -m0100755 -p1 '/usr/local/bin/addr_to_latlong'
-verifile -m0100755 -p1 '/usr/local/bin/testd'
-verifile -m0100755 -p0 '/usr/local/bin/killsound'
-verifile -m0100755 -p1 '/usr/local/bin/show'
-verifile -m0100755 -p1 '/usr/local/bin/old_javascript'
-verifile -m0100755 -p1 '/usr/local/bin/merge_scan_batch'
-verifile -m0100755 -p1 '/usr/local/bin/add_header'
-verifile -m0100755 -p0 '/usr/local/bin/killproc'
-verifile -m0100755 -p1 '/usr/local/bin/make_pdf_book'
-verifile -m0100755 -p1 '/usr/local/bin/setup_access_point'
-verifile -m0100755 -p0 '/usr/local/bin/merge_movies'
-verifile -m0100755 -p0 '/usr/local/bin/cat_sounds'
-verifile -m0100755 -p1 '/usr/local/bin/youtube'
-verifile -m0100755 -p0 '/usr/local/bin/in_path'
-#
-# Note that these can't be quoted because we don't know exactly where they are.
-# By doing this, we can make sure that machine-specific stuff got built.
-#
-verifile -m0040755 -p0 /usr/local/projects/table_fun/built/*/bin
-verifile -m0100755 -p1 /usr/local/projects/table_fun/built/*/bin/table_fun
-verifile -m0040755 -p0 /usr/local/projects/set_screen/built/*/bin
-verifile -m0100755 -p1 /usr/local/projects/set_screen/built/*/bin/generate_pics
-verifile -m0100755 -p1 /usr/local/projects/set_screen/built/*/bin/generate_screens
-verifile -m0040755 -p0 /usr/local/projects/sudoku/built/*/bin
-verifile -m0100755 -p1 /usr/local/projects/sudoku/built/*/bin/grid
-verifile -m0040755 -p0 /usr/local/projects/pandemic/built/*/bin
-verifile -m0100755 -p0 /usr/local/projects/pandemic/built/*/bin/pandemic
-verifile -m0100755 -p1 /usr/local/projects/pandemic/built/*/bin/pandaplot
-verifile -m0040755 -p0 /usr/local/projects/Antasgo/built/*/bin
-verifile -m0100755 -p0 /usr/local/projects/Antasgo/built/*/bin/make_task_icon
-verifile -m0100755 -p1 /usr/local/projects/Antasgo/built/*/bin/pattern_to_html_table
-verifile -m0040755 -p0 /usr/local/projects/simple_utils/built/*/bin
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/host_of_ssh
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/mixtape
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/cat_media
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/epr
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/rezip
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/indent_json
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/cat_images
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/upend
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/make_machines
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/seconds_to_daytime
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/sanifile
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/anagram
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/rnh
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/sumdir
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/scan
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/copydb
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/send_text
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/screens
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/github_readme
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/radix
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/make_src_rpm
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/embed_images
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/fork_bomb
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/square_icon
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/dnf_upgrade
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/tmog
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/toodg
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/words_with
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/doc_sep
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/mode
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/verifile
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/cp_verify
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/rebup
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/remind
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/unique_name
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/sudoinstall
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/descape
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/nene
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/count_domains
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/cat_movies
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/age_json
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/killsound
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/show
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/old_javascript
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/merge_scan_batch
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/add_header
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/killproc
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/make_pdf_book
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/setup_access_point
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/merge_movies
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/cat_sounds
-verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/youtube
-verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/in_path
-verifile -m0040755 -p0 /usr/local/projects/routing/built/*/bin
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/xlate_vcf
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/completed_route_update
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/distuser_to_pdf
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/check_history
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/read_trips
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/vcf_mail
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/read_vcf
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/split_trips
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/embed_images
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/defluff
-verifile -m0100755 -p0 /usr/local/projects/routing/built/*/bin/last_month
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/addr_to_latlong
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/htmls_to_times
-verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/read_mapquest
-verifile -m0040755 -p0 /usr/local/projects/Groceries/built/*/bin
-verifile -m0100755 -p0 /usr/local/projects/Groceries/built/*/bin/database
-verifile -m0040755 -p0 /usr/local/projects/testd/built/*/bin
-verifile -m0100755 -p1 /usr/local/projects/testd/built/*/bin/testd
-verifile -m0040775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin
-verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/f2c
-verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/xsum
-verifile -m0040775 -p0 /usr/local/projects/multis/src/f2c/built/*/bin
-verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/built/*/bin/f2c
-verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/built/*/bin/xsum
-verifile -m0040755 -p0 /usr/local/projects/multis/built/*/bin
-verifile -m0040755 -p0 /usr/local/projects/multis/built/*/bin/f2cs
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/greebl
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/system
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cave.hlp
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cave
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cubic.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/war.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/scan.hlp
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/regres
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/scan
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/risk
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/risk.dat
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/snake.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cave.dat
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/life
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/star.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/life.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/greebl.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/war.html
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/multis.html
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cubic
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/snake
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/system.dat
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/system.hlp
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/ocean.hlp
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/ocean
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/multis.js
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/war
-verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/risk.hlp
-verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/star
+verifile -m0040755 -p0 'WWWTOP' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/table_fun' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/activist' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/activist/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/set_screen' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 'WWWTOP/set_screen/messages' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/set_screen/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 'WWWTOP/set_screen/media' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 'WWWTOP/set_screen/URLs' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/pictures' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/pictures/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/sudoku' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/sudoku/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/ww' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/ww/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/todo' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/todo/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/pandemic' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/pandemic/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Slide_Show' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Slide_Show/video' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Slide_Show/audio' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Slide_Show/text' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/Slide_Show/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Slide_Show/avideo' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Slide_Show/slide' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/rank_vote' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/rank_vote/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/diagnosis' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/diagnosis/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/sign' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/sign/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Antasgo' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 'WWWTOP/Antasgo/Antasgo_icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/Antasgo/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 'WWWTOP/Antasgo/Antasgo.css' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/simple_utils' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Visas' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/Visas/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/forms' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 'WWWTOP/routing/common' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 'WWWTOP/routing/help' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/routing_common' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 'WWWTOP/routing/routing_common/mobile.css' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 'WWWTOP/routing/routing_common/phone.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 'WWWTOP/routing/routing_common/map.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 'WWWTOP/routing/routing_common/desktop.css' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 'WWWTOP/routing/routing_common/IRS_logo.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 'WWWTOP/routing/routing_common/all.css' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/ref' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/routing/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 'WWWTOP/routing/progress' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/vcf' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/routing' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 'WWWTOP/routing/routing/routing' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 'WWWTOP/routing/routes' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 'WWWTOP/routing/routes/common' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/icons' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/routing/icons/kml' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/Groceries' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/Groceries/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/testd' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/User' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 'WWWTOP/User/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 'WWWTOP/busybox' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 'WWWTOP/busybox/Jeffries.html' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 'WWWTOP/busybox/Clock.html' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 'WWWTOP/busybox/Maze.html' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/table_fun' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/table_fun/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/table_fun/src/table_fun.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/table_fun/inputs' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/html.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/contacts.vcf' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/mwt.mwt' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/json.json' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/lpf.lpf' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/csv.csv' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/inputs/vcf.vcf' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/README.md' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/table_fun/bin' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/table_fun/tests' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/html.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/contacts.vcf' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/mwt.mwt' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/json.json' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/lpf.lpf' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/csv.csv' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/perl.po' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/table_fun/tests/vcf.vcf' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/table_fun/handlers' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/html.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/psf.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/vcf.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/mwt.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/text.pl.00' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/csv.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/fields.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/lpf.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/text.pl' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/table_fun/handlers/po.pl' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/table_fun/handlers/txt.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/json.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/perl.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/table_fun/handlers/text.pl.01' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/activist' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/activist/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/activist/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/activist/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/activist/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/activist/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/activist/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/activist/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/activist/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/activist/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/set_screen' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/set_screen/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/set_screen/src/generate_pics.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/set_screen/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/set_screen/src/set_screen.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/set_screen/src/generate_screens.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/set_screen/src/status_example_data.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/set_screen/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/set_screen/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/set_screen/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/set_screen/lib/messages.html' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 '/usr/local/projects/set_screen/lib/URLs.map' || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 '/usr/local/projects/set_screen/lib/screens.map' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/set_screen/lib/URLs.html' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/set_screen/db' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/set_screen/doc' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/set_screen/doc/flow.odg' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/set_screen/bin' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/common' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/common/help' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/common/SIDS' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/common/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/lib/common.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/common/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/common/db/xl.db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/common/db/xl.todo' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/common/db/accounts.db' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/Makefile.simple' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/common/Makefile.std' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/cpi' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/cpi/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/src/cpi_arguments.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_cache.pm' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/src/common_to_cpi.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_hash_to_string.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_file.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_template.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cpi/src/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_send_file.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_drivers.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_trace.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_config.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_time.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_user.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_hash.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_trans_shell.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_perl.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_db.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_magic_http.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_translate.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_reorder.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_english.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_mime.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_cgi.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_copy_db.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_qrcode_of.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_make_from.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_inlist.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_help.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_setup.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_unique_nbit_color.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_filename.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_log.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_escape.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_vars.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_compress_integer.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_media.pm' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/src/cpi_to_common.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_sortable.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/src/cpi_lock.pm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cpi/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cpi/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/cpi/tests' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_media.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/tests/cpi_file.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_lock.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_english.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_hash.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_send_file.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_mime.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_user.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/cpi/tests/cpi_db.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/cpi/tests/cpi_arguments.pl' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/pictures' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/pictures/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/pictures/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pictures/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pictures/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/pictures/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pictures/lib/pictures.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/pictures/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/pictures/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/sudoku' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sudoku/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/sudoku/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/sudoku/src/grid.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib/puzzles' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-f.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-b.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-a.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/4D.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-2.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-d.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-e.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/2Dx.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-12.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/2D.puz' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/puzzles/3D-c.puz' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib/solutions' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-12.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-f.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-a.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-b.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-e.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/2D.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-c.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/2Dx.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-2.sol' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/solutions/3D-d.sol' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sudoku/lib/pre_generated' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/pre_generated/3D' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sudoku/lib/pre_generated/2D' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/sudoku/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/sudoku/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/sudoku/bin' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/ww' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/ww/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/ww/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/ww/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-modify-day.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-admin.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-graph.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-today.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-dir.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-add-section.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-show.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/ww/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/button-fullreport.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/help/show_help.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/ww/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/ww/lib/ww.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/ww/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/ww/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/todo' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/todo/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/todo/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/todo/help' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Priority.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_input_list_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_clear_list.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/help' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Task.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Rest.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_dirmode.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/field_Status.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_admin.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_save_list.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/todo/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/help/button_add_task.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/todo/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/todo/lib/todo.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/todo/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/todo/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/pandemic' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/pandemic/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/pandemic/src/pandaplot.pl' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/text.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/src/pandemic.c' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/text.h' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/debug.h' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/gen.c' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/pandemic/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/debug.c' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/src/gen.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/pandemic/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/BContagious.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Max_Dist.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Infected.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/output_format.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Iterations.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/ESymptomatic.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/RQuarantine.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/menu_admin.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/EContagious.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/search_Main.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Select_disease.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Population.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Tests.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/TDeath.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/EResistant.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Seed.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/TQuarantine.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/RDeath.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/BSymptomatic.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Start_simulation.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/help/Area.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/pandemic/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/lib/variables.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/lib/pandemic.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/lib/diseases.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/pandemic/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/pandemic/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/bin' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/pandemic/obj' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/pandemic/tests' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/long.args' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/test.args' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/3d.args' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/simple.args' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/pandemic/tests/t.args' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/Slide_Show' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Slide_Show/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/Slide_Show/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Slide_Show/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_next.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_admin.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_program.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/check_continuous.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_previous.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/check_continuous.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_media.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_next.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_disposition.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_media.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_admin.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Slide_Show/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/select_disposition.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/help/button_previous.stub' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Slide_Show/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/lib/Slide_Show.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Slide_Show/lib/footer.html' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/Slide_Show/lib/Slide_Show.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/Slide_Show/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/Slide_Show/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/rank_vote' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/rank_vote/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/rank_vote/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/rank_vote/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/rank_vote/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/rank_vote/help/select_program.stub' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/rank_vote/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/rank_vote/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/rank_vote/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/rank_vote/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/rank_vote/lib/rank_vote.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/rank_vote/lib/question.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/rank_vote/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/rank_vote/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/cci' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/cci/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/Makefile.inc' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/text.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/hash.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/deb_malloc.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/text.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/netio.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/hash.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/text.0.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/debug.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/gen.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/netio.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/debug.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/gen.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/list.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/src/list_test.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/README.md' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/cci/Makefile.odd' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/diagnosis' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/diagnosis/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/diagnosis/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/diagnosis/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/diagnosis/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/diagnosis/help/select_program.stub' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/diagnosis/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/diagnosis/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/diagnosis/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/diagnosis/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/diagnosis/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/sign' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sign/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/sign/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sign/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sign/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/sign/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sign/lib/signature.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/sign/lib/signature.html' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/sign/documents' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/sign/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/sign/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/sign/keys' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/Antasgo' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/Antasgo/src/make_task_icon.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/Antasgo/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/Antasgo/src/pattern_to_html_table.pl' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/Help.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_add_game.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/admin.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/List_games.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_view_task.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/Show_user.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/Dump_user_log.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/List_tasks.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_edit_game.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_play_game.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/help/button_add_task.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/patterns' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Diamond' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Triangle' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/O' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Cross' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Heart' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/8' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/TicTacToe' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/X' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/patterns/Smile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/footer.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/all.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/app.db.trace.current' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/app.db' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/instance.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/user.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/js/game.js' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Cardio/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Tennis/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Working/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Strength/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Play_with_dogs/icon.raw' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/icon_raw.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/x.jpeg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/interim.pnm' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Veggies/icon.raw' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Steps/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Water/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Sleeping/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Stand-ups/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Running/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Socializing/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Reading/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Volunteering/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Elliptical/icon.raw' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Me_time/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Personal_care/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Writing/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Chores/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/icon.png.hide' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Fasting/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes/icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes/index.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/lib/tasks/Car_pushes/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/Antasgo/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/Antasgo/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Antasgo/public' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/public/Antasgo_icon.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Antasgo/public/Antasgo.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Antasgo/bin' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/simple_utils' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/simple_utils/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_images.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/copydb.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/make_src_rpm.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/indent_json.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/mixtape.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/send_text.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/square_icon.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/setup_access_point.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/epr.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/dnf_upgrade.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/words_with.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/scan.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/radix.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/seconds_to_daytime.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/simple_utils/src/fork_bomb.sh' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/age_json.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/sudoinstall.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/anagram.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/killsound.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/descape.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/rnh.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/sumdir.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/in_path.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/merge_movies.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/rezip.sh' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/old_javascript.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/merge_scan_batch.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/embed_images.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/tmog.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/make_pdf_book.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/sanifile.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/github_readme.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/add_header.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/screens.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/nene.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/mode.sh' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/cat_media.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/unique_name.pl' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/projects/simple_utils/src/verifile.pl' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/projects/simple_utils/src/cp_verify.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_movies.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/youtube.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/count_domains.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_sounds.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/killproc.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/rebup.sh' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/doc_sep.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/upend.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/remind.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/host_of_ssh.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/show.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/toodg.sh' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/simple_utils/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/simple_utils/README.md' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/simple_utils/bin' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/Visas' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Visas/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/Visas/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Visas/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Visas/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/Visas/cache' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Visas/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Visas/lib/vars.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Visas/lib/languages' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/Visas/lib/templates' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/Visas/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/Visas/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/routing' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/completed_route_update.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/split_trips.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/read_vcf.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/addr_to_latlong.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/upgrade_log_format.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/distuser_to_pdf.pl' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/src/lib' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/check_history.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/read_trips.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/embed_images.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/pdf_to_route.pl' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/routing/src/porting' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/update_carriers.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/routes.js' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/kml' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/README' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/kml/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/kml/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/bup/lib.pl.0001.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/bup/lib.pl.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/template' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/kml/HITE_ICON' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/GeoJSON' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/GeoJSON/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Apple' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Apple/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Apple/lib.js' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Apple/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Apple/bup/lib.js.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/README' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Google' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Google/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/lib.js' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Google/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/route.js.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0004.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0001.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0003.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.js.0002.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Google/bup/lib.pl.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/gpx' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/gpx/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/gpx/README' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/gpx/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/gpx/template' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/po' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/po/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/po/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/po/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/po/bup/lib.pl.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Bing' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Bing/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/mqstatic' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/mqstatic/compress.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/try' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/lib.pl.disabled' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/README' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/src/mappers/mqstatic/template.wget' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/ref.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/template' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/src/mappers/mqstatic/try2' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Mapquest' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/try' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/routing/src/mappers/Mapquest/lib.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/lib.js' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0001.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0001.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0002.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0008.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0006.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0007.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0002.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0004.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0006.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0004.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0005.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0003.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/template.js.0007.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0005.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/bup/lib.pl.0003.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/ref.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/template.js' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/src/mappers/Mapquest/template' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/src/comapper.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/src/last_month.sh' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/setup_git' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/help' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_check.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Stickers.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_seen_by.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Assessment.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Email.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_anonymous_add_record.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Times_available.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_text.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Rollout_everything.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/sample_stickers.pdf' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_route_map_format.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Download_contact.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Driver_note.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/help/common' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Driver.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_include.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Update_record.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_routes_to_map.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Order.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Distributor.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Donation_percentage.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_plus.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Assessor_note.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_relationship_0.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_fullname.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Weight_limit.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Maximum_patrons.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Distributor.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Update_order.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Distributor.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Download_invoices.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Preferred_hospital.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/tail' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_name.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Rebalance.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Patron.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Notify.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Route.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_print_data.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_route_run_map_format.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_seen.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Staff.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Route.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_phone.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Emergency_relationship_0.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Route.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_email.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_language.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Bags.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_session.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Pickups.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/sample_route_sheet.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_program.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_password.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Status.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/html_filter.js' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Import.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_route_runs_to_map.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/help/html_filter.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_up.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/head' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_relationship_1.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_phone_1.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/record_Patron.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/Helpless.pnm' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Mobile_Internet_devices.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Distributor.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Name.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Address.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/help.css.orig' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Delete.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/help/images.old' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/02_top_level.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/05_pickup_odometer.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/09_stop_on_the_way.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/06_pickup_status.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/11_stop_problems.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/12_route_done.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/01_first_run.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/13_route_done_log_miles.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/07_pickup_done.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/04_pickup_vehicle.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/08_stop_visit.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/03_pickup.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/10_stop_contribution.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images.old/flow.list' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Driver_note.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Coordinator_note.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_fax.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Address.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Coordinator_note.cgi' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/help/images' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/08_note_odometer.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/09_set_stop_status.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/18_done_button.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/02_stop_list.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/01_access_your_location.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/03_unvisited_distributor.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/08_take_a_note.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/12_unvisited_first_stop.jpg' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/help/images/trimmed' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/18_done_button.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/12_unvisited_first_stop.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/16_route_in_progress.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/17_stop_with_flags.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/15_completed_first_stop.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/11_visit_next_stop.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/14_set_donation.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/13_set_parking_location.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/trimmed/19_recording_complete.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/10_stop_complete.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/16_route_in_progress.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/more_stops.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/17_stop_with_flags.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/05_make_a_call.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/15_completed_first_stop.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/06_send_a_text.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/07_program_GPS.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/11_visit_next_stop.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/14_set_donation.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/13_set_parking_location.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/19_recording_complete.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/04_select_route_type.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/images/pickups.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_start_with.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_optimize.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Contact.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_password_retyped.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Coords.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Dogs.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_larr.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_down.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Email.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_shipping.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Phone.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Name.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/order_Route.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Route_ends_with.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Emergency_contact_0.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/file_Import.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_darr.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/menu_admin.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/input_size.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/help_template.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Distributor.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Source.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/header_footer' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/help/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/html_filter.pl.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/showblocks.pl.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Driver.cgi.0002.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Driver.cgi.0001.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Driver.cgi.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/bup/Mobile_Internet_devices.cgi.0000.bz2' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/route_order_end_with.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_anonymous_print.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_FoodPrefs.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Address.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Times_receiving.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Phone.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/file_export.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_assessment.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/select_Contacts.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_address.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_route.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/help/sample_route_sheet.pdf' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_uarr.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Last_note.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Route.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Name.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Rollout.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Coords.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Route_sheet.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_contact_1.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Donation_maximum.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_phone_0.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_account_create.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_User.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Reimbursement.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/COMMON_select_program.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Emergency_contact_0.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Route_runs.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Expires.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Phone.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Staff_Status.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Driver.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Distributor_Mapquest_key.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/search_Staff.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Android_problems.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/file_import.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Name.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Notify.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Emergency_phone_0.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/Problems.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Route_Route_starts_with.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/field_Patron_Cats.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/button_Edit.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/routing/help/strain' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/routing/cache' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/maps.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/compress.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/mobile.css' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/routes_form.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/debug_buttons' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/assessment.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/notes.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/phone.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/map.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/routing/lib/index.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/routing_header.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/desktop.css' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/IRS_logo.jpg' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/colors' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/IRS.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/all.css' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/lib/compress.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/routing/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/routing/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/db/app.po' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/routing/mail' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/routing/doc' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/doc/driver_facts.pdf' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/doc/sample_route_sheet.pdf' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/routing/bin' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/routing/monthly_reports' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/Groceries' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Groceries/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/src/database.sh' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/Groceries/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Groceries/help' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_address.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_password.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/help.css' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/Helpless.png' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/select_store.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_phone.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_where.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/option_menu_edit.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_clear_list.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_language.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_store_name.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_quantity.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/menu_item_name.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_found.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_add_list.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_create.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_dirmode.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/help_template.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/COMMON_select_program.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_fax.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_fullname.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/input_item_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_session.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_select_list.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/menu_item_seen.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_text.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_delete_menu_item.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_admin.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_shipping.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_save_list.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_email.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_name.html' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/help/COMMON_account_password_retyped.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_remove.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/help/button_redraw.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/Groceries/lib' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/Groceries/lib/Groceries.js' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/Groceries/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/Groceries/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/Groceries/bin' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/testd' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/testd/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/testd/src/log2cfg.pl' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/testd/src/tests' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/ping.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/nmap.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/http.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/file_info.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/command.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/traceroute.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p1 '/usr/local/projects/testd/src/tests/watch_file.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/testd/src/testd.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/testd/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/testd/README.md' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/testd/bin' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/User' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/User/src' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/User/src/app.cgi' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/User/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/User/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040777 -p0 '/usr/local/projects/User/db' || error_count=`expr $error_count + 1`
+verifile -m0100666 -p0 '/usr/local/projects/User/db/app.db' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/busybox' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/busybox/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/busybox/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/busybox/public' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/busybox/public/Jeffries.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/busybox/public/Clock.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/busybox/public/Maze.html' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/projects/multis' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/greebl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/greebl/greebl.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/greebl/greebl.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/system' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/system/system.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/system/system.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/system/system.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/shared' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.c.setdis_and_grafon' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/lcs.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.mac' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/debug.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/ref.pl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/multis.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/f2c.h' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/shared/bup' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/bup/hipak.c.00' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/bup/hipak.c.01' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/settty.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/regres.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/hipak.c.splitjs' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/regres.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/shared/multis.js' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/cave' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.locations' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/cave/cave.for' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/scan' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/scan/scan.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/scan/scan.for' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/risk' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/risk/risk.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/risk/risk.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/risk/risk.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/life' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/life/life.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/life/life.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/f2c' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/f2c/src' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/niceprintf.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/parse.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/p1output.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/names.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/tokdefs.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/lex.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/machdefs.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/vax.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/p1defs.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/pccdefs.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/names.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/sysdep.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/mkfile.plan9' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/intr.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/mem.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/format.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/data.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/cds.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/misc.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/pread.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/iob.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/xsum.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/memset.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/xsum0.out' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/formatdata.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/output.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/proc.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/parse_args.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.io' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/multis/src/f2c/src/sysdeptest.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/expr.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.dcl' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/niceprintf.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/sysdep.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/usignal.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/ftypes.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/makefile.u' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/exec.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/putpcc.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/put.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/output.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/f2c.1' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/unused_getopt.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/f2c.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.exec' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/io.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.expr' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/format.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/version.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/tokens' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/defs.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/init.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/gram.head' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/error.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/f2c.1t' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/defines.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/equiv.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/main.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/malloc.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/src/makefile.vc' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/multis/src/f2c/a.out' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/f2c/dep_sys' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/f2c || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/xsum || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/README' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/multis/src/f2c/doc' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/Notice' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/multis/src/f2c/bin' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/projects/multis/src/f2c/obj' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/f2c/changes' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/cubic' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/cubic/cubic.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/cubic/cubic.for' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/snake' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/snake/snake.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/snake/snake.for' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/ocean' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/ocean/ocean.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/ocean/ocean.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/war' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/war/war.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/war/war.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/war/war.html' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/src/star' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/star/star.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/star/star.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/src/star/star.axis.quotes' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/Makefile' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/README.md' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/doc' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/doc/Email_to_Bill_Costa' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/doc/games.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/doc/usrpak.rnh' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/doc/usrpak.man' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/doc/project_notes' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/doc/multis.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/tools' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/tools/webserver' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/multis/tools/killshmems' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/tools/client' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/tools/daemon' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/multis/tools/fix_keywords' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/tools/standalone' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 '/usr/local/projects/multis/tools/make_mic' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/exports' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/exports/f2ccs' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/war.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/life.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cave.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cave.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cubic.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cubic.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/war.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/scan.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/risk.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/snake.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/cave.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/snake.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/star.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/system.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/regres.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/life.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/scan.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/greebl.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/war.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/multis.html' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/hipak.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/system.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/ocean.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/f2c.h' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/greebl.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/system.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/ocean.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/multis.js' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/risk.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/star.c' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/f2ccs/risk.c' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/exports/dec10' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/greebl.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cave.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cubic.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/war.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/scan.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/life.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/risk.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/make.mic' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/snake.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/scan.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/war.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cave.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cave.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/star.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/system.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/hipak.mac' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/cubic.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/life.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/ocean.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/usrpak.mac' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/greebl.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/risk.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/system.dat' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/settty.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/system.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/ocean.hlp' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/regres.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/snake.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/star.for' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/dec10/risk.hlp' || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 '/usr/local/projects/multis/exports/fixed_fs' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/snake.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/risk.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/cubic.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/regres.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/cave.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/war.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/ocean.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/life.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/system.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/scan.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/star.f' || error_count=`expr $error_count + 1`
+verifile -m0100664 -p0 '/usr/local/projects/multis/exports/fixed_fs/greebl.f' || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 '/usr/local/bin' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/host_of_ssh' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/mixtape' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/cat_media' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/epr' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/rezip' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/table_fun' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/indent_json' || error_count=`expr $error_count + 1`
+verifile -m0120777 -p0 '/usr/local/bin/set_screen' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/cat_images' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/upend' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/seconds_to_daytime' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/sanifile' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/anagram' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/rnh' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/generate_pics' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/sumdir' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/scan' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/copydb' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/send_text' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/completed_route_update' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/pandemic' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/distuser_to_pdf' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/make_task_icon' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/check_history' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/read_trips' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/screens' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/github_readme' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/read_vcf' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/pattern_to_html_table' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/split_trips' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/radix' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/make_src_rpm' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/embed_images' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/fork_bomb' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/square_icon' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/cpi_db' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/dnf_upgrade' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/tmog' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/pandaplot' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/toodg' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/generate_screens' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/grid' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/database' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/words_with' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/doc_sep' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/mode' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/verifile' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/cp_verify' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/rebup' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/remind' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/unique_name' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/sudoinstall' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/descape' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/nene' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/count_domains' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/cpi_user' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/last_month' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/cat_movies' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/age_json' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/addr_to_latlong' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/testd' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/killsound' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/show' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/old_javascript' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/merge_scan_batch' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/add_header' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/killproc' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/make_pdf_book' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/setup_access_point' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/merge_movies' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/cat_sounds' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 '/usr/local/bin/youtube' || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 '/usr/local/bin/in_path' || error_count=`expr $error_count + 1`
+# || error_count=`expr $error_count + 1`
+# Note that these can't be quoted because we don't know exactly where they are. || error_count=`expr $error_count + 1`
+# By doing this, we can make sure that machine-specific stuff got built. || error_count=`expr $error_count + 1`
+# || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/table_fun/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/table_fun/built/*/bin/table_fun || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/set_screen/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/set_screen/built/*/bin/generate_pics || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/set_screen/built/*/bin/generate_screens || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/sudoku/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/sudoku/built/*/bin/grid || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/pandemic/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/pandemic/built/*/bin/pandemic || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/pandemic/built/*/bin/pandaplot || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/Antasgo/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/Antasgo/built/*/bin/make_task_icon || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/Antasgo/built/*/bin/pattern_to_html_table || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/simple_utils/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/host_of_ssh || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/mixtape || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/cat_media || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/epr || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/rezip || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/indent_json || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/cat_images || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/upend || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/make_machines || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/seconds_to_daytime || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/sanifile || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/anagram || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/rnh || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/sumdir || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/scan || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/copydb || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/send_text || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/screens || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/github_readme || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/radix || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/make_src_rpm || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/embed_images || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/fork_bomb || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/square_icon || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/dnf_upgrade || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/tmog || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/toodg || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/words_with || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/doc_sep || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/mode || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/verifile || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/cp_verify || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/rebup || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/remind || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/unique_name || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/sudoinstall || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/descape || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/nene || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/count_domains || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/cat_movies || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/age_json || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/killsound || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/show || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/old_javascript || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/merge_scan_batch || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/add_header || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/killproc || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/make_pdf_book || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/setup_access_point || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/merge_movies || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/cat_sounds || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/simple_utils/built/*/bin/youtube || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/simple_utils/built/*/bin/in_path || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/routing/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/xlate_vcf || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/completed_route_update || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/distuser_to_pdf || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/check_history || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/read_trips || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/vcf_mail || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/read_vcf || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/split_trips || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/embed_images || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/defluff || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/routing/built/*/bin/last_month || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/addr_to_latlong || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/htmls_to_times || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/routing/built/*/bin/read_mapquest || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/Groceries/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/Groceries/built/*/bin/database || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/testd/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100755 -p1 /usr/local/projects/testd/built/*/bin/testd || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/f2c || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/dep_sys/*/bin/xsum || error_count=`expr $error_count + 1`
+verifile -m0040775 -p0 /usr/local/projects/multis/src/f2c/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/built/*/bin/f2c || error_count=`expr $error_count + 1`
+verifile -m0100775 -p0 /usr/local/projects/multis/src/f2c/built/*/bin/xsum || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/multis/built/*/bin || error_count=`expr $error_count + 1`
+verifile -m0040755 -p0 /usr/local/projects/multis/built/*/bin/f2cs || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/greebl || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/system || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cave.hlp || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cave || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cubic.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/war.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/scan.hlp || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/regres || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/scan || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/risk || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/risk.dat || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/snake.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cave.dat || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/life || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/star.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/life.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/greebl.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/war.html || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/multis.html || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/cubic || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/snake || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/system.dat || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/system.hlp || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/ocean.hlp || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/ocean || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/multis.js || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/war || error_count=`expr $error_count + 1`
+verifile -m0100644 -p0 /usr/local/projects/multis/built/*/bin/f2cs/risk.hlp || error_count=`expr $error_count + 1`
+verifile -m0100755 -p0 /usr/local/projects/multis/built/*/bin/f2cs/star || error_count=`expr $error_count + 1`
+echo INFO:  verify error count = $error_count.

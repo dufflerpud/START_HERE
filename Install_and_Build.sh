@@ -42,9 +42,9 @@ DISABLE_SELINUX=true
 REBOOT_REASON=
 SYSTEM_USER=0
 SYSTEM_GROUP=0
-SYSTEM_DIRECTORY_ATTRIBUTES=-D -d -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP
-SYSTEM_EXECUTABLE_ATTRIBUTES=-D -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP
-SYSTEM_READABLE_ATTRIBUTES=-D -m 0644 -o $SYSTEM_USER -g $SYSTEM_GROUP
+SYSTEM_DIRECTORY_ATTRIBUTES="-D -d -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP"
+SYSTEM_EXECUTABLE_ATTRIBUTES="-D -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP"
+SYSTEM_READABLE_ATTRIBUTES="-D -m 0644 -o $SYSTEM_USER -g $SYSTEM_GROUP"
 TMP=/tmp/$PROG
 
 #########################################################################
@@ -128,6 +128,7 @@ os_variables()
     {
     if [ -f /etc/cpi_cfg.pl ] ; then
 	WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
+	echo INFO:  WEBOFFSET recovered:  $WEBOFFSET.
     else
         WEBOFFSET="/`date +%s |
 	    if in_path sha1 ; then
@@ -139,6 +140,7 @@ os_variables()
 	    else
 	        cat -
 	    fi | cut -c1-4`"
+	echo INFO:  WEBOFFSET set to $WEBOFFSET.
     fi
 
     for sudodir in /etc/sudoers.d /usr/local/etc/sudoers.d ; do
@@ -169,14 +171,18 @@ os_variables()
     done
     [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
 
+    echo INFO:  LIKE=$LIKE INSTALLER=$INSTALLER INSTALLCMD=$INSTALLCMD
+
     if in_path gmake || like FREEBSD ; then
-        GMAKE=gmake
+        GMAKE=gmake	# May not be installed yet
     else
-        GMAKE=make
+        GMAKE=make	# May not be installed yet
     fi
 
     GNUINSTALL=/usr/gnu/bin/install
     [ -x "$GNUINSTALL" ] || GNUINSTALL=install
+
+    echo INFO:  SUDO_HACK=$SUDO_HACK GMAKE=$GMAKE GNUINSTALL=$GNUINSTALL
     }
 
 #########################################################################
@@ -268,7 +274,7 @@ osinstall()
 #doc# problems down the line.
 setup_projects()
     {
-    echo "[ Setting up projects ]"
+    echo INFO:  Setting up projects.
     if like SOLARIS ; then
     	# Get version perl was compiled against and install that.
 	# We need it for installing perl modules
@@ -366,6 +372,9 @@ setup_projects()
 	like DEBIAN && osinstall mailutils
     fi
     suinstall $SYSTEM_DIRECTORY_ATTRIBUTES $PROJECTS_DIR
+    res=$?
+    echo INFO:  setup_projects returns $res.
+    return $res
     }
 
 #########################################################################
@@ -489,6 +498,8 @@ EOF
 \$cpi_vars::WEBTOP="$WEBTOP";
 EOF
     fi
+    echo INFO:  install_and_configure_a_web_server WEBTOP=$WEBTOP.
+    return $?
     }
 
 #########################################################################
@@ -503,12 +514,16 @@ git_clone_to()
     if [ -d "$dest_dir/.git" ] ; then
 	echocd $dest_dir
 	echodo git pull
+	res=$?
     else
 	suinstall -m 0755 -d -o $USER -g $GROUP $dest_dir
 	echocd `dirname $dest_dir`
 	echodo git clone -q "$git_url"
+	res=$?
 	echocd $dest_dir
     fi
+    echo INFO:  get_clone_to $dest_dir returns $res.
+    return $res
     }
 
 #########################################################################
@@ -534,6 +549,9 @@ install_and_configure()
     git_clone_to "$url" "$top_proj_dir"
     echocd $top_proj_dir
     ecsudo $GMAKE install
+    res=$?
+    echo INFO:  install_and_configure $dest_dir returns $res.
+    return $res
     }
 
 #########################################################################
@@ -545,6 +563,9 @@ install_and_configure()
 setup_communication()
     {
     ssh 10.1.0.20 sh /usr/local/projects/START_HERE/developer.sh | sh
+    res=$?
+    echo INFO:  setup_communication returns $res.
+    return $res
     }
 
 #########################################################################
@@ -552,7 +573,7 @@ setup_communication()
 #########################################################################
 #doc# ### setup_multis()
 #doc# Find and install f2c (Fortran-to-C filter)
-setup_multis
+setup_multis()
     {
     # Need f2c and curses for multis
     if in_path f2c ; then
@@ -581,6 +602,9 @@ setup_multis
     fi
 
     in_path f2c	# Return status used to decide to build multis
+    res=$?
+    echo INFO:  setup_multis returns $res.
+    return $res
     }
 
 #########################################################################
