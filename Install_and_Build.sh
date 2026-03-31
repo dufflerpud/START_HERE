@@ -1,4 +1,3 @@
-make ghostscript
 #!/bin/sh
 set -x
 #
@@ -43,7 +42,21 @@ DISABLE_SELINUX=true
 REBOOT_REASON=
 SYSTEM_USER=0
 SYSTEM_GROUP=0
+SYSTEM_DIRECTORY_ATTRIBUTES=-D -d -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP
+SYSTEM_EXECUTABLE_ATTRIBUTES=-D -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP
+SYSTEM_READABLE_ATTRIBUTES=-D -m 0644 -o $SYSTEM_USER -g $SYSTEM_GROUP
 TMP=/tmp/$PROG
+
+#########################################################################
+#	Returns if $LIKE is the specified argument.			#
+#########################################################################
+like()
+    {
+    for likearg in $* ; do
+        [ "$LIKE" = "$likearg" ] && return
+    done
+    false
+    }
 
 #########################################################################
 #	Echo command and then do it.					#
@@ -54,6 +67,16 @@ echodo()
     {
     echo "+ $@" >&2
     "$@"
+    }
+
+#########################################################################
+#	Returns true if argument is in our path.			#
+#########################################################################
+#doc# ### in_path()
+#doc# Return true if argument is executable in path.
+in_path()
+    {
+    command -v "$1" >/dev/null	# Exit status becomes subroutine status
     }
 
 #########################################################################
@@ -68,16 +91,16 @@ echodo()
 ecsudo()
     {
     echo "! $@" >&2
-    if command -v sudo >/dev/null ; then	# For most systems
+    if in_path sudo ; then	# For most systems
         sudo "$@"
 	return $?
-    elif $LIKE_HAIKU ; then
+    elif like HAIKU ; then	# Users are fully privileged
         "$@"
 	return $?
-    elif command -v /bin/su >/dev/null ; then
-        su -c "$*"
+    elif in_path /bin/su ; then	# Get ready to type root password
+        su -c "$*"		# over and over and over again.
 	return $?
-    else
+    else			# I don't see this working except for Haiku
         "$@"			# For systems that require no privs
         return $?
     fi
@@ -105,16 +128,21 @@ os_variables()
     {
     if [ -f /etc/cpi_cfg.pl ] ; then
 	WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
-    elif command -v sha1 >/dev/null ; then
-	WEBOFFSET=/`date +%s | sha1 | cut -c1-4`
-    elif command -v cksum >/dev/null ; then
-	WEBOFFSET=/`date +%s | cksum -a sha1 --base64 --untagged | tr -d +/= | cut -c1-4`
     else
-	WEBOFFSET=/sto
+        WEBOFFSET="/`date +%s |
+	    if in_path sha1 ; then
+	        sha1
+	    elif in_path sha1sum ; then
+	        sha1sum
+	    elif in_path cksum ; then
+	        cksum -a sha1 --base64 --untagged | tr -d +/=
+	    else
+	        cat -
+	    fi | cut -c1-4`"
     fi
 
     for sudodir in /etc/sudoers.d /usr/local/etc/sudoers.d ; do
-	if [ -d $sudodir ] ; then
+	if [ -d "$sudodir" ] ; then
 	    SUDO_HACK="$sudodir/$PROG"
 	    break
 	fi
@@ -123,28 +151,32 @@ os_variables()
 	echo "Cannot stop sudo from continually asking for your password."
     fi
 
-    LIKE_DEBIAN=false;	command -v apt-get		>/dev/null && LIKE_DEBIAN=true
-    LIKE_ARCH=false;	command -v pacman		>/dev/null && LIKE_ARCH=true
-    LIKE_SUSE=false;	command -v zypper		>/dev/null && LIKE_SUSE=true
-    LIKE_SVR4=false;	command -v pkg			>/dev/null && LIKE_SVR4=true
-    LIKE_FREEBSD=false;	command -v freebsd-version	>/dev/null && LIKE_FREEBSD=true
-    LIKE_HAIKU=false;	command -v pkgman		>/dev/null && LIKE_HAIKU=true
-    LIKE_REDHAT=false;	command -v yum			>/dev/null && LIKE_REDHAT=true
-    			command -v dnf			>/dev/null && LIKE_REDHAT=true
-
-    for try_installer in dnf yum apt-get pacman freebsd-version pkg zypper pkgman; do
-        if command -v $try_installer >/dev/null ; then
+    for try_installer in dnf yum apt-get pacman pkgadd pkg zypper pkgman; do
+        if in_path $try_installer ; then
 	    INSTALLER=$try_installer
+	    case "$INSTALLER" in
+		dnf)		INSTALLCMD="dnf -yq install";				LIKE=REDHAT	;;
+		yum)		INSTALLCMD="yum -yq install";				LIKE=REDHAT	;;
+		apt-get)	INSTALLCMD="apt-get install -qqy";			LIKE=DEBIAN	;;
+		pacman)		INSTALLCMD="pacman -S --noconfirm --noprogressbar";	LIKE=ARCH	;;
+		pkgadd)		INSTALLCMD="pkg install";				LIKE=SOLARIS	;;
+		pkg)		INSTALLCMD="pkg install -y";				LIKE=FREEBSD	;;
+		zypper)		INSTALLCMD="zypper install -y";				LIKE=SUSE	;;
+		pkgman)		INSTALLCMD="pkgman install -y";				LIKE=HAIKU	;;
+	    esac
 	    break
 	fi
     done
     [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
 
-    if $LIKE_FREEBSD ; then
+    if in_path gmake || like FREEBSD ; then
         GMAKE=gmake
     else
         GMAKE=make
     fi
+
+    GNUINSTALL=/usr/gnu/bin/install
+    [ -x "$GNUINSTALL" ] || GNUINSTALL=install
     }
 
 #########################################################################
@@ -159,13 +191,13 @@ suinstall()
     {
     case "$*" in
         *" /dev/stdin "*)
-	    if $LIKE_FREEBSD || [ ! -e /dev/stdin ] ; then
+	    if like FREEBSD || [ ! -e /dev/stdin ] ; then
 		cat > $TMP.stdin
-		ecsudo install `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
+		ecsudo $GNUINSTALL `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
 		return $?
 	    fi
     esac
-    ecsudo install "$@"
+    ecsudo $GNUINSTALL "$@"
     return $?
     }
 
@@ -196,8 +228,8 @@ performa_updates()
 	yum)			ecsudo yum -yq update					;;
 	apt-get)		ecsudo apt-get update -qqy; ecsudo apt-get upgrade -yqq	;;
 	pacman)			ecsudo pacman -Syu --noconfirm --noprogressbar		;;
+	pkgadd)			ecsudo pkg update					;;
 	pkg)			ecsudo pkg update; ecsudo pkg upgrade			;;
-	freebsd-version)	ecsudo pkg update; ecsudo pkg upgrade			;;
 	zypper)			ecsudo ecsudo zypper update				;;
 	pkgman)			ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
 				ecsudo pkgman full-sync -y
@@ -210,20 +242,19 @@ performa_updates()
 #########################################################################
 #doc# ### osinstall()
 #doc# Figure out what tool is used to install and install specified packages
+#doc# Note that it does this one package at a time because most of the
+#doc# package handlers completely fail if one can't be installed and for
+#doc# development purposes, we want to know what works, not just the first
+#doc# thing that failed.  When these work across all of our development
+#doc# platforms, it will probably go back to handing all the arguments to
+#doc# the package installer at once.
 osinstall()
     {
     for p in $*; do
-	case "$INSTALLER" in
-	    dnf)		ecsudo dnf -yq install $p			;;
-	    yum)		ecsudo yum -yq install $p			;;
-	    apt-get)		ecsudo apt-get install -qqy $p			;;
-	    pacman)		ecsudo pacman -S --noconfirm --noprogressbar $p	;;
-	    pkg)		ecsudo pkg install $p				;;
-	    freebsd-version)	ecsudo pkg install -y $p			;;
-	    zypper)		ecsudo zypper install -y $p			;;
-	    pkgman)		ecsudo pkgman install -y $p			;;
-	esac
+	ecsudo $INSTALLCMD $p
     done
+
+    # ecsudo $INSTALLCMD $*
     }
 
 #########################################################################
@@ -238,24 +269,54 @@ osinstall()
 setup_projects()
     {
     echo "[ Setting up projects ]"
-    osinstall gcc sox netpbm
-    command -v $GMAKE >/dev/null || osinstall $GMAKE
-    if $LIKE_HAIKU ; then
+    if like SOLARIS ; then
+    	# Get version perl was compiled against and install that.
+	# We need it for installing perl modules
+    	perlver=`perl -V | awk -F/ '/cc=.\/usr\/gcc\// {print $4}'`
+	echo "*** Using gcc version $perlver ***"
+	osinstall /developer/gcc-$perlver
+    else
+        osinstall gcc
+    fi
+    osinstall sox netpbm
+    in_path $GMAKE || osinstall $GMAKE
+    if like HAIKU ; then
         : Do nothing
-    elif $LIKE_FREEBSD ; then
+    elif like FREEBSD ; then
         osinstall ghostscript10
     else
 	osinstall ghostscript
     fi
 
-    if grep -s 'NAME="Debian GNU/Linux"' /usr/lib/os-release >/dev/null 2>&1 ; then
+    if in_path trans ; then
+        echo "Trans already installed.  Skipping system depending install logic."
+    elif grep -s 'NAME="Debian GNU/Linux"' /usr/lib/os-release >/dev/null 2>&1 ; then
+	# This should probably just skip through to failsafe.
         echodo curl -s -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
         osinstall $TMP.deb
+    elif like SOLARIS ; then
+    	: Take the failsafe.
+#	    mkdir $TMP.translate-shell
+#	    echocd $TMP.translate-shell
+#	    echodo git clone https://github.com/soimort/translate-shell
+#	    echocd $TMP.translate-shell/translate-shell
+#	    echodo $GMAKE prefix=/
+#	    ecsudo $GMAKE install
     else
         osinstall translate-shell
     fi
 
-    command -v perl >/dev/null || osinstall perl
+    if in_path trans ; then
+        echo "We have an installed trans."
+    else
+    	# Fail safe.
+	echodo curl -s https://raw.githubusercontent.com/soimort/translate-shell/gh-pages/trans | 
+	    suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES /dev/stdin /bin/trans
+    fi
+
+    in_path trans || fatal "No working trans.  Cannot continue."
+
+    in_path perl || osinstall perl
 
     if [ ! -x /usr/bin/perl ] ; then
         where_is_perl=`command -v perl`
@@ -264,25 +325,47 @@ setup_projects()
     fi
 
     CPAN=cpan
-    if $LIKE_ARCH ; then
+    if like ARCH ; then
     	osinstall poppler cpanminus
         CPAN=/usr/bin/vendor_perl/cpanm
-    elif $LIKE_DEBIAN ; then
+    elif like DEBIAN ; then
     	osinstall poppler-utils libjpeg-dev
 	[ -x /usr/local/bin/cpan ] || osinstall cpan
-    elif $LIKE_REDHAT ; then
+    elif like REDHAT ; then
     	osinstall poppler-utils script cpan
     fi
 
-    #PERL_MM_USE_DEFAULT=1 ecsudo $CPAN -i CPAN
+    export PERL_MM_USE_DEFAULT=1
     yes "" | ecsudo $CPAN -i CPAN
+
     ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
+    if like FREEBSD ; then
+        osinstall databases/gdbm-GDBM p5-GDBM
+	ecsudo $CPAN -i B::COW
+	ecsudo $CPAN rm -rf /root/.cpan/build/ATOOMIC-*
+	echo ""
+	echo "*** The following will fail but its corpse will be useful ***"
+	ecsudo $CPAN -i Clone
+	echo ""
+	echo "OK, CPAN failed due to tar exiting with non-zero exit status"
+	echo "due to FreeBSD file attribute issues.  make and install by hand:"
+	osinstall gcc		# We need this for make
+	ecsudo chmod o+x /root
+	echocd /root/.cpan/build/ATOOMIC-0/Clone-0.48
+	ecsudo perl Makefile.PL
+	ecsudo make		# Note that this is Berkeley (bmake), not gmake
+	ecsudo make test
+	ecsudo make install
+	ecsudo chmod o-x /root
+	echocd /
+	echo "With a little luck, we now have a working Clone used by CAPTCHA."
+    fi
 
     if [ ! -e /usr/lib/sendmail ] ; then
 	osinstall ssmtp
-	$LIKE_DEBIAN && osinstall mailutils
+	like DEBIAN && osinstall mailutils
     fi
-    suinstall -d -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP ${PROJECTS_DIR}
+    suinstall $SYSTEM_DIRECTORY_ATTRIBUTES $PROJECTS_DIR
     }
 
 #########################################################################
@@ -294,36 +377,41 @@ setup_projects()
 install_and_configure_a_web_server()
     {
     cgi_module=modules/mod_cgi.so
-    if $LIKE_REDHAT ; then
+    if like REDHAT ; then
 	service=httpd.service
 	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
     	osinstall httpd
-    elif $LIKE_DEBIAN ; then
+    elif like DEBIAN ; then
         osinstall apache2
 	service=apache2
 	HTTP_CPI_CFG=/etc/apache2/conf-enabled/cpi.conf
 	[ -h /etc/apache2/mods-enabled/cgi.load ] || \
 	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
-    elif $LIKE_SUSE ; then
+    elif like SUSE ; then
 	osinstall apache2
 	service=apache2
 	HTTP_CPI_CFG=/etc/apache2/conf.d/cpi.conf
-    elif $LIKE_ARCH ; then
+    elif like ARCH ; then
 	service=httpd
 	HTTP_CPI_CFG=/etc/httpd/conf/conf.d/cpi.conf
     	osinstall apache
-    elif $LIKE_HAIKU ; then
+    elif like HAIKU ; then
 	HTTP_CPI_CFG=/boot/system/settings/apache/httpd.conf
         osinstall apache
-    elif $LIKE_FREEBSD ; then
+    elif like FREEBSD ; then
 	osinstall apache24
 	grep -s apache24_enable /etc/rc.conf >/dev/null ||
 	    ecsudo sysrc 'apache24_enable=YES'
 	HTTP_CPI_CFG=/usr/local/etc/apache24/Includes/cpi.conf
         cgi_module=libexec/apache24/mod_cgi.so
+    elif like SOLARIS ; then
+        osinstall apache-24
+	HTTP_CPI_CFG=/etc/apache2/2.4/conf.d/cpi.conf
+        cgi_module=libexec/mod_cgi.so
+	# Log in /var/svc/log/network-http:apache24.log
     fi
 
-    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs /usr/local/www/apache24/data ; do
+    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs /usr/local/www/apache24/data /var/apache2/2.4/htdocs ; do
 	if [ -d $DOCUMENTROOT ] ; then
 	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
 	    break
@@ -332,7 +420,7 @@ install_and_configure_a_web_server()
 
     [ -n "$WEBTOP" ] || fatal "No documentroot found."
 
-    suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $HTTP_CPI_CFG <<EOF
+    suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $HTTP_CPI_CFG <<EOF
 LoadModule cgi_module $cgi_module
 AddHandler cgi-script .cgi .pl
 <Directory $WEBTOP>
@@ -345,18 +433,20 @@ EOF
 	ecsudo systemctl enable $service
 	ecsudo systemctl start $service
 	ecsudo systemctl reload $service	# This should really not be needed
-    elif $LIKE_FREEBSD ; then
+    elif like FREEBSD ; then
 	ecsudo service apache24 start
+    elif like SOLARIS ; then
+        ecsudo svcadm enable apache24
     fi
 
     # Can't do this before we've installed the http server
-    WUSER=`awk -F: '/^(apache|www|www-data|http|wwwrun)/ {print $3}' /etc/passwd`
-    WGROUP=`awk -F: '/^(apache|www|www-data|http|wwwrun)/ {print $4}' /etc/passwd`
+    WUSER=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd)/ {print $3}' /etc/passwd`
+    WGROUP=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd)/ {print $4}' /etc/passwd`
 
     WUSER=${WUSER:-user}
     WGROUP=${WUSER:-group}
 
-    suinstall -d -m 0755 -o ${WUSER} -g ${WGROUP} ${WEBTOP}
+    suinstall -d -m 0755 -o $WUSER -g $WGROUP $WEBTOP
 
     if [ -x /usr/bin/firewall-cmd ] ; then
 	ecsudo firewall-cmd --zone=public --add-service=http --permanent
@@ -369,9 +459,9 @@ EOF
 	    REBOOT_REASON="$REBOOT_REASON~Kernel flag selinux set to 0."
 	else
 	    ecsudo semanage fcontext -a -t httpd_sys_script_exec_t "$WEBTOP(/.*)?"   
-	    suinstall -d -m 0777 -o ${WUSER} -g ${WGROUP} /var/log/stderr
+	    suinstall -d -m 0777 -o $WUSER -g $WGROUP /var/log/stderr
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/stderr(/.*)?"
-	    suinstall -o ${WUSER} -g ${WGROUP} -m 0666 /var/log/common.log
+	    suinstall -m 0666 -o $WUSER -g $WGROUP /var/log/common.log
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/common.log"
 	    ecsudo restorecon -Rv $WEBTOP
     	fi
@@ -379,7 +469,7 @@ EOF
 
     OVERRIDECONF=/etc/systemd/system/httpd.service.d/override.conf
     if [ -d `dirname $OVERRIDECONF` -a ! -s $OVERRIDECONF ] ; then
-        suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin $OVERRIDECONF <<EOF
+        suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OVERRIDECONF <<EOF
 [Service]
 ProtectSystem=no
 ProtectHome=no
@@ -390,12 +480,13 @@ EOF
     echo "[Web software will be installed into ${WEBTOP}]"
 
     if [ ! -f /etc/cpi_cfg.pl ] ; then
-	suinstall -o $SYSTEM_USER -g $SYSTEM_GROUP -m 0644 /dev/stdin /etc/cpi_cfg.pl <<EOF
+	suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin /etc/cpi_cfg.pl <<EOF
 #\$cpi_vars::WEBOFFSET="YourDomain.com";
 #\$cpi_vars::FAX_SERVER="Your fax printer name";
 #\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
 #\$cpi_vars::KEY_CAPTCHA_PRIVATE="Captcha private key";
 \$cpi_vars::WEBOFFSET="$WEBOFFSET";
+\$cpi_vars::WEBTOP="$WEBTOP";
 EOF
     fi
     }
@@ -413,7 +504,7 @@ git_clone_to()
 	echocd $dest_dir
 	echodo git pull
     else
-	suinstall -m 0755 -d -o ${USER} -g ${GROUP} $dest_dir
+	suinstall -m 0755 -d -o $USER -g $GROUP $dest_dir
 	echocd `dirname $dest_dir`
 	echodo git clone -q "$git_url"
 	echocd $dest_dir
@@ -454,6 +545,42 @@ install_and_configure()
 setup_communication()
     {
     ssh 10.1.0.20 sh /usr/local/projects/START_HERE/developer.sh | sh
+    }
+
+#########################################################################
+#	Multis written in Fortran-66 so we need f2c, and also curses.	#
+#########################################################################
+#doc# ### setup_multis()
+#doc# Find and install f2c (Fortran-to-C filter)
+setup_multis
+    {
+    # Need f2c and curses for multis
+    if in_path f2c ; then
+	# It either came as part of the distribution or the above
+	# system-by-system logic built it.
+	echo "f2c is already installed.  Skipping system dependent install logic."
+    elif like DEBIAN REDHAT SUSE FREEBSD ; then
+	# These systems don't come with it installed but they know of it
+	osinstall f2c
+    elif like ARCH ; then
+	osinstall base-devel
+	git_clone_to https://aur.archlinux.org/f2c.git $TMP.f2c
+	yes | echodo makepkg -srif --noprogressbar
+    else
+	# Else build it from the source.  Hail Mary ... (Solaris)
+	git_clone_to https://github.com/barak/f2c $TMP.f2c
+	echodo $GMAKE -f makefile.u f2c
+	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c /bin/f2c
+    fi
+    echocd $HOME
+
+    if like DEBIAN ; then
+	osinstall libncurses-dev
+    elif like REDHAT SUSE ; then
+	osinstall ncurses-devel
+    fi
+
+    in_path f2c	# Return status used to decide to build multis
     }
 
 #########################################################################
@@ -519,7 +646,7 @@ trap cleanup EXIT
 
 performa_updates
 osinstall git
-compute -v hostname >/dev/null || osinstall inetutils
+in_path hostname || osinstall inetutils
 install_and_configure_a_web_server
 
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
@@ -548,25 +675,11 @@ install_and_configure diagnosis		# Requires cpi & common
 install_and_configure Visas		# Requires cpi & common
 install_and_configure activist		# Requires cpi & common
 install_and_configure sign		# Requires cpi & common
+install_and_configure cci		# Requires common, gcc
+install_and_configure pandemic		# Requires cpi, common, cci and gcc
 
-if $LIKE_DEBIAN ; then
-    osinstall f2c libncurses-dev
-elif $LIKE_REDHAT || $LIKE_SUSE ; then
-    osinstall f2c ncurses-devel
-elif $LIKE_ARCH ; then
-    mkdir -p $TMP.f2c
-    osinstall base-devel
-    echocd $TMP.f2c
-    echodo git clone https://aur.archlinux.org/f2c.git
-    echocd $TMP.f2c/f2c
-    yes | echodo makepkg -srif --noprogressbar
-    echocd $HOME
-fi
-
-install_and_configure multis		# Requires cpi
-
-install_and_configure cci		# Requires common
-install_and_configure pandemic		# Requires cpi, common and cci
+# Requires cpi, gcc, f2c, curses
+setup_multis && install_and_configure multis
 
 if $DEVELOPER ; then
     setup_communication
