@@ -48,14 +48,13 @@ SYSTEM_READABLE_ATTRIBUTES="-D -m 0644 -o $SYSTEM_USER -g $SYSTEM_GROUP"
 TMP=/tmp/$PROG
 
 #########################################################################
-#	Returns if $LIKE is the specified argument.			#
+#	Returns if $OS_LIKE is the specified argument.			#
 #########################################################################
-like()
+#doc# ### os_of()
+#doc# Return true if the current OS is any of the arguments
+os_of()
     {
-    for likearg in $* ; do
-        [ "$LIKE" = "$likearg" ] && return
-    done
-    false
+    echo " $* " | grep -iq " $OS_LIKE "
     }
 
 #########################################################################
@@ -94,7 +93,7 @@ ecsudo()
     if in_path sudo ; then	# For most systems
         sudo "$@"
 	return $?
-    elif like HAIKU ; then	# Users are fully privileged
+    elif os_of HAIKU ; then	# Users are fully privileged
         "$@"
 	return $?
     elif in_path /bin/su ; then	# Get ready to type root password
@@ -121,7 +120,7 @@ echocd()
 #########################################################################
 #	Look through OS to find out how it does things and leave	#
 #	results in global variables.					#
-#		LIKE_(os)						#
+#		OS_LIKE_(os)						#
 #		INSTALLER						#
 #########################################################################
 os_variables()
@@ -157,32 +156,38 @@ os_variables()
         if in_path $try_installer ; then
 	    INSTALLER=$try_installer
 	    case "$INSTALLER" in
-		dnf)		INSTALLCMD="dnf -yq install";				LIKE=REDHAT	;;
-		yum)		INSTALLCMD="yum -yq install";				LIKE=REDHAT	;;
-		apt-get)	INSTALLCMD="apt-get install -qqy";			LIKE=DEBIAN	;;
-		pacman)		INSTALLCMD="pacman -S --noconfirm --noprogressbar";	LIKE=ARCH	;;
-		pkgadd)		INSTALLCMD="pkg install";				LIKE=SOLARIS	;;
-		pkg)		INSTALLCMD="pkg install -y";				LIKE=FREEBSD	;;
-		zypper)		INSTALLCMD="zypper install -y";				LIKE=SUSE	;;
-		pkgman)		INSTALLCMD="pkgman install -y";				LIKE=HAIKU	;;
+		dnf)		INSTALLCMD="dnf -yq install";				OS_LIKE=REDHAT	;;
+		yum)		INSTALLCMD="yum -yq install";				OS_LIKE=REDHAT	;;
+		apt-get)	INSTALLCMD="apt-get install -qqy";			OS_LIKE=DEBIAN	;;
+		pacman)		INSTALLCMD="pacman -S --noconfirm --noprogressbar";	OS_LIKE=ARCH	;;
+		pkgadd)		INSTALLCMD="pkg install";				OS_LIKE=SOLARIS	;;
+		pkg)		INSTALLCMD="pkg install -y";				OS_LIKE=FREEBSD	;;
+		zypper)		INSTALLCMD="zypper install -y";				OS_LIKE=SUSE	;;
+		pkgman)		INSTALLCMD="pkgman install -y";				OS_LIKE=HAIKU	;;
 	    esac
 	    break
 	fi
     done
     [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
 
-    echo INFO:  LIKE=$LIKE INSTALLER=$INSTALLER INSTALLCMD=$INSTALLCMD
+    echo INFO:  OS_LIKE=$OS_LIKE INSTALLER=$INSTALLER INSTALLCMD=$INSTALLCMD
 
-    if in_path gmake || like FREEBSD ; then
+    if in_path gmake || os_of FREEBSD ; then
         GMAKE=gmake	# May not be installed yet
     else
         GMAKE=make	# May not be installed yet
     fi
 
-    GNUINSTALL=/usr/gnu/bin/install
-    [ -x "$GNUINSTALL" ] || GNUINSTALL=install
+    GINSTALL=/usr/gnu/bin/install
+    if [ ! -x "$GINSTALL" ] ; then
+        GINSTALL=/usr/local/bin/ginstall
+	if [ ! -x "$GINSTALL" ] ; then
+	    GINSTALL=`command -v ginstall >/dev/null 2>&1`
+	    GINSTALL=${GINSTALL:-"install"}
+	fi
+    fi
 
-    echo INFO:  SUDO_HACK=$SUDO_HACK GMAKE=$GMAKE GNUINSTALL=$GNUINSTALL
+    echo INFO:  SUDO_HACK=$SUDO_HACK GMAKE=$GMAKE GINSTALL=$GINSTALL
     }
 
 #########################################################################
@@ -197,13 +202,13 @@ suinstall()
     {
     case "$*" in
         *" /dev/stdin "*)
-	    if like FREEBSD || [ ! -e /dev/stdin ] ; then
+	    if os_of FREEBSD || [ ! -e /dev/stdin ] ; then
 		cat > $TMP.stdin
-		ecsudo $GNUINSTALL `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
+		ecsudo $GINSTALL `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
 		return $?
 	    fi
     esac
-    ecsudo $GNUINSTALL "$@"
+    ecsudo $GINSTALL "$@"
     return $?
     }
 
@@ -246,7 +251,7 @@ performa_updates()
 #########################################################################
 #	Use the right installation tool					#
 #########################################################################
-#doc# ### osinstall()
+#doc# ### os_install()
 #doc# Figure out what tool is used to install and install specified packages
 #doc# Note that it does this one package at a time because most of the
 #doc# package handlers completely fail if one can't be installed and for
@@ -254,7 +259,7 @@ performa_updates()
 #doc# thing that failed.  When these work across all of our development
 #doc# platforms, it will probably go back to handing all the arguments to
 #doc# the package installer at once.
-osinstall()
+os_install()
     {
     for p in $*; do
 	ecsudo $INSTALLCMD $p
@@ -275,32 +280,32 @@ osinstall()
 setup_projects()
     {
     echo INFO:  Setting up projects.
-    if like SOLARIS ; then
+    if os_of SOLARIS ; then
     	# Get version perl was compiled against and install that.
 	# We need it for installing perl modules
     	perlver=`perl -V | awk -F/ '/cc=.\/usr\/gcc\// {print $4}'`
 	echo "*** Using gcc version $perlver ***"
-	osinstall /developer/gcc-$perlver
+	os_install /developer/gcc-$perlver
     else
-        osinstall gcc
+        os_install gcc
     fi
-    osinstall sox netpbm
-    in_path $GMAKE || osinstall $GMAKE
-    if like HAIKU ; then
+    os_install sox netpbm
+    in_path $GMAKE || os_install $GMAKE
+    if os_of HAIKU ; then
         : Do nothing
-    elif like FREEBSD ; then
-        osinstall ghostscript10
+    elif os_of FREEBSD ; then
+        os_install ghostscript10
     else
-	osinstall ghostscript
+	os_install ghostscript
     fi
 
     if in_path trans ; then
         echo "Trans already installed.  Skipping system depending install logic."
-    elif grep -s 'NAME="Debian GNU/Linux"' /usr/lib/os-release >/dev/null 2>&1 ; then
+    elif grep -sq 'NAME="Debian GNU/Linux"' /usr/lib/os-release ; then
 	# This should probably just skip through to failsafe.
         echodo curl -s -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
-        osinstall $TMP.deb
-    elif like SOLARIS ; then
+        os_install $TMP.deb
+    elif os_of SOLARIS ; then
     	: Take the failsafe.
 #	    mkdir $TMP.translate-shell
 #	    echocd $TMP.translate-shell
@@ -309,7 +314,7 @@ setup_projects()
 #	    echodo $GMAKE prefix=/
 #	    ecsudo $GMAKE install
     else
-        osinstall translate-shell
+        os_install translate-shell
     fi
 
     if in_path trans ; then
@@ -322,7 +327,7 @@ setup_projects()
 
     in_path trans || fatal "No working trans.  Cannot continue."
 
-    in_path perl || osinstall perl
+    in_path perl || os_install perl
 
     if [ ! -x /usr/bin/perl ] ; then
         where_is_perl=`command -v perl`
@@ -331,22 +336,22 @@ setup_projects()
     fi
 
     CPAN=cpan
-    if like ARCH ; then
-    	osinstall poppler cpanminus
+    if os_of ARCH ; then
+    	os_install poppler cpanminus
         CPAN=/usr/bin/vendor_perl/cpanm
-    elif like DEBIAN ; then
-    	osinstall poppler-utils libjpeg-dev
-	[ -x /usr/local/bin/cpan ] || osinstall cpan
-    elif like REDHAT ; then
-    	osinstall poppler-utils script cpan
+    elif os_of DEBIAN ; then
+    	os_install poppler-utils libjpeg-dev
+	[ -x /usr/local/bin/cpan ] || os_install cpan
+    elif os_of REDHAT ; then
+    	os_install poppler-utils script cpan
     fi
 
     export PERL_MM_USE_DEFAULT=1
     yes "" | ecsudo $CPAN -i CPAN
 
     ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
-    if like FREEBSD ; then
-        osinstall databases/gdbm-GDBM p5-GDBM
+    if os_of FREEBSD ; then
+        os_install databases/gdbm-GDBM p5-GDBM
 	ecsudo $CPAN -i B::COW
 	ecsudo $CPAN rm -rf /root/.cpan/build/ATOOMIC-*
 	echo ""
@@ -355,7 +360,7 @@ setup_projects()
 	echo ""
 	echo "OK, CPAN failed due to tar exiting with non-zero exit status"
 	echo "due to FreeBSD file attribute issues.  make and install by hand:"
-	osinstall gcc		# We need this for make
+	os_install gcc		# We need this for make
 	ecsudo chmod o+x /root
 	echocd /root/.cpan/build/ATOOMIC-0/Clone-0.48
 	ecsudo perl Makefile.PL
@@ -368,8 +373,8 @@ setup_projects()
     fi
 
     if [ ! -e /usr/lib/sendmail ] ; then
-	osinstall ssmtp
-	like DEBIAN && osinstall mailutils
+	os_install ssmtp
+	like DEBIAN && os_install mailutils
     fi
     suinstall $SYSTEM_DIRECTORY_ATTRIBUTES $PROJECTS_DIR
     res=$?
@@ -386,35 +391,35 @@ setup_projects()
 install_and_configure_a_web_server()
     {
     cgi_module=modules/mod_cgi.so
-    if like REDHAT ; then
+    if os_of REDHAT ; then
 	service=httpd.service
 	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
-    	osinstall httpd
-    elif like DEBIAN ; then
-        osinstall apache2
+    	os_install httpd
+    elif os_of DEBIAN ; then
+        os_install apache2
 	service=apache2
 	HTTP_CPI_CFG=/etc/apache2/conf-enabled/cpi.conf
 	[ -h /etc/apache2/mods-enabled/cgi.load ] || \
 	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
-    elif like SUSE ; then
-	osinstall apache2
+    elif os_of SUSE ; then
+	os_install apache2
 	service=apache2
 	HTTP_CPI_CFG=/etc/apache2/conf.d/cpi.conf
-    elif like ARCH ; then
+    elif os_of ARCH ; then
 	service=httpd
 	HTTP_CPI_CFG=/etc/httpd/conf/conf.d/cpi.conf
-    	osinstall apache
-    elif like HAIKU ; then
+    	os_install apache
+    elif os_of HAIKU ; then
 	HTTP_CPI_CFG=/boot/system/settings/apache/httpd.conf
-        osinstall apache
-    elif like FREEBSD ; then
-	osinstall apache24
-	grep -s apache24_enable /etc/rc.conf >/dev/null ||
+        os_install apache
+    elif os_of FREEBSD ; then
+	os_install apache24
+	grep -s apache24_enable /etc/rc.conf ||
 	    ecsudo sysrc 'apache24_enable=YES'
 	HTTP_CPI_CFG=/usr/local/etc/apache24/Includes/cpi.conf
         cgi_module=libexec/apache24/mod_cgi.so
-    elif like SOLARIS ; then
-        osinstall apache-24
+    elif os_of SOLARIS ; then
+        os_install apache-24
 	HTTP_CPI_CFG=/etc/apache2/2.4/conf.d/cpi.conf
         cgi_module=libexec/mod_cgi.so
 	# Log in /var/svc/log/network-http:apache24.log
@@ -442,9 +447,9 @@ EOF
 	ecsudo systemctl enable $service
 	ecsudo systemctl start $service
 	ecsudo systemctl reload $service	# This should really not be needed
-    elif like FREEBSD ; then
+    elif os_of FREEBSD ; then
 	ecsudo service apache24 start
-    elif like SOLARIS ; then
+    elif os_of SOLARIS ; then
         ecsudo svcadm enable apache24
     fi
 
@@ -522,7 +527,7 @@ git_clone_to()
 	res=$?
 	echocd $dest_dir
     fi
-    echo INFO:  get_clone_to $dest_dir returns $res.
+    [ 0 = $? ] || echo INFO:  get_clone_to $dest_dir returns $res.
     return $res
     }
 
@@ -580,25 +585,25 @@ setup_multis()
 	# It either came as part of the distribution or the above
 	# system-by-system logic built it.
 	echo "f2c is already installed.  Skipping system dependent install logic."
-    elif like DEBIAN REDHAT SUSE FREEBSD ; then
+    elif os_of DEBIAN REDHAT SUSE FREEBSD ; then
 	# These systems don't come with it installed but they know of it
-	osinstall f2c
-    elif like ARCH ; then
-	osinstall base-devel
-	git_clone_to https://aur.archlinux.org/f2c.git $TMP.f2c
+	os_install f2c
+    elif os_of ARCH ; then
+	os_install base-devel
+	git_clone_to https://aur.archlinux.org/f2c.git $TMP.build/f2c
 	yes | echodo makepkg -srif --noprogressbar
     else
 	# Else build it from the source.  Hail Mary ... (Solaris)
-	git_clone_to https://github.com/barak/f2c $TMP.f2c
+	git_clone_to https://github.com/barak/f2c $TMP.build/f2c
 	echodo $GMAKE -f makefile.u f2c
 	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c /bin/f2c
     fi
     echocd $HOME
 
-    if like DEBIAN ; then
-	osinstall libncurses-dev
-    elif like REDHAT SUSE ; then
-	osinstall ncurses-devel
+    if os_of DEBIAN ; then
+	os_install libncurses-dev
+    elif os_of REDHAT SUSE ; then
+	os_install ncurses-devel
     fi
 
     in_path f2c	# Return status used to decide to build multis
@@ -669,8 +674,8 @@ temporarily_disable_sudo_password
 trap cleanup EXIT
 
 performa_updates
-osinstall git
-in_path hostname || osinstall inetutils
+os_install git
+in_path hostname || os_install inetutils
 install_and_configure_a_web_server
 
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
@@ -714,5 +719,5 @@ if [ -n "$REBOOT_REASON" ] ; then
     echo "REASON TO REBOOT:$REBOOT_REASON" | sed -e 's/~/\n    /g'
 fi
 
-rm -rf $TMP.*
 exec /usr/local/projects/START_HERE/check_install.sh
+ecsudo rm -rf $TMP.*
