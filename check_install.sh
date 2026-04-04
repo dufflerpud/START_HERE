@@ -34,6 +34,7 @@
 #doc#	version string if I ever go back to older version control.
 ########################################################################
 export PATH=/usr/local/bin:$PATH
+error_count=0
 verifile -m0040755 -p0 'WWWTOP' || error_count=`expr $error_count + 1`
 verifile -m0040755 -p0 'WWWTOP/table_fun' || error_count=`expr $error_count + 1`
 verifile -m0040755 -p0 'WWWTOP/activist' || error_count=`expr $error_count + 1`
