@@ -178,12 +178,15 @@ os_variables()
         GMAKE=make	# May not be installed yet
     fi
 
-    GINSTALL=/usr/gnu/bin/install
-    if [ ! -x "$GINSTALL" ] ; then
-        GINSTALL=/usr/local/bin/ginstall
+    os_of FREEBSD && os_install coreutils
+    GINSTALL=`command -v ginstall >/dev/null 2>&1`
+    if [ -z "$GINSTALL" ] ; then
+	GINSTALL=/usr/gnu/bin/install
 	if [ ! -x "$GINSTALL" ] ; then
-	    GINSTALL=`command -v ginstall >/dev/null 2>&1`
-	    GINSTALL=${GINSTALL:-"install"}
+	    GINSTALL=/usr/local/bin/ginstall
+	    if [ ! -x "$GINSTALL" ] ; then
+	        GINSTALL=install
+	    fi
 	fi
     fi
 
