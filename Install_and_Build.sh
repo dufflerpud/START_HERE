@@ -598,7 +598,8 @@ setup_multis()
     else
 	# Else build it from the source.  Hail Mary ... (Solaris)
 	git_clone_to https://github.com/barak/f2c $TMP.build/f2c
-	echodo $GMAKE -f makefile.u f2c
+	echocd $TMP.build/f2c/src
+	echodo $GMAKE -f makefile.u f2c CC=gcc
 	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c /bin/f2c
     fi
     echocd $HOME
