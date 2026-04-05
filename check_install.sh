@@ -782,8 +782,8 @@ verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/nene.pl' || error_c
 verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/mode.sh' || error_count=`expr $error_count + 1`
 verifile -m0100664 -p1 '/usr/local/projects/simple_utils/src/cat_media.pl' || error_count=`expr $error_count + 1`
 verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/unique_name.pl' || error_count=`expr $error_count + 1`
-verifile -m0100755 -p1 '/usr/local/projects/simple_utils/src/verifile.pl' || error_count=`expr $error_count + 1`
-verifile -m0100755 -p1 '/usr/local/projects/simple_utils/src/cp_verify.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/verifile.pl' || error_count=`expr $error_count + 1`
+verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/cp_verify.pl' || error_count=`expr $error_count + 1`
 verifile -m0100775 -p0 '/usr/local/projects/simple_utils/src/cat_movies.sh' || error_count=`expr $error_count + 1`
 verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/youtube.pl' || error_count=`expr $error_count + 1`
 verifile -m0100775 -p1 '/usr/local/projects/simple_utils/src/count_domains.pl' || error_count=`expr $error_count + 1`
