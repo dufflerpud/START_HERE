@@ -174,6 +174,10 @@ os_variables()
     else
         USRLOCAL=/usr/local
     fi
+    
+    export PATH=${PATH}:${USRLOCAL}/bin
+    export PERL5LIB=${PERL5LIB}:${USRLOCAL}/lib/perl
+
     PROJECTS_DIR=$USRLOCAL/projects
 
     echo INFO:  OS_LIKE=$OS_LIKE INSTALLER=$INSTALLER INSTALLCMD=$INSTALLCMD
