@@ -35,7 +35,6 @@ set -x
 PROG=`basename $0 .sh`
 USER=`id -un`
 GROUP=`id -gn`
-PROJECTS_DIR=/usr/local/projects
 BE_CLEAN=false
 DEVELOPER=false
 DISABLE_SELINUX=true
@@ -125,8 +124,8 @@ echocd()
 #########################################################################
 os_variables()
     {
-    if [ -f /etc/cpi_cfg.pl ] ; then
-	WEBOFFSET=`perl -e 'eval(\`cat /etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
+    if [ -f $USRLOCAL/etc/cpi_cfg.pl ] ; then
+	WEBOFFSET=`perl -e 'eval(\`cat $USRLOCAL/etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
 	echo INFO:  WEBOFFSET recovered:  $WEBOFFSET.
     else
         WEBOFFSET="/`date +%s |
@@ -142,7 +141,7 @@ os_variables()
 	echo INFO:  WEBOFFSET set to $WEBOFFSET.
     fi
 
-    for sudodir in /etc/sudoers.d /usr/local/etc/sudoers.d ; do
+    for sudodir in /etc/sudoers.d $USRLOCAL/etc/sudoers.d ; do
 	if [ -d "$sudodir" ] ; then
 	    SUDO_HACK="$sudodir/$PROG"
 	    break
@@ -170,6 +169,13 @@ os_variables()
     done
     [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
 
+    if os_of HAIKU ; then
+        USRLOCAL=/boot/home/config/non-packaged
+    else
+        USRLOCAL=/usr/local
+    fi
+    PROJECTS_DIR=$USRLOCAL/projects
+
     echo INFO:  OS_LIKE=$OS_LIKE INSTALLER=$INSTALLER INSTALLCMD=$INSTALLCMD
 
     if in_path gmake || os_of FREEBSD ; then
@@ -183,7 +189,7 @@ os_variables()
     if [ -z "$GINSTALL" ] ; then
 	GINSTALL=/usr/gnu/bin/install
 	if [ ! -x "$GINSTALL" ] ; then
-	    GINSTALL=/usr/local/bin/ginstall
+	    GINSTALL=$USRLOCAL/bin/ginstall
 	    if [ ! -x "$GINSTALL" ] ; then
 	        GINSTALL=install
 	    fi
@@ -205,7 +211,7 @@ suinstall()
     {
     case "$*" in
         *" /dev/stdin "*)
-	    if os_of FREEBSD || [ ! -e /dev/stdin ] ; then
+	    if os_of FREEBSD HAIKU || [ ! -e /dev/stdin ] ; then
 		cat > $TMP.stdin
 		ecsudo $GINSTALL `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
 		return $?
@@ -245,7 +251,7 @@ performa_updates()
 	pkgadd)			ecsudo pkg update					;;
 	pkg)			ecsudo pkg update; ecsudo pkg upgrade			;;
 	zypper)			ecsudo ecsudo zypper update				;;
-	pkgman)			ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
+	pkgman)			yes "" | ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
 				ecsudo pkgman full-sync -y
 				;;
     esac
@@ -283,6 +289,7 @@ os_install()
 setup_projects()
     {
     echo INFO:  Setting up projects.
+
     if os_of SOLARIS ; then
     	# Get version perl was compiled against and install that.
 	# We need it for installing perl modules
@@ -325,10 +332,11 @@ setup_projects()
     else
     	# Fail safe.
 	echodo curl -s https://raw.githubusercontent.com/soimort/translate-shell/gh-pages/trans | 
-	    suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES /dev/stdin /bin/trans
+	    suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES /dev/stdin $USRLOCAL/bin/trans
+	[ -h /bin/trans ] || ecsudo ln -s $USRLOCAL/bin/trans /bin/trans
     fi
 
-    in_path trans || fatal "No working trans.  Cannot continue."
+    in_path trans || echo "**** No working trans.  Translation will not work ****"
 
     in_path perl || os_install perl
 
@@ -344,13 +352,20 @@ setup_projects()
         CPAN=/usr/bin/vendor_perl/cpanm
     elif os_of DEBIAN ; then
     	os_install poppler-utils libjpeg-dev
-	[ -x /usr/local/bin/cpan ] || os_install cpan
+	[ -x $USRLOCAL/bin/cpan ] || os_install cpan
     elif os_of REDHAT ; then
     	os_install poppler-utils script cpan
     fi
 
     export PERL_MM_USE_DEFAULT=1
+    export PERL_MM_NONINTERACTIVE=1
     yes "" | ecsudo $CPAN -i CPAN
+
+    if os_of HAIKU ; then
+        $CPAN -i -f CPAN::DistnameInfo
+	$CPAN -i -f Email::Date::Format
+	$CPAN -i -f MIME::Lite
+    fi
 
     ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
     if os_of FREEBSD ; then
@@ -373,6 +388,9 @@ setup_projects()
 	ecsudo chmod o-x /root
 	echocd /
 	echo "With a little luck, we now have a working Clone used by CAPTCHA."
+    elif os_of HAIKU ; then
+	echo "**** Cannot install GDBM_File on haiku ****"
+        : ecsudo $CPAN -i GDBM_File
     fi
 
     if [ ! -e /usr/lib/sendmail ] ; then
@@ -419,7 +437,7 @@ install_and_configure_a_web_server()
 	os_install apache24
 	grep -s apache24_enable /etc/rc.conf ||
 	    ecsudo sysrc 'apache24_enable=YES'
-	HTTP_CPI_CFG=/usr/local/etc/apache24/Includes/cpi.conf
+	HTTP_CPI_CFG=$USRLOCAL/etc/apache24/Includes/cpi.conf
         cgi_module=libexec/apache24/mod_cgi.so
     elif os_of SOLARIS ; then
         os_install apache-24
@@ -428,7 +446,7 @@ install_and_configure_a_web_server()
 	# Log in /var/svc/log/network-http:apache24.log
     fi
 
-    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs /usr/local/www/apache24/data /var/apache2/2.4/htdocs ; do
+    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs $USRLOCAL/www/apache24/data /var/apache2/2.4/htdocs ; do
 	if [ -d $DOCUMENTROOT ] ; then
 	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
 	    break
@@ -461,7 +479,7 @@ EOF
     WGROUP=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd)/ {print $4}' /etc/passwd`
 
     WUSER=${WUSER:-user}
-    WGROUP=${WUSER:-group}
+    WGROUP=${WGROUP:-users}
 
     suinstall -d -m 0755 -o $WUSER -g $WGROUP $WEBTOP
 
@@ -496,8 +514,8 @@ EOF
 
     echo "[Web software will be installed into ${WEBTOP}]"
 
-    if [ ! -f /etc/cpi_cfg.pl ] ; then
-	suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin /etc/cpi_cfg.pl <<EOF
+    if [ ! -f $USRLOCAL/etc/cpi_cfg.pl ] ; then
+	suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $USRLOCAL/etc/cpi_cfg.pl <<EOF
 #\$cpi_vars::WEBOFFSET="YourDomain.com";
 #\$cpi_vars::FAX_SERVER="Your fax printer name";
 #\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
@@ -514,7 +532,7 @@ EOF
 #	Git clone into a specified directory (managing rootness)	#
 #########################################################################
 #doc# ### git_clone_to()
-#doc# Get project from github and put it in /usr/local/projects.
+#doc# Get project from github and put it in $USRLOCAL/projects.
 git_clone_to()
     {
     git_url="$1"
@@ -540,7 +558,7 @@ git_clone_to()
 #	Otherwise, we'll use the public address.			#
 #########################################################################
 #doc# ### install_and_configure()
-#doc# Populate /usr/local/projects/PROJECT and "make install" in that directory.
+#doc# Populate $USRLOCAL/projects/PROJECT and "make install" in that directory.
 install_and_configure()
     {
     project="$1"
@@ -570,7 +588,7 @@ install_and_configure()
 #doc# For developer only - grab a script from a local host and run it.
 setup_communication()
     {
-    ssh 10.1.0.20 sh /usr/local/projects/START_HERE/developer.sh | sh
+    ssh 10.1.0.20 sh $USRLOCAL/projects/START_HERE/developer.sh | sh
     res=$?
     echo INFO:  setup_communication returns $res.
     return $res
@@ -600,7 +618,7 @@ setup_multis()
 	git_clone_to https://github.com/barak/f2c $TMP.build/f2c
 	echocd $TMP.build/f2c/src
 	echodo $GMAKE -f makefile.u f2c CC=gcc
-	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c /bin/f2c
+	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c $USRLOCAL/bin/f2c
     fi
     echocd $HOME
 
@@ -682,7 +700,7 @@ os_install git
 in_path hostname || os_install inetutils
 install_and_configure_a_web_server
 
-$BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} /etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
+$BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} $USRLOCAL/etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
 
 setup_projects
 install_and_configure START_HERE	# Requires setup projects
@@ -723,5 +741,5 @@ if [ -n "$REBOOT_REASON" ] ; then
     echo "REASON TO REBOOT:$REBOOT_REASON" | sed -e 's/~/\n    /g'
 fi
 
-exec /usr/local/projects/START_HERE/check_install.sh
+exec $USRLOCAL/projects/START_HERE/check_install.sh
 ecsudo rm -rf $TMP.*
