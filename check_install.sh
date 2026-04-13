@@ -768,7 +768,6 @@ check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/scan.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/radix.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/seconds_to_daytime.pl'
 check_file -m0100664 -p0 'USRLOCAL/projects/simple_utils/src/fork_bomb.sh'
-check_file -m0100664 -p1 'USRLOCAL/projects/simple_utils/src/age_json.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/sudoinstall.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/anagram.pl'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/killsound.sh'
@@ -778,18 +777,18 @@ check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/sumdir.pl'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/in_path.sh'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/merge_movies.sh'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/rezip.sh'
-check_file -m0100664 -p1 'USRLOCAL/projects/simple_utils/src/old_javascript.pl'
+check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/old_javascript.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/merge_scan_batch.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/embed_images.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/tmog.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/make_pdf_book.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/sanifile.pl'
-check_file -m0100664 -p1 'USRLOCAL/projects/simple_utils/src/github_readme.pl'
+check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/github_readme.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/add_header.pl'
-check_file -m0100664 -p1 'USRLOCAL/projects/simple_utils/src/screens.pl'
+check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/screens.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/nene.pl'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/mode.sh'
-check_file -m0100664 -p1 'USRLOCAL/projects/simple_utils/src/cat_media.pl'
+check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/cat_media.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/unique_name.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/verifile.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/cp_verify.pl'
@@ -799,7 +798,6 @@ check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/count_domains.pl'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/cat_sounds.sh'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/killproc.sh'
 check_file -m0100775 -p0 'USRLOCAL/projects/simple_utils/src/rebup.sh'
-check_file -m0100664 -p1 'USRLOCAL/projects/simple_utils/src/doc_sep.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/upend.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/remind.pl'
 check_file -m0100775 -p1 'USRLOCAL/projects/simple_utils/src/host_of_ssh.pl'
@@ -1499,7 +1497,6 @@ check_file -m0100755 -p1 'USRLOCAL/bin/generate_screens'
 check_file -m0100755 -p1 'USRLOCAL/bin/grid'
 check_file -m0100755 -p0 'USRLOCAL/bin/database'
 check_file -m0100755 -p1 'USRLOCAL/bin/words_with'
-check_file -m0100755 -p1 'USRLOCAL/bin/doc_sep'
 check_file -m0100755 -p0 'USRLOCAL/bin/mode'
 check_file -m0100755 -p1 'USRLOCAL/bin/verifile'
 check_file -m0100755 -p1 'USRLOCAL/bin/cp_verify'
@@ -1513,7 +1510,6 @@ check_file -m0100755 -p1 'USRLOCAL/bin/count_domains'
 check_file -m0100755 -p1 'USRLOCAL/bin/cpi_user'
 check_file -m0100755 -p0 'USRLOCAL/bin/last_month'
 check_file -m0100755 -p0 'USRLOCAL/bin/cat_movies'
-check_file -m0100755 -p1 'USRLOCAL/bin/age_json'
 check_file -m0100755 -p1 'USRLOCAL/bin/addr_to_latlong'
 check_file -m0100755 -p1 'USRLOCAL/bin/testd'
 check_file -m0100755 -p0 'USRLOCAL/bin/killsound'
@@ -1574,7 +1570,6 @@ check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/dnf_upgrade
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/tmog
 check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/toodg
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/words_with
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/doc_sep
 check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/mode
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/verifile
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/cp_verify
@@ -1586,7 +1581,6 @@ check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/descape
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/nene
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/count_domains
 check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_movies
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/age_json
 check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/killsound
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/show
 check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/old_javascript
