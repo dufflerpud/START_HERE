@@ -32,7 +32,11 @@ set -x
 #doc#	Install_and_Build.sh - A script to download and install all of the dufflerpud projects
 ########################################################################
 
-PROG=`basename $0 .sh`
+case "$0" in
+    -*)		PROG=Install_and_Build	;;	# Happens with FreeBSD
+    *)		PROG=`basename $0 .sh`	;;
+esac
+
 USER=`id -un`
 GROUP=`id -gn`
 BE_CLEAN=false
@@ -47,13 +51,13 @@ SYSTEM_READABLE_ATTRIBUTES="-D -m 0644 -o $SYSTEM_USER -g $SYSTEM_GROUP"
 TMP=/tmp/$PROG
 
 #########################################################################
-#	Returns if $OS_LIKE is the specified argument.			#
+#	Returns if $OSV_LIKE is the specified argument.			#
 #########################################################################
 #doc# ### os_of()
 #doc# Return true if the current OS is any of the arguments
 os_of()
     {
-    echo " $* " | grep -iq " $OS_LIKE "
+    echo " $* " | grep -iq " $OSV_LIKE "
     }
 
 #########################################################################
@@ -89,19 +93,8 @@ in_path()
 ecsudo()
     {
     echo "! $@" >&2
-    if in_path sudo ; then	# For most systems
-        sudo "$@"
-	return $?
-    elif os_of HAIKU ; then	# Users are fully privileged
-        "$@"
-	return $?
-    elif in_path /bin/su ; then	# Get ready to type root password
-        su -c "$*"		# over and over and over again.
-	return $?
-    else			# I don't see this working except for Haiku
-        "$@"			# For systems that require no privs
-        return $?
-    fi
+    $OSV_SUDO "$@"
+    return $?
     }
 
 #########################################################################
@@ -119,16 +112,119 @@ echocd()
 #########################################################################
 #	Look through OS to find out how it does things and leave	#
 #	results in global variables.					#
-#		OS_LIKE_(os)						#
-#		INSTALLER						#
 #########################################################################
 os_variables()
     {
-    if [ -f $USRLOCAL/etc/cpi_cfg.pl ] ; then
-	WEBOFFSET=`perl -e 'eval(\`cat $USRLOCAL/etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
-	echo INFO:  WEBOFFSET recovered:  $WEBOFFSET.
+    OSV_USRLOCAL=/usr/local
+    OSV_SUDO=sudo
+    OSV_WS_CGIMODULE=modules/mod_cgi.so
+    OSV_WS_DOCUMENTROOT=/var/www/html
+
+    export PATH=${PATH}:/sbin:/usr/sbin
+    for try_installer in dnf yum apt-get pacman pkgadd pkg zypper pkgman slackpkg emerge ; do
+        if in_path $try_installer ; then
+	    OSV_PKG_APP=$try_installer
+	    case "$OSV_PKG_APP" in
+		dnf|yum)	OSV_LIKE=REDHAT
+				OSV_INSTALL="$OSV_PKG_APP -yq install"
+				OSV_UPDATE="$OSV_PKG_APP -yq update"
+				OSV_WS_CPICFG=/etc/httpd/conf.d/cpi.conf
+				OSV_WS_SYSTEMCTL=httpd.service
+				OSV_WS_PKG=httpd
+				;;
+		apt-get)	OSV_LIKE=DEBIAN
+				OSV_INSTALL="$OSV_PKG_APP install -qqy"
+				OSV_UPDATE="$OSV_PKG_APP update -qqy"
+				OSV_UPGRADE="$OSV_PKG_APP upgrade -yqq"
+				OSV_WS_CPICFG=/etc/apache2/conf-enabled/cpi.conf
+				OSV_WS_SYSTEMCTL=apache2
+				OSV_WS_PKG=$OSV_WS_SYSTEMCTL
+				[ -h /etc/apache2/mods-enabled/cgi.load ] || \
+				    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
+				;;
+		zypper)		OSV_LIKE=SUSE
+				OSV_INSTALL="$OSV_PKG_APP install -y"
+				OSV_UPDATE="$OSV_PKG_APP update"
+				OSV_WS_CPICFG=/etc/apache2/conf.d/cpi.conf
+				OSV_WS_SYSTEMCTL=apache2
+				OSV_WS_PKG=$OSV_WS_SYSTEMCTL
+				OSV_WS_DOCUMENTROOT=/srv/www/htdocs
+				;;
+		pacman)		OSV_LIKE=ARCH
+				OSV_INSTALL="$OSV_PKG_APP -S --noconfirm --noprogressbar"
+				OSV_UPDATE="$OSV_PKG_APP -Syu --noconfirm --noprogressbar"
+				OSV_WS_CPICFG=/etc/httpd/conf/conf.d/cpi.conf        
+				OSV_WS_SYSTEMCTL=httpd
+				OSV_WS_PKG=apache 
+				OSV_WS_DOCUMENTROOT=/srv/http
+				;;
+		pkgadd)		OSV_LIKE=SOLARIS
+				OSV_INSTALL="pkg install"
+				OSV_UPDATE="pkg update"
+				OSV_WS_CPICFG=/etc/apache2/2.4/conf.d/cpi.conf
+				OSV_WS_PKG=apache-24
+				OSV_WS_CGIMODULE=libexec/mod_cgi.so
+				OSV_WS_DOCUMENTROOT=/var/apache2/2.4/htdocs
+				OSV_WS_SVCADM=apache24
+				# Log in /var/svc/log/network-http:apache24.log
+				;;
+		pkg)		OSV_LIKE=FREEBSD
+				OSV_INSTALL="$OSV_PKG_APP install -y"
+				OSV_UPDATE="$OSV_PKG_APP update"
+				OSV_UPGRADE="$OSV_PKG_APP upgrade -y"
+				OSV_WS_CPICFG=/etc/apache2/2.4/conf.d/cpi.conf
+				OSV_WS_PKG=apache-24
+				OSV_WS_CGIMODULE=libexec/mod_cgi.so
+				OSV_WS_DOCUMENTROOT=/usr/local/www/apache24/data
+				OSV_WS_SERVICE=apache24
+				;;
+		pkgman)		OSV_LIKE=HAIKU
+				OSV_INSTALL="pkgman install -y"
+				OSV_SYNC="$OSV_PKG_APP add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current"
+				OSV_UPDATE="$OSV_PKG_APP full-sync -y"
+				OSV_USRLOCAL=/boot/home/config/non-packaged
+				OSV_SUDO=
+				OSV_WS_CPICFG=/boot/system/settings/apache/extra/cpi.conf
+				OSV_WS_CGIMODULE=lib/apache/mod_cgi.so
+				OSV_WS_PKG=apache
+				OSV_WS_DOCUMENTROOT=$OSV_USRLOCAL/htdocs
+				OSV_WS_HTTPDCONF=/boot/system/settings/apache/httpd.conf
+				OSV_WS_INCLUDE="Include $OSV_WS_CPICFG"
+				;;
+		slackpkg)	OSV_LIKE=SLACKWARE
+				OSV_INSTALL="$OSV_PKG_APP install -y"
+				OSV_UPDATE="$OSV_PKG_APP update -y"
+				OSV_WS_CPICFG=/etc/httpd/extra/cpi.conf
+				OSV_WS_CGIMODULE=lib64/httpd/modules/mod_cgi.so
+				OSV_WS_DOCUMENTROOT=/srv/httpd/htdocs
+				OSV_WS_HTTPDCONF=/etc/httpd/httpd.conf
+				OSV_WS_INCLUDE="Include $OSV_WS_CPICFG"
+				;;
+		emerge)		OSV_LIKE=GENTOO
+				OSV_INSTALL="$OSV_PKG_APP -q"
+				OSV_SYNC="emaint sync -a"
+				OSV_UPDATE="$OSV_PKG_APP --update --deep --newuse @world"
+				OSV_WS_SYSTEMCTL=apache2
+				OSV_WS_PKG="www-servers/apache"
+				OSV_WS_CPICFG=/etc/apache2/vhosts.d/cpi.conf
+				OSV_WS_DOCUMENTROOT=/var/www/localhost/htdocs
+				;;
+	    esac
+	    break
+	fi
+    done
+    [ -n "$OSV_PKG_APP" ] || fatal "Cannot find an installer."
+
+    export PATH=${PATH}:${OSV_USRLOCAL}/bin
+    export PERL5LIB=${PERL5LIB}:${OSV_USRLOCAL}/lib/perl
+
+    PROJECTS_DIR=$OSV_USRLOCAL/projects
+
+    if [ -f $OSV_USRLOCAL/etc/cpi_cfg.pl ] ; then
+	OSV_WS_OFFSET=`perl -e 'eval(\`cat $OSV_USRLOCAL/etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
+	echo INFO:  OSV_WS_OFFSET recovered:  $OSV_WS_OFFSET.
     else
-        WEBOFFSET="/`date +%s |
+        OSV_WS_OFFSET="/`date +%s |
 	    if in_path sha1 ; then
 	        sha1
 	    elif in_path sha1sum ; then
@@ -138,49 +234,21 @@ os_variables()
 	    else
 	        cat -
 	    fi | cut -c1-4`"
-	echo INFO:  WEBOFFSET set to $WEBOFFSET.
+	echo INFO:  OSV_WS_OFFSET set to $OSV_WS_OFFSET.
     fi
 
-    for sudodir in /etc/sudoers.d $USRLOCAL/etc/sudoers.d ; do
-	if [ -d "$sudodir" ] ; then
-	    SUDO_HACK="$sudodir/$PROG"
-	    break
-	fi
+    OSV_WS_TOP=$OSV_WS_DOCUMENTROOT$OSV_WS_OFFSET
+
+    set | grep '^OSV' | sed -e 's/.*OSV/INFO: OSV/'
+
+    for sudodir in /etc/sudoers.d $OSV_USRLOCAL/etc/sudoers.d ; do
+	[ -d "$sudodir" ] && SUDO_HACK="$sudodir/$PROG"
     done
     if [ -z "$SUDO_HACK" ] ; then
 	echo "Cannot stop sudo from continually asking for your password."
     fi
 
-    for try_installer in dnf yum apt-get pacman pkgadd pkg zypper pkgman; do
-        if in_path $try_installer ; then
-	    INSTALLER=$try_installer
-	    case "$INSTALLER" in
-		dnf)		INSTALLCMD="dnf -yq install";				OS_LIKE=REDHAT	;;
-		yum)		INSTALLCMD="yum -yq install";				OS_LIKE=REDHAT	;;
-		apt-get)	INSTALLCMD="apt-get install -qqy";			OS_LIKE=DEBIAN	;;
-		pacman)		INSTALLCMD="pacman -S --noconfirm --noprogressbar";	OS_LIKE=ARCH	;;
-		pkgadd)		INSTALLCMD="pkg install";				OS_LIKE=SOLARIS	;;
-		pkg)		INSTALLCMD="pkg install -y";				OS_LIKE=FREEBSD	;;
-		zypper)		INSTALLCMD="zypper install -y";				OS_LIKE=SUSE	;;
-		pkgman)		INSTALLCMD="pkgman install -y";				OS_LIKE=HAIKU	;;
-	    esac
-	    break
-	fi
-    done
-    [ -n "$INSTALLER" ] || fatal "Cannot find an installer."
-
-    if os_of HAIKU ; then
-        USRLOCAL=/boot/home/config/non-packaged
-    else
-        USRLOCAL=/usr/local
-    fi
-    
-    export PATH=${PATH}:${USRLOCAL}/bin
-    export PERL5LIB=${PERL5LIB}:${USRLOCAL}/lib/perl
-
-    PROJECTS_DIR=$USRLOCAL/projects
-
-    echo INFO:  OS_LIKE=$OS_LIKE INSTALLER=$INSTALLER INSTALLCMD=$INSTALLCMD
+    echo INFO:  OSV_LIKE=$OSV_LIKE OSV_PKG_APP=$OSV_PKG_APP OSV_INSTALL=$OSV_INSTALL
 
     if in_path gmake || os_of FREEBSD ; then
         GMAKE=gmake	# May not be installed yet
@@ -193,7 +261,7 @@ os_variables()
     if [ -z "$GINSTALL" ] ; then
 	GINSTALL=/usr/gnu/bin/install
 	if [ ! -x "$GINSTALL" ] ; then
-	    GINSTALL=$USRLOCAL/bin/ginstall
+	    GINSTALL=$OSV_USRLOCAL/bin/ginstall
 	    if [ ! -x "$GINSTALL" ] ; then
 	        GINSTALL=install
 	    fi
@@ -247,25 +315,16 @@ temporarily_disable_sudo_password()
 performa_updates()
     {
     echo "[ Performa updates ]"
-    case "$INSTALLER" in
-        dnf)			ecsudo dnf -yq update					;;
-	yum)			ecsudo yum -yq update					;;
-	apt-get)		ecsudo apt-get update -qqy; ecsudo apt-get upgrade -yqq	;;
-	pacman)			ecsudo pacman -Syu --noconfirm --noprogressbar		;;
-	pkgadd)			ecsudo pkg update					;;
-	pkg)			ecsudo pkg update; ecsudo pkg upgrade			;;
-	zypper)			ecsudo ecsudo zypper update				;;
-	pkgman)			yes "" | ecsudo pkgman add https://eu.hpkg.haiku-os.org/haiku/r1beta5/$(getarch)/current
-				ecsudo pkgman full-sync -y
-				;;
-    esac
+    [ -z "$OSV_SYNC" ]		|| yes '' | ecsudo $OSV_SYNC	# HAIKU, GENTOO
+    [ -z "$OSV_UPDATE" ]	|| ecsudo $OSV_UPDATE		# Everybody
+    [ -z "$OSV_UPGRADE" ]	|| ecsudo $OSV_UPGRADE		# DEBIAN, FREEBSD
     }
 
 #########################################################################
 #	Use the right installation tool					#
 #########################################################################
 #doc# ### os_install()
-#doc# Figure out what tool is used to install and install specified packages
+#doc# Install a package using the OS package installer.
 #doc# Note that it does this one package at a time because most of the
 #doc# package handlers completely fail if one can't be installed and for
 #doc# development purposes, we want to know what works, not just the first
@@ -275,10 +334,10 @@ performa_updates()
 os_install()
     {
     for p in $*; do
-	ecsudo $INSTALLCMD $p
+	ecsudo $OSV_INSTALL $p
     done
 
-    # ecsudo $INSTALLCMD $*
+    # ecsudo $OSV_INSTALL $*
     }
 
 #########################################################################
@@ -300,13 +359,15 @@ setup_projects()
     	perlver=`perl -V | awk -F/ '/cc=.\/usr\/gcc\// {print $4}'`
 	echo "*** Using gcc version $perlver ***"
 	os_install /developer/gcc-$perlver
+    elif os_of SLACKWARE ; then
+	echo "(Gcc already installed, skipping)"
     else
         os_install gcc
     fi
     os_install sox netpbm
     in_path $GMAKE || os_install $GMAKE
     if os_of HAIKU ; then
-        : Do nothing
+        os_install ghostscript_gpl
     elif os_of FREEBSD ; then
         os_install ghostscript10
     else
@@ -336,8 +397,8 @@ setup_projects()
     else
     	# Fail safe.
 	echodo curl -s https://raw.githubusercontent.com/soimort/translate-shell/gh-pages/trans | 
-	    suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES /dev/stdin $USRLOCAL/bin/trans
-	[ -h /bin/trans ] || ecsudo ln -s $USRLOCAL/bin/trans /bin/trans
+	    suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES /dev/stdin $OSV_USRLOCAL/bin/trans
+	[ -h /bin/trans ] || ecsudo ln -s $OSV_USRLOCAL/bin/trans /bin/trans
     fi
 
     in_path trans || echo "**** No working trans.  Translation will not work ****"
@@ -347,6 +408,7 @@ setup_projects()
     if [ ! -x /usr/bin/perl ] ; then
         where_is_perl=`command -v perl`
 	[ -n "$where_is_perl" ] || fatal "No perl found.  Nothing will work.  Giving up."
+	# This won't work on Haiku
 	ecsudo ln -s "$where_is_perl" "/usr/bin/perl"
     fi
 
@@ -356,7 +418,7 @@ setup_projects()
         CPAN=/usr/bin/vendor_perl/cpanm
     elif os_of DEBIAN ; then
     	os_install poppler-utils libjpeg-dev
-	[ -x $USRLOCAL/bin/cpan ] || os_install cpan
+	[ -x $OSV_USRLOCAL/bin/cpan ] || os_install cpan
     elif os_of REDHAT ; then
     	os_install poppler-utils script cpan
     fi
@@ -415,67 +477,55 @@ setup_projects()
 #doc# it can be accessed if there is a local firewall.
 install_and_configure_a_web_server()
     {
-    cgi_module=modules/mod_cgi.so
-    if os_of REDHAT ; then
-	service=httpd.service
-	HTTP_CPI_CFG=/etc/httpd/conf.d/cpi.conf
-    	os_install httpd
-    elif os_of DEBIAN ; then
-        os_install apache2
-	service=apache2
-	HTTP_CPI_CFG=/etc/apache2/conf-enabled/cpi.conf
-	[ -h /etc/apache2/mods-enabled/cgi.load ] || \
-	    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
-    elif os_of SUSE ; then
-	os_install apache2
-	service=apache2
-	HTTP_CPI_CFG=/etc/apache2/conf.d/cpi.conf
-    elif os_of ARCH ; then
-	service=httpd
-	HTTP_CPI_CFG=/etc/httpd/conf/conf.d/cpi.conf
-    	os_install apache
-    elif os_of HAIKU ; then
-	HTTP_CPI_CFG=/boot/system/settings/apache/httpd.conf
-        os_install apache
-    elif os_of FREEBSD ; then
-	os_install apache24
-	grep -s apache24_enable /etc/rc.conf ||
-	    ecsudo sysrc 'apache24_enable=YES'
-	HTTP_CPI_CFG=$USRLOCAL/etc/apache24/Includes/cpi.conf
-        cgi_module=libexec/apache24/mod_cgi.so
-    elif os_of SOLARIS ; then
-        os_install apache-24
-	HTTP_CPI_CFG=/etc/apache2/2.4/conf.d/cpi.conf
-        cgi_module=libexec/mod_cgi.so
-	# Log in /var/svc/log/network-http:apache24.log
-    fi
+    [ -z "$OSV_WS_PKG" ] || os_install $OSV_WS_PKG
 
-    for DOCUMENTROOT in /var/www/www /var/www/html /srv/http /srv/www/htdocs /boot/system/data/apache/htdocs $USRLOCAL/www/apache24/data /var/apache2/2.4/htdocs ; do
-	if [ -d $DOCUMENTROOT ] ; then
-	    WEBTOP=$DOCUMENTROOT$WEBOFFSET
-	    break
-	fi
-    done
+    case "$OSV_LIKE" in
+	DEBIAN)		[ -h /etc/apache2/mods-enabled/cgi.load ] || \
+			    ecsudo ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
+			;;
+	FREEBSD)	grep -s apache24_enable /etc/rc.conf ||
+			    ecsudo sysrc 'apache24_enable=YES'
+			;;
+	SOLARIS)	# Log in /var/svc/log/network-http:apache24.log
+			;;
+	SLACKWARE)	grep -q "$OSV_WS_CPICFG" /etc/httpd/httpd.conf ||
+			    echo "Include /etc/httpd/extra/cpi.conf" >> /etc/httpd/httpd.conf
+			;;
+	HAIKU)		ecsudo ln -s /bin/httpd /boot/home/config/settings/boot/launch/httpd
+			;;
+    esac
 
-    [ -n "$WEBTOP" ] || fatal "No documentroot found."
-
-    suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $HTTP_CPI_CFG <<EOF
-LoadModule cgi_module $cgi_module
+    suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OSV_WS_CPICFG <<EOF
+LoadModule cgi_module $OSV_WS_CGIMODULE
 AddHandler cgi-script .cgi .pl
-<Directory $WEBTOP>
+<Directory $OSV_WS_TOP>
     DirectoryIndex index.cgi index.html
     Options +ExecCGI +FollowSymlinks
 </Directory>
 EOF
 
-    if [ -n "$service" ] ; then
-	ecsudo systemctl enable $service
-	ecsudo systemctl start $service
-	ecsudo systemctl reload $service	# This should really not be needed
-    elif os_of FREEBSD ; then
-	ecsudo service apache24 start
-    elif os_of SOLARIS ; then
-        ecsudo svcadm enable apache24
+    if [ -n "$OSV_WS_HTTPDCONF" ] ; then
+        if grep -vq "$OSV_WS_INCLUDE" "$OSV_WS_HTTPDCONF" ; then
+	    ecsudo cp -f $OSV_WS_HTTPDCONF $OSV_WS_HTTPDCONF.dist
+	    (
+	    sed -e "s+\"/boot/system/data/apache/htdocs\"+\"$OSV_WS_DOCUMENTROOT\"+" $OSV_WS_HTTPDCONF.dist
+	    echo "$OSV_WS_INCLUDE"
+	    ) | ecsudo dd of=$OSV_WS_HTTPDCONF
+	else
+	    echo "$OSV_WS_HTTPDCONF already updated."
+	fi
+    fi
+
+    if [ -n "$OSV_WS_SYSTEMCTL" ] ; then
+	ecsudo systemctl enable $OSV_WS_SYSTEMCTL
+	ecsudo systemctl start $OSV_WS_SYSTEMCTL
+	ecsudo systemctl reload $OSV_WS_SYSTEMCTL	# This should really not be needed
+    elif [ -n "$OSV_WS_SERVICE" ] ; then
+        ecsudo service $OSV_WS_SERVICE start
+    elif [ -n "$OSV_WS_SVCADM" ] ; then
+        ecsudo svcadm enable $OSV_WS_SVCADM
+    elif in_path apachectl ; then
+        ecsudo apachectl restart
     fi
 
     # Can't do this before we've installed the http server
@@ -485,7 +535,7 @@ EOF
     WUSER=${WUSER:-user}
     WGROUP=${WGROUP:-users}
 
-    suinstall -d -m 0755 -o $WUSER -g $WGROUP $WEBTOP
+    suinstall -d -m 0755 -o $WUSER -g $WGROUP $OSV_WS_TOP
 
     if [ -x /usr/bin/firewall-cmd ] ; then
 	ecsudo firewall-cmd --zone=public --add-service=http --permanent
@@ -497,18 +547,18 @@ EOF
             ecsudo grubby --update-kernel ALL --args selinux=0
 	    REBOOT_REASON="$REBOOT_REASON~Kernel flag selinux set to 0."
 	else
-	    ecsudo semanage fcontext -a -t httpd_sys_script_exec_t "$WEBTOP(/.*)?"   
+	    ecsudo semanage fcontext -a -t httpd_sys_script_exec_t "$OSV_WS_TOP(/.*)?"   
 	    suinstall -d -m 0777 -o $WUSER -g $WGROUP /var/log/stderr
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/stderr(/.*)?"
 	    suinstall -m 0666 -o $WUSER -g $WGROUP /var/log/common.log
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/common.log"
-	    ecsudo restorecon -Rv $WEBTOP
+	    ecsudo restorecon -Rv $OSV_WS_TOP
     	fi
     fi
 
-    OVERRIDECONF=/etc/systemd/system/httpd.service.d/override.conf
-    if [ -d `dirname $OVERRIDECONF` -a ! -s $OVERRIDECONF ] ; then
-        suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OVERRIDECONF <<EOF
+    OVERRIDECONF=/etc/systemd/system/$OSV_WS_SYSTEMCTL.service.d/override.conf
+    if [ -d /etc/systemd -a ! -s $OVERRIDECONF ] ; then
+        suinstall -D $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OVERRIDECONF <<EOF
 [Service]
 ProtectSystem=no
 ProtectHome=no
@@ -516,19 +566,19 @@ EOF
         REBOOT_REASON="$REBOOT_REASON~ProtectSystem disabled in systemd config."
     fi
 
-    echo "[Web software will be installed into ${WEBTOP}]"
+    echo "[Web software will be installed into ${OSV_WS_TOP}]"
 
-    if [ ! -f $USRLOCAL/etc/cpi_cfg.pl ] ; then
-	suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $USRLOCAL/etc/cpi_cfg.pl <<EOF
-#\$cpi_vars::WEBOFFSET="YourDomain.com";
+    if [ ! -f $OSV_USRLOCAL/etc/cpi_cfg.pl ] ; then
+	suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OSV_USRLOCAL/etc/cpi_cfg.pl <<EOF
+#\$cpi_vars::DOMAIN="YourDomain.com";
 #\$cpi_vars::FAX_SERVER="Your fax printer name";
 #\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
 #\$cpi_vars::KEY_CAPTCHA_PRIVATE="Captcha private key";
-\$cpi_vars::WEBOFFSET="$WEBOFFSET";
-\$cpi_vars::WEBTOP="$WEBTOP";
+\$cpi_vars::WEBOFFSET="$OSV_WS_OFFSET";
+\$cpi_vars::WEBTOP="$OSV_WS_TOP";
 EOF
     fi
-    echo INFO:  install_and_configure_a_web_server WEBTOP=$WEBTOP.
+    echo INFO:  install_and_configure_a_web_server OSV_WS_TOP=$OSV_WS_TOP.
     return $?
     }
 
@@ -536,7 +586,7 @@ EOF
 #	Git clone into a specified directory (managing rootness)	#
 #########################################################################
 #doc# ### git_clone_to()
-#doc# Get project from github and put it in $USRLOCAL/projects.
+#doc# Get project from github and put it in $OSV_USRLOCAL/projects.
 git_clone_to()
     {
     git_url="$1"
@@ -562,7 +612,7 @@ git_clone_to()
 #	Otherwise, we'll use the public address.			#
 #########################################################################
 #doc# ### install_and_configure()
-#doc# Populate $USRLOCAL/projects/PROJECT and "make install" in that directory.
+#doc# Populate $OSV_USRLOCAL/projects/PROJECT and "make install" in that directory.
 install_and_configure()
     {
     project="$1"
@@ -578,7 +628,7 @@ install_and_configure()
     top_proj_dir=$PROJECTS_DIR/$project
     git_clone_to "$url" "$top_proj_dir"
     echocd $top_proj_dir
-    ecsudo $GMAKE install
+    ecsudo $GMAKE install && ecsudo $GMAKE test
     res=$?
     echo INFO:  install_and_configure $dest_dir returns $res.
     return $res
@@ -592,7 +642,7 @@ install_and_configure()
 #doc# For developer only - grab a script from a local host and run it.
 setup_communication()
     {
-    ssh 10.1.0.20 sh $USRLOCAL/projects/START_HERE/developer.sh | sh
+    ssh 10.1.0.20 sh $OSV_USRLOCAL/projects/START_HERE/developer.sh | sh
     res=$?
     echo INFO:  setup_communication returns $res.
     return $res
@@ -622,7 +672,7 @@ setup_multis()
 	git_clone_to https://github.com/barak/f2c $TMP.build/f2c
 	echocd $TMP.build/f2c/src
 	echodo $GMAKE -f makefile.u f2c CC=gcc
-	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c $USRLOCAL/bin/f2c
+	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES f2c $OSV_USRLOCAL/bin/f2c
     fi
     echocd $HOME
 
@@ -630,6 +680,8 @@ setup_multis()
 	os_install libncurses-dev
     elif os_of REDHAT SUSE ; then
 	os_install ncurses-devel
+    elif os_of HAIKU ; then
+	os_install ncurses6_devel
     fi
 
     in_path f2c	# Return status used to decide to build multis
@@ -704,7 +756,7 @@ os_install git
 in_path hostname || os_install inetutils
 install_and_configure_a_web_server
 
-$BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} $USRLOCAL/etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
+$BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} $OSV_USRLOCAL/etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
 
 setup_projects
 install_and_configure START_HERE	# Requires setup projects
@@ -745,5 +797,5 @@ if [ -n "$REBOOT_REASON" ] ; then
     echo "REASON TO REBOOT:$REBOOT_REASON" | sed -e 's/~/\n    /g'
 fi
 
-exec $USRLOCAL/projects/START_HERE/check_install.sh
+exec $OSV_USRLOCAL/projects/START_HERE/check_install.sh
 ecsudo rm -rf $TMP.*
