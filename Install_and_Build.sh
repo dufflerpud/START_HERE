@@ -517,6 +517,15 @@ EOF
     fi
 
     if [ -n "$OSV_WS_SYSTEMCTL" ] ; then
+	OVERRIDECONF=/etc/systemd/system/$OSV_WS_SYSTEMCTL.service.d/override.conf
+	if [ -d /etc/systemd -a ! -s $OVERRIDECONF ] ; then
+	    suinstall -D $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OVERRIDECONF <<EOF
+[Service]
+ProtectSystem=no
+ProtectHome=no
+EOF
+	fi
+        REBOOT_REASON="$REBOOT_REASON~ProtectSystem disabled in systemd config."
 	ecsudo systemctl enable $OSV_WS_SYSTEMCTL
 	ecsudo systemctl start $OSV_WS_SYSTEMCTL
 	ecsudo systemctl reload $OSV_WS_SYSTEMCTL	# This should really not be needed
@@ -554,16 +563,6 @@ EOF
 	    ecsudo semanage fcontext -a -t httpd_log_t "/var/log/common.log"
 	    ecsudo restorecon -Rv $OSV_WS_TOP
     	fi
-    fi
-
-    OVERRIDECONF=/etc/systemd/system/$OSV_WS_SYSTEMCTL.service.d/override.conf
-    if [ -d /etc/systemd -a ! -s $OVERRIDECONF ] ; then
-        suinstall -D $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OVERRIDECONF <<EOF
-[Service]
-ProtectSystem=no
-ProtectHome=no
-EOF
-        REBOOT_REASON="$REBOOT_REASON~ProtectSystem disabled in systemd config."
     fi
 
     echo "[Web software will be installed into ${OSV_WS_TOP}]"
@@ -628,9 +627,11 @@ install_and_configure()
     top_proj_dir=$PROJECTS_DIR/$project
     git_clone_to "$url" "$top_proj_dir"
     echocd $top_proj_dir
-    ecsudo $GMAKE install && ecsudo $GMAKE test
-    res=$?
-    echo INFO:  install_and_configure $dest_dir returns $res.
+    ecsudo $GMAKE install
+    install_result=$?
+    ecsudo $GMAKE test
+    test_result=$?
+    echo INFO:  install_and_configure $dest_dir install=$install_result test=$test_result.
     return $res
     }
 
