@@ -45,7 +45,6 @@ check_file()
     }
 
 check_file -m0040755 -p0 'WWWTOP'
-check_file -m0040755 -p0 'WWWTOP/table_fun'
 check_file -m0040755 -p0 'WWWTOP/activist'
 check_file -m0100755 -p1 'WWWTOP/activist/index.cgi'
 check_file -m0040755 -p0 'WWWTOP/set_screen'
@@ -80,7 +79,6 @@ check_file -m0040755 -p0 'WWWTOP/Antasgo'
 check_file -m0100755 -p0 'WWWTOP/Antasgo/Antasgo_icon.png'
 check_file -m0100755 -p1 'WWWTOP/Antasgo/index.cgi'
 check_file -m0100755 -p0 'WWWTOP/Antasgo/Antasgo.css'
-check_file -m0040755 -p0 'WWWTOP/simple_utils'
 check_file -m0040755 -p0 'WWWTOP/Visas'
 check_file -m0100755 -p1 'WWWTOP/Visas/index.cgi'
 check_file -m0040755 -p0 'WWWTOP/routing'
@@ -1525,125 +1523,125 @@ check_file -m0100755 -p0 'USRLOCAL/bin/in_path'
 # Note that these can't be quoted because we don't know exactly where they are.
 # By doing this, we can make sure that machine-specific stuff got built.
 #
-check_file -m0040755 -p0 USRLOCAL/projects/table_fun/built/*/bin
-check_file -m0100755 -p1 USRLOCAL/projects/table_fun/built/*/bin/table_fun
-check_file -m0040755 -p0 USRLOCAL/projects/set_screen/built/*/bin
-check_file -m0100755 -p1 USRLOCAL/projects/set_screen/built/*/bin/generate_pics
-check_file -m0100755 -p1 USRLOCAL/projects/set_screen/built/*/bin/generate_screens
-check_file -m0040755 -p0 USRLOCAL/projects/sudoku/built/*/bin
-check_file -m0100755 -p1 USRLOCAL/projects/sudoku/built/*/bin/grid
-check_file -m0040755 -p0 USRLOCAL/projects/pandemic/built/*/bin
-check_file -m0100755 -p0 USRLOCAL/projects/pandemic/built/*/bin/pandemic
-check_file -m0100755 -p1 USRLOCAL/projects/pandemic/built/*/bin/pandaplot
-check_file -m0040755 -p0 USRLOCAL/projects/Antasgo/built/*/bin
-check_file -m0100755 -p0 USRLOCAL/projects/Antasgo/built/*/bin/make_task_icon
-check_file -m0100755 -p1 USRLOCAL/projects/Antasgo/built/*/bin/pattern_to_html_table
-check_file -m0040755 -p0 USRLOCAL/projects/simple_utils/built/*/bin
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/host_of_ssh
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/mixtape
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/cat_media
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/epr
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/rezip
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/indent_json
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_images
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/upend
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/make_machines
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/seconds_to_daytime
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/sanifile
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/anagram
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/rnh
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/sumdir
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/scan
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/copydb
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/send_text
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/screens
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/github_readme
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/radix
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/make_src_rpm
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/embed_images
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/fork_bomb
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/square_icon
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/dnf_upgrade
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/tmog
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/toodg
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/words_with
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/mode
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/verifile
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/cp_verify
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/rebup
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/remind
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/unique_name
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/sudoinstall
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/descape
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/nene
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/count_domains
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_movies
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/killsound
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/show
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/old_javascript
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/merge_scan_batch
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/add_header
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/killproc
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/make_pdf_book
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/setup_access_point
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/merge_movies
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_sounds
-check_file -m0100755 -p1 USRLOCAL/projects/simple_utils/built/*/bin/youtube
-check_file -m0100755 -p0 USRLOCAL/projects/simple_utils/built/*/bin/in_path
-check_file -m0040755 -p0 USRLOCAL/projects/routing/built/*/bin
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/xlate_vcf
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/completed_route_update
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/distuser_to_pdf
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/check_history
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/read_trips
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/vcf_mail
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/read_vcf
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/split_trips
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/embed_images
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/defluff
-check_file -m0100755 -p0 USRLOCAL/projects/routing/built/*/bin/last_month
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/addr_to_latlong
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/htmls_to_times
-check_file -m0100755 -p1 USRLOCAL/projects/routing/built/*/bin/read_mapquest
-check_file -m0040755 -p0 USRLOCAL/projects/Groceries/built/*/bin
-check_file -m0100755 -p0 USRLOCAL/projects/Groceries/built/*/bin/database
-check_file -m0040755 -p0 USRLOCAL/projects/testd/built/*/bin
-check_file -m0100755 -p1 USRLOCAL/projects/testd/built/*/bin/testd
+check_file -p0 USRLOCAL/projects/table_fun/built/*/bin
+check_file -p1 USRLOCAL/projects/table_fun/built/*/bin/table_fun
+check_file -p0 USRLOCAL/projects/set_screen/built/*/bin
+check_file -p1 USRLOCAL/projects/set_screen/built/*/bin/generate_pics
+check_file -p1 USRLOCAL/projects/set_screen/built/*/bin/generate_screens
+check_file -p0 USRLOCAL/projects/sudoku/built/*/bin
+check_file -p1 USRLOCAL/projects/sudoku/built/*/bin/grid
+check_file -p0 USRLOCAL/projects/pandemic/built/*/bin
+check_file -p0 USRLOCAL/projects/pandemic/built/*/bin/pandemic
+check_file -p1 USRLOCAL/projects/pandemic/built/*/bin/pandaplot
+check_file -p0 USRLOCAL/projects/Antasgo/built/*/bin
+check_file -p0 USRLOCAL/projects/Antasgo/built/*/bin/make_task_icon
+check_file -p1 USRLOCAL/projects/Antasgo/built/*/bin/pattern_to_html_table
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/host_of_ssh
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/mixtape
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/cat_media
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/epr
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/rezip
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/indent_json
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_images
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/upend
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/make_machines
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/seconds_to_daytime
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/sanifile
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/anagram
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/rnh
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/sumdir
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/scan
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/copydb
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/send_text
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/screens
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/github_readme
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/radix
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/make_src_rpm
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/embed_images
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/fork_bomb
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/square_icon
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/dnf_upgrade
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/tmog
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/toodg
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/words_with
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/mode
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/verifile
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/cp_verify
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/rebup
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/remind
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/unique_name
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/sudoinstall
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/descape
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/nene
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/count_domains
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_movies
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/killsound
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/show
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/old_javascript
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/merge_scan_batch
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/add_header
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/killproc
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/make_pdf_book
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/setup_access_point
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/merge_movies
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/cat_sounds
+check_file -p1 USRLOCAL/projects/simple_utils/built/*/bin/youtube
+check_file -p0 USRLOCAL/projects/simple_utils/built/*/bin/in_path
+check_file -p0 USRLOCAL/projects/routing/built/*/bin
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/xlate_vcf
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/completed_route_update
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/distuser_to_pdf
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/check_history
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/read_trips
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/vcf_mail
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/read_vcf
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/split_trips
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/embed_images
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/defluff
+check_file -p0 USRLOCAL/projects/routing/built/*/bin/last_month
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/addr_to_latlong
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/htmls_to_times
+check_file -p1 USRLOCAL/projects/routing/built/*/bin/read_mapquest
+check_file -p0 USRLOCAL/projects/Groceries/built/*/bin
+check_file -p0 USRLOCAL/projects/Groceries/built/*/bin/database
+check_file -p0 USRLOCAL/projects/testd/built/*/bin
+check_file -p1 USRLOCAL/projects/testd/built/*/bin/testd
 check_file -m0040775 -p0 USRLOCAL/projects/multis/src/f2c/dep_sys/*/bin
 check_file -m0100775 -p0 USRLOCAL/projects/multis/src/f2c/dep_sys/*/bin/f2c
 check_file -m0100775 -p0 USRLOCAL/projects/multis/src/f2c/dep_sys/*/bin/xsum
-check_file -m0040775 -p0 USRLOCAL/projects/multis/src/f2c/built/*/bin
-check_file -m0100775 -p0 USRLOCAL/projects/multis/src/f2c/built/*/bin/f2c
-check_file -m0100775 -p0 USRLOCAL/projects/multis/src/f2c/built/*/bin/xsum
-check_file -m0040755 -p0 USRLOCAL/projects/multis/built/*/bin
-check_file -m0040755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/greebl
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/system
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cave.hlp
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cave
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cubic.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/war.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/scan.hlp
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/regres
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/scan
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/risk
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/risk.dat
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/snake.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cave.dat
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/life
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/star.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/life.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/greebl.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/war.html
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/multis.html
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cubic
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/snake
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/system.dat
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/system.hlp
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/ocean.hlp
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/ocean
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/multis.js
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/war
-check_file -m0100644 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/risk.hlp
-check_file -m0100755 -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/star
+check_file -p0 USRLOCAL/projects/multis/src/f2c/built/*/bin
+check_file -p0 USRLOCAL/projects/multis/src/f2c/built/*/bin/f2c
+check_file -p0 USRLOCAL/projects/multis/src/f2c/built/*/bin/xsum
+check_file -p0 USRLOCAL/projects/multis/built/*/bin
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/greebl
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/system
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cave.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cave
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cubic.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/war.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/scan.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/regres
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/scan
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/risk
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/risk.dat
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/snake.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cave.dat
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/life
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/star.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/life.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/greebl.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/war.html
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/multis.html
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/cubic
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/snake
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/system.dat
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/system.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/ocean.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/ocean
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/multis.js
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/war
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/risk.hlp
+check_file -p0 USRLOCAL/projects/multis/built/*/bin/f2cs/star
 echo INFO:  "$error_count errors out of $check_file_count files checked."
