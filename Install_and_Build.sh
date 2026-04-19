@@ -121,7 +121,8 @@ os_variables()
     OSV_WS_DOCUMENTROOT=/var/www/html
 
     export PATH=${PATH}:/sbin:/usr/sbin
-    for try_installer in dnf yum apt-get pacman pkgadd pkg zypper pkgman slackpkg emerge ; do
+    for try_installer in \
+	dnf yum apt-get pacman pkgadd pkg zypper pkgman slackpkg emerge apk ; do
         if in_path $try_installer ; then
 	    OSV_PKG_APP=$try_installer
 	    case "$OSV_PKG_APP" in
@@ -207,6 +208,15 @@ os_variables()
 				OSV_WS_SYSTEMCTL=apache2
 				OSV_WS_PKG="www-servers/apache"
 				OSV_WS_CPICFG=/etc/apache2/vhosts.d/cpi.conf
+				OSV_WS_DOCUMENTROOT=/var/www/localhost/htdocs
+				;;
+		apk)		OSV_LIKE=ALPINE
+				OSV_INSTALL="$OSV_PKG_APP add -qq"
+				OSV_UPDATE="$OSV_PKG_APP update -qq"
+				OSV_UPGRADE="$OSV_PKG_APP upgrade -qq"
+				OSV_WS_RCSERVICE=apache2
+				OSV_WS_PKG="apache2"
+				OSV_WS_CPICFG=/etc/apache2/conf.d/cpi.conf
 				OSV_WS_DOCUMENTROOT=/var/www/localhost/htdocs
 				;;
 	    esac
@@ -314,6 +324,13 @@ temporarily_disable_sudo_password()
 #doc# Do whatever os requires to be reasonably up to date
 performa_updates()
     {
+    # Turn off automagic updates (Ubuntu, perhaps Mint)
+    if in_path systemctl ; then
+    	sudo systemctl disable unattended-upgrades	>/dev/null 2>&1
+    	sudo systemctl stop unattended-upgrades		>/dev/null 2>&1
+    fi
+
+    # OK, do it the old fashioned way, by hand, and more to the point, predictably.
     echo "[ Performa updates ]"
     [ -z "$OSV_SYNC" ]		|| yes '' | ecsudo $OSV_SYNC	# HAIKU, GENTOO
     [ -z "$OSV_UPDATE" ]	|| ecsudo $OSV_UPDATE		# Everybody
@@ -364,6 +381,9 @@ setup_projects()
     else
         os_install gcc
     fi
+
+    os_of ALPINE && os_install musl-dev	perl-dev # For sys/types.h needed by perl
+
     os_install sox netpbm
     in_path $GMAKE || os_install $GMAKE
     if os_of HAIKU ; then
@@ -416,6 +436,9 @@ setup_projects()
     if os_of ARCH ; then
     	os_install poppler cpanminus
         CPAN=/usr/bin/vendor_perl/cpanm
+    elif os_of ALPINE ; then
+    	os_install poppler perl-app-cpanminus
+        CPAN=/usr/bin/cpanm
     elif os_of DEBIAN ; then
     	os_install poppler-utils libjpeg-dev
 	[ -x $OSV_USRLOCAL/bin/cpan ] || os_install cpan
@@ -433,7 +456,7 @@ setup_projects()
 	$CPAN -i -f MIME::Lite
     fi
 
-    ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm
+    ecsudo $CPAN -i Imager/File/JPEG.pm Date/Manip.pm DBI
     if os_of FREEBSD ; then
         os_install databases/gdbm-GDBM p5-GDBM
 	ecsudo $CPAN -i B::COW
@@ -455,13 +478,16 @@ setup_projects()
 	echocd /
 	echo "With a little luck, we now have a working Clone used by CAPTCHA."
     elif os_of HAIKU ; then
-	echo "**** Cannot install GDBM_File on haiku ****"
+	echo "**** Cannot install GDBM_File on $OSV_LIKE ****"
         : ecsudo $CPAN -i GDBM_File
+    elif os_of ALPINE ; then
+        # os_install gdbm gdbm-dev perl-dev
+	echo "**** References to GDBM_File will fail on $OSV_LIKE ****"
     fi
 
     if [ ! -e /usr/lib/sendmail ] ; then
 	os_install ssmtp
-	like DEBIAN && os_install mailutils
+	os_of DEBIAN && os_install mailutils
     fi
     suinstall $SYSTEM_DIRECTORY_ATTRIBUTES $PROJECTS_DIR
     res=$?
@@ -531,6 +557,9 @@ EOF
 	ecsudo systemctl reload $OSV_WS_SYSTEMCTL	# This should really not be needed
     elif [ -n "$OSV_WS_SERVICE" ] ; then
         ecsudo service $OSV_WS_SERVICE start
+    elif [ -n "$OSV_WS_RCSERVICE" ] ; then
+        ecsudo rc-service add $OSV_WS_RCSERVICE
+        ecsudo rc-service $OSV_WS_RCSERVICE start
     elif [ -n "$OSV_WS_SVCADM" ] ; then
         ecsudo svcadm enable $OSV_WS_SVCADM
     elif in_path apachectl ; then
@@ -683,6 +712,8 @@ setup_multis()
 	os_install ncurses-devel
     elif os_of HAIKU ; then
 	os_install ncurses6_devel
+    elif os_of ALPINE ; then
+        os_install linux-headers ncurses-dev
     fi
 
     in_path f2c	# Return status used to decide to build multis
