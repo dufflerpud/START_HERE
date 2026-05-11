@@ -43,8 +43,13 @@ BE_CLEAN=false
 DEVELOPER=false
 DISABLE_SELINUX=true
 REBOOT_REASON=
-SYSTEM_USER=0
-SYSTEM_GROUP=0
+if [ -e /cygdrive/c ] ; then
+    SYSTEM_USER=Administrator
+    SYSTEM_GROUP=Administrators
+else
+    SYSTEM_USER=0
+    SYSTEM_GROUP=0
+fi
 SYSTEM_DIRECTORY_ATTRIBUTES="-D -d -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP"
 SYSTEM_EXECUTABLE_ATTRIBUTES="-D -m 0755 -o $SYSTEM_USER -g $SYSTEM_GROUP"
 SYSTEM_READABLE_ATTRIBUTES="-D -m 0644 -o $SYSTEM_USER -g $SYSTEM_GROUP"
@@ -119,10 +124,11 @@ os_variables()
     OSV_SUDO=sudo
     OSV_WS_CGIMODULE=modules/mod_cgi.so
     OSV_WS_DOCUMENTROOT=/var/www/html
+    OSV_WINDOWS_XCC=x86_64-w64-mingw32-gcc
 
     export PATH=${PATH}:/sbin:/usr/sbin
     for try_installer in \
-	dnf yum apt-get pacman pkgadd pkg zypper pkgman slackpkg emerge apk ; do
+	cygstart dnf yum apt-get pacman pkgadd pkg zypper pkgman slackpkg emerge apk installer guix ; do
         if in_path $try_installer ; then
 	    OSV_PKG_APP=$try_installer
 	    case "$OSV_PKG_APP" in
@@ -219,6 +225,31 @@ os_variables()
 				OSV_WS_CPICFG=/etc/apache2/conf.d/cpi.conf
 				OSV_WS_DOCUMENTROOT=/var/www/localhost/htdocs
 				;;
+		cygstart)	OSV_LIKE=CYGWIN
+				OSV_INSTALL="setup-x86_64 -q -P"
+				OSV_UPDATE="setup-x86_64 --upgrade-also --quiet-mode --no-admin"
+				OSV_WS_CYGRUNSRV=httpd
+				# OSV_WS_PKG="apache2"
+				OSV_WS_PKG=httpd
+				OSV_WS_CPICFG=/etc/httpd/conf.d/cpi.conf
+				OSV_WS_DOCUMENTROOT=/srv/www/htdocs
+				#OSV_SUDO=	# We built a really crude sudo that ssh's in as admin
+				;;
+		installer)	OSV_LIKE=MACOS
+				OSV_INSTALL="$OSV_PKG_APP -store -target / -pkg"
+				OSV_UPDATE="softwareupdate -i -a"
+				OSV_WS_CPICFG=/private/etc/apache2/other/cpi.conf
+				OSV_WS_CGIMODULE=libexec/apache2/mod_cgi.so
+				OSV_WS_DOCUMENTROOT=/Library/WebServer/Documents
+				;;
+		guix)		OSV_LIKE=GUIX
+				OSV_INSTALL="$OSV_PKG_APP install"
+				OSV_SYNC="$OSV_PKG_APP pull"
+				OSV_UPDATE="$OSV_PKG_APP upgrade"
+				OSV_WS_CPICFG=/private/etc/apache2/other/cpi.conf
+				OSV_WS_CGIMODULE=libexec/apache2/mod_cgi.so
+				OSV_WS_DOCUMENTROOT=/Library/WebServer/Documents
+				;;
 	    esac
 	    break
 	fi
@@ -231,7 +262,7 @@ os_variables()
     PROJECTS_DIR=$OSV_USRLOCAL/projects
 
     if [ -f $OSV_USRLOCAL/etc/cpi_cfg.pl ] ; then
-	OSV_WS_OFFSET=`perl -e 'eval(\`cat $OSV_USRLOCAL/etc/cpi_cfg.pl\`); print $cpi_vars::WEBOFFSET;'`
+	OSV_WS_OFFSET=`(cat $OSV_USRLOCAL/etc/cpi_cfg.pl; echo 'print $cpi_vars::WEBOFFSET;') | perl`
 	echo INFO:  OSV_WS_OFFSET recovered:  $OSV_WS_OFFSET.
     else
         OSV_WS_OFFSET="/`date +%s |
@@ -239,6 +270,8 @@ os_variables()
 	        sha1
 	    elif in_path sha1sum ; then
 	        sha1sum
+	    elif in_path shasum ; then
+	        shasum
 	    elif in_path cksum ; then
 	        cksum -a sha1 --base64 --untagged | tr -d +/=
 	    else
@@ -266,6 +299,7 @@ os_variables()
         GMAKE=make	# May not be installed yet
     fi
 
+    # REALLLY WANT Gnu install
     os_of FREEBSD && os_install coreutils
     GINSTALL=`command -v ginstall >/dev/null 2>&1`
     if [ -z "$GINSTALL" ] ; then
@@ -278,12 +312,20 @@ os_variables()
 	fi
     fi
 
-    echo INFO:  SUDO_HACK=$SUDO_HACK GMAKE=$GMAKE GINSTALL=$GINSTALL
+    if in_path wget ; then
+	OSV_WGETCURL="wget -q -O"
+    else
+	in_path curl || os_install curl
+        OSV_WGETCURL="curl -s -o"
+    fi
+
+    echo INFO:  SUDO_HACK=$SUDO_HACK GMAKE=$GMAKE
     }
 
 #########################################################################
 #	Protect linux (BSD?) install utility from the nasty fact	#
 #	that Haiku (and maybe others) has no /dev/stdin.		#
+#	Really wanted to just be GNU install but will work on FreeBSD	#
 #########################################################################
 #doc# ### suinstall()
 #doc# Protect linux (BSD?) install utility from the nasty fact
@@ -291,15 +333,25 @@ os_variables()
 #doc# to a /tmp file and use that.
 suinstall()
     {
-    case "$*" in
-        *" /dev/stdin "*)
-	    if os_of FREEBSD HAIKU || [ ! -e /dev/stdin ] ; then
-		cat > $TMP.stdin
-		ecsudo $GINSTALL `echo "$@" | sed -e "s:/dev/stdin:$TMP.stdin:"`
-		return $?
-	    fi
-    esac
-    ecsudo $GINSTALL "$@"
+    sui_args=
+    sui_dest=
+    sui_dirmode=false
+    while [ "$#" -gt 0 ] ; do
+        case "$1" in
+	    -D)			sui_dirmode=true			;;
+	    -|/dev/stdin)	sui_args="$sui_args $TMP.stdin"
+				cat > $TMP.stdin
+				;;
+	    *)			sui_args="$sui_args $1"
+	    			sui_dest="$1"
+				;;
+	esac
+	shift
+    done
+    $sui_dirmode && ecsudo mkdir -p `dirname $sui_dest`
+    ecsudo $GINSTALL $sui_args	# Should not care if it is GNU or BSD
+    				# but Solaris BSD uses -u, not -o for
+				# ownership.
     return $?
     }
 
@@ -382,11 +434,22 @@ setup_projects()
         os_install gcc
     fi
 
+    if os_of CYGWIN ; then
+	# With Cygwin, We should have a cross-compiler for Windows.
+        os_install mingw64-x86_64-gcc-core
+    elif [ -d /mnt/c ] ; then	# WSL with some version of Linux?
+	# We MIGHT have a cross-compiler for Windows.  It might be called this.
+        os_install gcc-mingw-w64-x86-64
+    fi
+
     os_of ALPINE && os_install musl-dev	perl-dev # For sys/types.h needed by perl
 
     os_install sox netpbm
     in_path $GMAKE || os_install $GMAKE
-    if os_of HAIKU ; then
+
+    if in_path gs ; then
+        echo "Ghostscript already installed."
+    elif os_of HAIKU ; then
         os_install ghostscript_gpl
     elif os_of FREEBSD ; then
         os_install ghostscript10
@@ -398,7 +461,7 @@ setup_projects()
         echo "Trans already installed.  Skipping system depending install logic."
     elif grep -sq 'NAME="Debian GNU/Linux"' /usr/lib/os-release ; then
 	# This should probably just skip through to failsafe.
-        echodo curl -s -o $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
+        echodo $OSV_WGETCURL $TMP.deb 'http://http.us.debian.org/debian/pool/contrib/t/translate-shell/translate-shell_0.9.7.1-2_all.deb'
         os_install $TMP.deb
     elif os_of SOLARIS ; then
     	: Take the failsafe.
@@ -416,9 +479,9 @@ setup_projects()
         echo "We have an installed trans."
     else
     	# Fail safe.
-	echodo curl -s https://raw.githubusercontent.com/soimort/translate-shell/gh-pages/trans | 
-	    suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES /dev/stdin $OSV_USRLOCAL/bin/trans
-	[ -h /bin/trans ] || ecsudo ln -s $OSV_USRLOCAL/bin/trans /bin/trans
+	echodo $OSV_WGETCURL $TMP.trans https://raw.githubusercontent.com/soimort/translate-shell/gh-pages/trans
+	suinstall $SYSTEM_EXECUTABLE_ATTRIBUTES $TMP.trans $OSV_USRLOCAL/bin/trans
+	#[ -h /bin/trans ] || ecsudo ln -s $OSV_USRLOCAL/bin/trans /bin/trans
     fi
 
     in_path trans || echo "**** No working trans.  Translation will not work ****"
@@ -562,13 +625,21 @@ EOF
         ecsudo rc-service $OSV_WS_RCSERVICE start
     elif [ -n "$OSV_WS_SVCADM" ] ; then
         ecsudo svcadm enable $OSV_WS_SVCADM
+    elif os_of MACOS ; then
+        ecsudo launchctl enable system/org.apache.httpd
+	ecsudo apachectl restart
+    elif [ -n "$OSV_WS_CYGRUNSRV" ] ; then
+        ecsudo /etc/rc.d/init.d/$OSV_WS_CYGRUNSRV install
+	ecsudo cygrunsrv -S $OSV_WS_CYGRUNSRV
     elif in_path apachectl ; then
         ecsudo apachectl restart
     fi
 
     # Can't do this before we've installed the http server
-    WUSER=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd)/ {print $3}' /etc/passwd`
-    WGROUP=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd)/ {print $4}' /etc/passwd`
+    if [ -f /etc/passwd ] ; then
+	WUSER=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd):/ {print $3}' /etc/passwd`
+	WGROUP=`awk -F: '/^(apache|www|www-data|http|wwwrun|webservd):/ {print $4}' /etc/passwd`
+    fi
 
     WUSER=${WUSER:-user}
     WGROUP=${WGROUP:-users}
@@ -598,12 +669,15 @@ EOF
 
     if [ ! -f $OSV_USRLOCAL/etc/cpi_cfg.pl ] ; then
 	suinstall $SYSTEM_READABLE_ATTRIBUTES /dev/stdin $OSV_USRLOCAL/etc/cpi_cfg.pl <<EOF
-#\$cpi_vars::DOMAIN="YourDomain.com";
-#\$cpi_vars::FAX_SERVER="Your fax printer name";
-#\$cpi_vars::KEY_CAPTCHA_PUBLIC="Captcha public key";
-#\$cpi_vars::KEY_CAPTCHA_PRIVATE="Captcha private key";
-\$cpi_vars::WEBOFFSET="$OSV_WS_OFFSET";
-\$cpi_vars::WEBTOP="$OSV_WS_TOP";
+\$cpi_vars::DOMAIN		||= "YourDomain.com";
+\$cpi_vars::FAX_SERVER		||= "Your fax printer name";
+\$cpi_vars::KEY_CAPTCHA_PUBLIC	||= "Captcha public key";
+\$cpi_vars::KEY_CAPTCHA_PRIVATE	||= "Captcha private key";
+\$cpi_vars::WEBPROTOCOL		||= "https";
+\$cpi_vars::WEBSERVER		||= "www.\$cpi_vars::DOMAIN";
+\$cpi_vars::WEBOFFSET		||= "$OSV_WS_OFFSET";
+\$cpi_vars::WEBTOP		||= "$OSV_WS_TOP";
+\$cpi_vars::PROJECTS_URL	||= "\${cpi_vars::WEBPROTOCOL}://\${cpi_vars::WEBSERVER}\${cpi_vars::WEBOFFSET}";
 EOF
     fi
     echo INFO:  install_and_configure_a_web_server OSV_WS_TOP=$OSV_WS_TOP.
@@ -690,7 +764,7 @@ setup_multis()
 	# It either came as part of the distribution or the above
 	# system-by-system logic built it.
 	echo "f2c is already installed.  Skipping system dependent install logic."
-    elif os_of DEBIAN REDHAT SUSE FREEBSD ; then
+    elif os_of DEBIAN REDHAT SUSE FREEBSD && [ ! -f /etc/almalinux-release ] ; then
 	# These systems don't come with it installed but they know of it
 	os_install f2c
     elif os_of ARCH ; then
@@ -698,7 +772,7 @@ setup_multis()
 	git_clone_to https://aur.archlinux.org/f2c.git $TMP.build/f2c
 	yes | echodo makepkg -srif --noprogressbar
     else
-	# Else build it from the source.  Hail Mary ... (Solaris)
+	# Else build it from the source.  Hail Mary ... (AlmaLinux, Solaris)
 	git_clone_to https://github.com/barak/f2c $TMP.build/f2c
 	echocd $TMP.build/f2c/src
 	echodo $GMAKE -f makefile.u f2c CC=gcc
@@ -714,6 +788,23 @@ setup_multis()
 	os_install ncurses6_devel
     elif os_of ALPINE ; then
         os_install linux-headers ncurses-dev
+    elif os_of CYGWIN ; then
+	os_install libncurses-devel	# For non-Windows console version
+    fi
+
+    if in_path $OSV_WINDOWS_XCC || in_path $OSV_WINDOWS_XCC.exe ; then
+	git_clone_to https://github.com/wmcbrine/PDCurses.git $TMP.build/PDCurses
+	echocd $TMP.build/PDCurses/wincon
+	echodo $GMAKE CC=$OSV_WINDOWS_XCC LINK=$OSV_WINDOWS_XCC
+	suinstall $SYSTEM_READABLE_ATTRIBUTES ../curses.h $OSV_USRLOCAL/wccinclude/PDCurses.h
+	suinstall $SYSTEM_READABLE_ATTRIBUTES PDCurses.a $OSV_USRLOCAL/wcclib/PDCurses.a
+
+	git_clone_to https://github.com/alitrack/mman-win32.git $TMP.build/mman-win32
+	echocd $TMP.build/mman-win32
+	$OSV_WINDOWS_XCC -I. -c mman.c
+	ar cru mman.a mman.o
+	suinstall $SYSTEM_READABLE_ATTRIBUTES mman.h $OSV_USRLOCAL/wccinclude/sys/mman.h
+	suinstall $SYSTEM_READABLE_ATTRIBUTES mman.a $OSV_USRLOCAL/wcclib/libmman.a
     fi
 
     in_path f2c	# Return status used to decide to build multis
@@ -784,11 +875,34 @@ temporarily_disable_sudo_password
 trap cleanup EXIT
 
 performa_updates
-os_install git
+
+if in_path git ; then
+    echo "Git already installed."
+elif os_of MACOS ; then			# Not going to install brew or
+    ecsudo xcode-select --install	# macports.  Old version is fine.
+else
+    os_install git
+fi
+
 in_path hostname || os_install inetutils
 install_and_configure_a_web_server
 
 $BE_CLEAN && ecsudo rm -rf ${WEBTOP} ${PROJECTS_DIR} $OSV_USRLOCAL/etc/cpi_cfg.pl /etc/ssmtp/ssmtp.conf
+
+# Needed for cpi's ref to Imager::QRCode on Kali
+if [ -f /usr/include/crypt.h ] ; then
+    echo crypt.h already installed.
+elif os_of CYGWIN ; then
+    os_install gcc-core
+    os_install gcc-fortran
+    os_install make
+    os_install openssh
+    os_install libcrypt-devel
+    os_install gcc-g++
+    os_install libssl-devel
+else
+    os_install libcrypt-dev
+fi
 
 setup_projects
 install_and_configure START_HERE	# Requires setup projects
