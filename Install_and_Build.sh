@@ -797,7 +797,7 @@ setup_multis()
 	echocd $TMP.build/PDCurses/wincon
 	echodo $GMAKE CC=$OSV_WINDOWS_XCC LINK=$OSV_WINDOWS_XCC
 	suinstall $SYSTEM_READABLE_ATTRIBUTES ../curses.h $OSV_USRLOCAL/wccinclude/PDCurses.h
-	suinstall $SYSTEM_READABLE_ATTRIBUTES PDCurses.a $OSV_USRLOCAL/wcclib/PDCurses.a
+	suinstall $SYSTEM_READABLE_ATTRIBUTES pdcurses.a $OSV_USRLOCAL/wcclib/libPDCurses.a
 
 	git_clone_to https://github.com/alitrack/mman-win32.git $TMP.build/mman-win32
 	echocd $TMP.build/mman-win32
